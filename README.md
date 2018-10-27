@@ -9,6 +9,40 @@ Porting ColorNews Wordpress theme (https://themegrill.com/themes/colornews/) to 
     
 Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018-09-06)
 
+## Conversion progression todo list
+
+* [x] Start with Starter template
+* [ ] Basic HTML/PHP
+  * [x] Meta elements
+  * [x] Site containers
+  * [ ] Header
+  * [ ] Content area
+  * [ ] Footer
+  * [ ] Sidebar
+  * [ ] WP vs. DW functions
+  * [ ] Language strings
+* [ ] Basic CSS
+  * [ ] style.css
+  * [ ] rtl.css
+  * [ ] print.css
+  * [ ] Necessary changes
+* [ ] JS
+* [ ] Further HTML/PHP
+  * [ ] Other layouts
+  * [ ] Special DW elements
+  * [ ] Other actions
+* [ ] Further CSS
+  * [ ] style.ini
+    * [ ] Guaranteed colour placeholders
+    * [ ] Other values
+  * [ ] WP vs. DW classes
+    * [ ] The lazy way
+    * [ ] The clean way
+* [ ] Rename IDs
+* [ ] Support specific custom WP theme functionality
+  * [ ] Custom colours
+  * [ ] Custom background
+
 ## More Credits
 
 ### Third party modules
@@ -24,7 +58,7 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
 * Font used for sample UI images (banner, widebanner and sidebar.png) is: [Rollandin by Emilie Rollandin](http://www.archistico.com/portfolio/nuovo-font-rollandin/).
 * Special thanks to Giuseppe Di Terlizzi, author of [Bootstrap3](https://www.dokuwiki.org/template:bootstrap3) DokuWiki template who nicely acepted that I copy some of his code to build admin dropdown menu.
 
-## Main Features ToDo
+## Main Features todo
 
 * [ ] Namespace dependent CSS placeholders (for colors and fonts)
 * [ ] Namespace dependent UI images (background pattern, banner, logo, widebanner and a potential sidebar header)

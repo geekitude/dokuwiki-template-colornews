@@ -1,10 +1,10 @@
 <?php
 /**
- * DokuWiki Starter Template
+ * DokuWiki ColorNews Template
  *
- * @link     http://dokuwiki.org/template:starter
- * @author   Anika Henke <anika@selfthinker.org>
- * @license  GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ * @link     http://dokuwiki.org/template:colornews
+ * @author   Simon Delage <sdelage@gmail.com>
+ * @license  GPL 3 (http://www.gnu.org/licenses/gpl.html)
  */
 
 if (!defined('DOKU_INC')) die(); /* must be run from within DokuWiki */
@@ -26,7 +26,7 @@ $showSidebar = page_findnearest($conf['sidebar']) && ($ACT=='show');
     <?php tpl_includeFile('meta.html') ?>
 </head>
 
-<body>
+<body class="<?php echo _colornews_bodyclasses(); ?>">
     <?php /* with these Conditional Comments you can better address IE issues in CSS files,
              precede CSS rules by #IE8 for IE8 (div closes at the bottom) */ ?>
     <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
@@ -51,7 +51,7 @@ $showSidebar = page_findnearest($conf['sidebar']) && ($ACT=='show');
                     <p class="claim"><?php echo $conf['tagline'] ?></p>
                 <?php endif ?>
 
-                <ul class="a11y skip">
+                <ul class="skip">
                     <li><a href="#dokuwiki__content"><?php echo $lang['skip_to_content'] ?></a></li>
                 </ul>
                 <div class="clearer"></div>

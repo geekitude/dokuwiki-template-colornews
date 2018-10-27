@@ -140,3 +140,16 @@ if (!function_exists('tpl_classes')) {
         return join(' ', $classes);
     }
 }
+
+/**
+ * Returns body classes according to settings
+ */
+function _colornews_bodyclasses() {
+    global $conf;
+    $classes = array(
+        'layout_'.tpl_getConf('layout'),
+        'bg_'.tpl_getConf('bodyBg'),
+    );
+    /* TODO: better home detection than core */
+    return join(' ', $classes);
+}
