@@ -20,13 +20,14 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
 
 ### Extra
 
+* Replaced orginal 770Kb background pattern with a 48Kb one from [Subtle Patterns](https://www.toptal.com/designers/subtlepatterns/)
 * Font used for sample UI images (banner, widebanner and sidebar.png) is: [Rollandin by Emilie Rollandin](http://www.archistico.com/portfolio/nuovo-font-rollandin/).
 * Special thanks to Giuseppe Di Terlizzi, author of [Bootstrap3](https://www.dokuwiki.org/template:bootstrap3) DokuWiki template who nicely acepted that I copy some of his code to build admin dropdown menu.
 
 ## Main Features ToDo
 
 * [ ] Namespace dependent CSS placeholders (for colors and fonts)
-* [ ] Namespace dependent UI images (banner, logo, 'widebanner' and a potential last one that could be 'cover' for example)
+* [ ] Namespace dependent UI images (background pattern, banner, logo, widebanner and a potential sidebar header)
 * [ ] Google Fonts : each of main text, headings, condensed text (mostly nav bar) and monospaced text (```code``` syntax) can use a different Google font (be warned that main text font should be kept very readable)
 * [ ] Easy to customize addittional glyphs (from [Material Design Icons](https://materialdesignicons.com/) like other DW's SVG glyphs or [IcoMoon](https://icomoon.io/) for social links)
 * [ ] Can have a "scrollspy" ToC on wide screen
