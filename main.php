@@ -11,8 +11,16 @@ if (!defined('DOKU_INC')) die(); /* must be run from within DokuWiki */
 @require_once(dirname(__FILE__).'/tpl_functions.php'); /* include hook for template functions */
 header('X-UA-Compatible: IE=edge,chrome=1');
 
+_colornews_init();
+
 $showTools = !tpl_getConf('hideTools') || ( tpl_getConf('hideTools') && !empty($_SERVER['REMOTE_USER']) );
-$showSidebar = page_findnearest($conf['sidebar']) && ($ACT=='show');
+
+if (($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "sidebar")) {
+    $showSidebar = 2;
+} else {
+    $showSidebar = page_findnearest($conf['sidebar']) && ($ACT=='show');
+}
+
 ?><!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $conf['lang'] ?>"
   lang="<?php echo $conf['lang'] ?>" dir="<?php echo $lang['direction'] ?>" class="no-js">
@@ -23,7 +31,8 @@ $showSidebar = page_findnearest($conf['sidebar']) && ($ACT=='show');
     <?php tpl_metaheaders() ?>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <?php echo tpl_favicon(array('favicon', 'mobile')) ?>
-    <?php tpl_includeFile('meta.html') ?>
+    <?php //if (($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "include")) { include(tpl_incdir('colornews')."/debug/meta.html"); } else { tpl_includeFile('meta.html'); } ?>
+    <?php _colornews_includeFile('meta.html') ?>
 </head>
 
 <body class="<?php echo _colornews_bodyclasses(); ?>">
@@ -36,19 +45,19 @@ $showSidebar = page_findnearest($conf['sidebar']) && ($ACT=='show');
     <div id="dokuwiki__site">
         <div id="dokuwiki__top" class="site <?php echo tpl_classes(); ?> <?php echo ($showSidebar) ? 'hasSidebar' : ''; ?>">
             <?php html_msgarea() /* occasional error and info messages on top of the page */ ?>
-            <?php tpl_includeFile('header.html') ?>
+            <?php _colornews_includeFile('header.html') ?>
             <!-- ********** HEADER ********** -->
             <header id="dokuwiki__header">
                 <div class="pad">
                     <div class="headings">
-                        <h1><?php tpl_link(wl(),$conf['title'],'accesskey="h" title="[H]"') ?></h1>
+                        <h1><?php if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "title")) and (file_exists(tpl_incdir('colornews')."debug/title.html"))) { include(tpl_incdir('colornews')."debug/title.html"); } else { tpl_link(wl(),$conf['title'],'accesskey="h" title="[H]"'); } ?></h1>
                         <?php /* how to insert logo instead (if no CSS image replacement technique is used):
                             upload your logo into the data/media folder (root of the media manager) and replace 'logo.png' accordingly:
                             tpl_link(wl(),'<img src="'.ml('logo.png').'" alt="'.$conf['title'].'" />','id="dokuwiki__top" accesskey="h" title="[H]"') */ ?>
                         <?php if ($conf['tagline']): ?>
-                            <p class="claim"><?php echo $conf['tagline'] ?></p>
+                            <p class="claim"><?php if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "tagline")) and (file_exists(tpl_incdir('colornews')."debug/tagline.html"))) { include(tpl_incdir('colornews')."debug/tagline.html"); } else { echo $conf['tagline']; } ?></p>
                         <?php endif ?>
-                        <ul class="skip">
+                        <ul class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue skip">
                             <li><a href="#dokuwiki__content"><?php echo $lang['skip_to_content'] ?></a></li>
                         </ul>
                         <div class="clearer"></div>
@@ -57,7 +66,7 @@ $showSidebar = page_findnearest($conf['sidebar']) && ($ACT=='show');
                         <!-- USER TOOLS -->
                         <?php if ($conf['useacl'] && $showTools): ?>
                             <div id="dokuwiki__usertools">
-                                <h3 class="a11y"><?php echo $lang['user_tools'] ?></h3>
+                                <h3 class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue"><?php echo $lang['user_tools'] ?></h3>
                                 <ul>
                                     <?php
                                         if (!empty($_SERVER['REMOTE_USER'])) {
@@ -80,7 +89,7 @@ $showSidebar = page_findnearest($conf['sidebar']) && ($ACT=='show');
                         <?php endif ?>
                         <!-- SITE TOOLS -->
                         <div id="dokuwiki__sitetools">
-                            <h3 class="a11y"><?php echo $lang['site_tools'] ?></h3>
+                            <h3 class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue"><?php echo $lang['site_tools'] ?></h3>
                             <?php tpl_searchform() ?>
                             <ul>
                                 <?php tpl_toolsevent('sitetools', array(
@@ -100,7 +109,7 @@ $showSidebar = page_findnearest($conf['sidebar']) && ($ACT=='show');
                         <div class="breadcrumbs"><?php tpl_youarehere() ?></div>
                     <?php } ?>
                     <div class="clearer"></div>
-                    <hr class="a11y" />
+                    <hr class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue" />
                 </div><!-- /.pad -->
             </header><!-- /#dokuwiki__header -->
             <main class="wrapper">
@@ -108,9 +117,9 @@ $showSidebar = page_findnearest($conf['sidebar']) && ($ACT=='show');
                 <?php if ($showSidebar): ?>
                     <aside id="dokuwiki__aside">
                         <div class="pad aside include group">
-                            <?php tpl_includeFile('sidebarheader.html') ?>
-                            <?php tpl_include_page($conf['sidebar'], 1, 1) /* includes the nearest sidebar page */ ?>
-                            <?php tpl_includeFile('sidebarfooter.html') ?>
+                            <?php _colornews_includeFile('sidebarheader.html') ?>
+                            <?php if ($showSidebar === 2) { include(tpl_incdir('colornews')."debug/sidebar.html"); } else { tpl_include_page($conf['sidebar'], 1, 1); /* includes the nearest sidebar page */ } ?>
+                            <?php _colornews_includeFile('sidebarfooter.html') ?>
                             <div class="clearer"></div>
                         </div><!-- /.pad -->
                     </aside><!-- /#dokuwiki__aside -->
@@ -119,7 +128,7 @@ $showSidebar = page_findnearest($conf['sidebar']) && ($ACT=='show');
                 <section id="dokuwiki__content">
                     <div class="pad">
                         <?php tpl_flush() /* flush the output buffer */ ?>
-                        <?php tpl_includeFile('pageheader.html') ?>
+                        <?php _colornews_includeFile('pageheader.html') ?>
                         <article class="page">
                             <!-- wikipage start -->
                             <?php tpl_content() /* the main content */ ?>
@@ -127,15 +136,15 @@ $showSidebar = page_findnearest($conf['sidebar']) && ($ACT=='show');
                             <div class="clearer"></div>
                         </article><!-- /.page -->
                         <?php tpl_flush() ?>
-                        <?php tpl_includeFile('pagefooter.html') ?>
+                        <?php _colornews_includeFile('pagefooter.html') ?>
                     </div><!-- /.pad -->
                 </section><!-- /#dokuwiki__content -->
                 <div class="clearer"></div>
-                <hr class="a11y" />
+                <hr class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue" />
                 <!-- PAGE ACTIONS -->
                 <?php if ($showTools): ?>
                     <aside id="dokuwiki__pagetools">
-                        <h3 class="a11y"><?php echo $lang['page_tools'] ?></h3>
+                        <h3 class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue"><?php echo $lang['page_tools'] ?></h3>
                         <ul>
                             <?php tpl_toolsevent('pagetools', array(
                                 'edit'      => tpl_action('edit', 1, 'li', 1),
@@ -157,7 +166,7 @@ $showSidebar = page_findnearest($conf['sidebar']) && ($ACT=='show');
                     <?php tpl_license('button') /* content license, parameters: img=*badge|button|0, imgonly=*0|1, return=*0|1 */ ?>
                 </div><!-- /.pad -->
             </footer><!-- /#dokuwiki__footer -->
-            <?php tpl_includeFile('footer.html') ?>
+            <?php _colornews_includeFile('footer.html') ?>
         </div><!-- /#dokuwiki__top -->
     </div><!-- /dokuwiki__site -->
     <div class="no"><?php tpl_indexerWebBug() /* provide DokuWiki housekeeping, required in all templates */ ?></div>

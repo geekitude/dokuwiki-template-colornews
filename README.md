@@ -67,22 +67,44 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
 * [ ] Can have a "scrollspy" ToC on wide screen
 * [ ] Sidebar moved out of page content on wide screen
 * [ ] Include hooks(*), based on [this document](https://www.dokuwiki.org/include_hooks), starter template and also quite a few specific additions
-  * [ ] *meta.html* : just before `</head>` tag (use this to add additional styles or metaheaders)
-  * [ ] *header.html* : right above everything (except [Skip to Content])
+  * [x] *meta.html* : just before `</head>` tag (use this to add additional styles or metaheaders)
+  * [x] *header.html* : right above everything (except [Skip to Content])
   * [ ] *brandingfooter.html* : just below site logo and title section
   * [ ] *bannerheader.html* : above banner
   * [ ] *navheader.html* : above main navigation area
   * [ ] *navfooter.html* : below main navigation area
-  * [ ] *sidebarheader.html* : before sidebar content
-  * [ ] *sidebarfooter.html* : after sidebar content
-  * [ ] *pageheader.html* : above page
+  * [x] *sidebarheader.html* : before sidebar content
+  * [x] *sidebarfooter.html* : after sidebar content
+  * [x] *pageheader.html* : above page
   * [ ] *articleheader.html* : above actual page content
   * [ ] *articlefooter.html* : just under actual page content
-  * [ ] *pagefooter.html* : right before site footer, below  page content
+  * [x] *pagefooter.html* : right before site footer, below  page content
   * [ ] *footerwidget.html* : included in footer widgets area (after other widgets)
-  * [ ] *footer.html* : at the very end of the page just before the `</body>` tag
-* [ ] Replace hooks(**) to change some simple template elements into fancier HTML code of your own
-  * [ ] *title.html* : replace wiki title string
-  * [ ] *tagline.html* : replace wiki description string
+  * [x] *footer.html* : at the very end of the page just before the `</body>` tag
+* [x] Replace hooks(**) to change some simple template elements into fancier HTML code of your own
+  * [x] *title.html* : replace wiki title string
+  * [x] 'sidebar' (special debug only dummy sidebar)
+  * [x] *tagline.html* : replace wiki description string
 * [ ] Social links section in topbar or footer(***)
 * [ ] Expanded debug mode to show or hide some specific elements
+  * [x] 'a11y' (visual accessibility helpers)
+  * [x] 'alerts'
+  * [x] 'hooks' (both include or replace HTML hooks)
+  * [x] 'include' (HTML include hooks)
+  * [x] 'replace' (HTML replace hooks)
+  * [x] 'sidebar' (show a dummy sidebar)
+  * [x] 'title' (title HTML replace hooks)
+  * [x] 'tagline' (tagline HTML replace hooks)
+  * [ ] 'images' (all UI images)
+  * [ ] 'banner'
+  * [ ] 'card' (sidebar namespace card image)
+  * [ ] 'logo' (namespace logo within page header)
+  * [ ] 'sitelogo'
+
+## Expanded debug mode
+
+Debug mode is meant to show usually hidden elements to test some of template's settings or features.
+
+To enable "full" debug mode, simply add `&debug=1` or `?debug=1` at the end of URL, depending of current wiki mode (ie use "&" if there's already a "?" in URL, else use "?").
+
+You can also use some specific keyword values instead of boolean to show only a given element category (e.g. `&debug=include`). Here's a complete list of possible keywords : 'a11y' (visual accessibility helpers), 'alerts', 'banner', 'card' (sidebar namespace card image), 'hooks' (both include or replace HTML hooks), 'images' (all UI images), 'include' (HTML include hooks), 'logo' (namespace logo within page header), 'replace' (HTML replace hooks), 'sitelogo'
