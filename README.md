@@ -15,7 +15,7 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
 * [ ] Basic HTML/PHP
   * [x] Meta elements
   * [x] Site containers
-  * [ ] Header
+  * [x] Header
   * [ ] Content area
   * [ ] Footer
   * [ ] Sidebar
@@ -43,7 +43,7 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
   * [ ] Custom colours
   * [ ] Custom background
 
-## More Credits
+## Credits
 
 ### Third party modules
 
@@ -58,7 +58,7 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
 * Font used for sample UI images (banner, widebanner and sidebar.png) is: [Rollandin by Emilie Rollandin](http://www.archistico.com/portfolio/nuovo-font-rollandin/).
 * Special thanks to Giuseppe Di Terlizzi, author of [Bootstrap3](https://www.dokuwiki.org/template:bootstrap3) DokuWiki template who nicely acepted that I copy some of his code to build admin dropdown menu.
 
-## Main Features todo
+## Main features todo list
 
 * [ ] Namespace dependent CSS placeholders (for colors and fonts)
 * [ ] Namespace dependent UI images (background pattern, banner, logo, widebanner and a potential sidebar header)
@@ -82,21 +82,18 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
   * [ ] *footerwidget.html* : included in footer widgets area (after other widgets)
   * [x] *footer.html* : at the very end of the page just before the `</body>` tag
 * [x] Replace hooks(**) to change some simple template elements into fancier HTML code of your own
+  * [x] *topbar page* : debug dummy topbar "page" [see here](https://www.dokuwiki.org/tips:topbar)
   * [x] *title.html* : replace wiki title string
-  * [x] 'sidebar' (special debug only dummy sidebar)
   * [x] *tagline.html* : replace wiki description string
-* [ ] Social links section in topbar or footer(***)
+  * [x] 'sidebar page' : debug dummy sidebar "page"
 * [ ] Expanded debug mode to show or hide some specific elements
   * [x] 'a11y' (visual accessibility helpers)
   * [x] 'alerts'
   * [x] 'hooks' (both include or replace HTML hooks)
   * [x] 'include' (HTML include hooks)
   * [x] 'replace' (HTML replace hooks)
-  * [x] 'sidebar' (show a dummy sidebar)
-  * [x] 'title' (title HTML replace hooks)
-  * [x] 'tagline' (tagline HTML replace hooks)
   * [ ] 'images' (all UI images)
-  * [ ] 'banner'
+  * [x] 'banner'
   * [ ] 'card' (sidebar namespace card image)
   * [ ] 'logo' (namespace logo within page header)
   * [ ] 'sitelogo'

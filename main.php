@@ -15,7 +15,8 @@ _colornews_init();
 
 $showTools = !tpl_getConf('hideTools') || ( tpl_getConf('hideTools') && !empty($_SERVER['REMOTE_USER']) );
 
-if (($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "sidebar")) {
+//if (($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "sidebar")) {
+if ($_GET['debug'] == "replace") {
     $showSidebar = 2;
 } else {
     $showSidebar = page_findnearest($conf['sidebar']) && ($ACT=='show');
@@ -44,22 +45,134 @@ if (($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "
              should always be in one of the surrounding elements (e.g. plugins and templates depend on it) */ ?>
     <div id="dokuwiki__site">
         <div id="dokuwiki__top" class="site <?php echo tpl_classes(); ?> <?php echo ($showSidebar) ? 'hasSidebar' : ''; ?>">
+            <ul class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue skip">
+                <li><a href="#dokuwiki__content"><?php echo $lang['skip_to_content'] ?></a></li>
+            </ul>
             <?php html_msgarea() /* occasional error and info messages on top of the page */ ?>
             <?php _colornews_includeFile('header.html') ?>
             <!-- ********** HEADER ********** -->
+            <header id="masthead" class="site-header" role="banner">
+                <div class="top-header-wrapper clearfix">
+                    <div class="tg-container">
+                        <div class="tg-inner-wrap">
+                            <!-- options pour afficher ou non ce menu et choisir le contenu -->
+                                    <div class="category-toogle-wrap">
+                                        <div class="category-toggle-block">
+                                            <span class="toggle-bar"></span>
+                                            <span class="toggle-bar"></span>
+                                            <span class="toggle-bar"></span>
+                                        </div>
+                                    </div><!-- .category-toogle-wrap end -->
+                            <div class="top-menu-wrap">
+                                <div class="date-in-header">
+                                    <?php _colornews_date("long", null, false, true); ?>
+                                </div>
+                                <div class="links-in-header">
+                                    <?php //if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "links")) and (file_exists(tpl_incdir('colornews')."debug/topbar.html"))) { include(tpl_incdir('colornews')."debug/topbar.html"); } else { tpl_include_page('topbar'); } ?>
+                                    <?php if (($_GET['debug'] == "replace") and (file_exists(tpl_incdir('colornews')."debug/topbar.html"))) { include(tpl_incdir('colornews')."debug/topbar.html"); } else { tpl_include_page('topbar'); } ?>
+                                </div>
+                            </div>
+                        </div><!-- /.tg-inner-wrap -->
+                    </div><!-- /.tg-container -->
+                </div><!-- /.top-header-wrapper  -->
+                <div class="middle-header-wrapper clearfix">
+                    <div class="tg-container">
+                        <div class="tg-inner-wrap">
+                            <div class="logo">
+                                <?php
+                                    $logoSize = array();
+                                    $logo = tpl_getMediaFile(array(':wiki:logo.png', ':logo.png', 'images/logo.png'), false, $logoSize);
+                                    echo '<img src="'.$logo.'" '.$logoSize[3].' alt="" />';
+                                ?>
+                            </div><!-- #logo -->
+                            <div id="header-text" class="">
+                                <!-- <h1><?php //if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "title")) and (file_exists(tpl_incdir('colornews')."debug/title.html"))) { include(tpl_incdir('colornews')."debug/title.html"); } else { tpl_link(wl(),$conf['title'],'accesskey="h" title="[H]"'); } ?></h1> -->
+                                <h1><?php if (($_GET['debug'] == "replace") and (file_exists(tpl_incdir('colornews')."debug/title.html"))) { include(tpl_incdir('colornews')."debug/title.html"); } else { tpl_link(wl(),$conf['title'],'accesskey="h" title="[H]"'); } ?></h1>
+                                <?php /* how to insert logo instead (if no CSS image replacement technique is used):
+                                    upload your logo into the data/media folder (root of the media manager) and replace 'logo.png' accordingly:
+                                    tpl_link(wl(),'<img src="'.ml('logo.png').'" alt="'.$conf['title'].'" />','id="dokuwiki__top" accesskey="h" title="[H]"') */ ?>
+                                <?php if ($conf['tagline']): ?>
+                                    <!-- <p class="claim"><?php //if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "tagline")) and (file_exists(tpl_incdir('colornews')."debug/tagline.html"))) { include(tpl_incdir('colornews')."debug/tagline.html"); } else { echo $conf['tagline']; } ?></p> -->
+                                    <p class="claim"><?php if (($_GET['debug'] == "replace") and (file_exists(tpl_incdir('colornews')."debug/tagline.html"))) { include(tpl_incdir('colornews')."debug/tagline.html"); } else { echo $conf['tagline']; } ?></p>
+                                <?php endif ?>
+                            </div><!-- #header-text -->
+                            <div class="header-advertise">
+                                <?php _colornews_includeFile('bannerheader.html') ?>
+                                <?php
+                                    //if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "banner")) and (file_exists(tpl_incdir('colornews')."debug/banner.html"))) {
+                                    if (($_GET['debug'] == "replace") and (file_exists(tpl_incdir('colornews')."debug/banner.html"))) {
+                                        include(tpl_incdir('colornews')."debug/banner.html");
+                                    } elseif (($colornews['images']['banner'] != null) or ($_GET['debug'] == 1) or ($_GET['debug'] == "banner")) {
+                                        if ($colormag['images']['banner']['mediaId'] != null) {
+                                            $bannerImage = ml($colornews['images']['banner']['mediaId'],'',true);
+                                        } else {
+                                            $bannerImage = "/lib/tpl/colornews/debug/banner.png";
+                                        }
+                                        //$link = colormag_ui_link("bannerLink", substr($colormag['images']['banner']['mediaId'], 0, strrpos($colormag['images']['banner']['mediaId'], ':') + 1));
+                                        $link = null;
+                                        $title = "Banner";
+                                        if ($link != null) {
+                                            if ($link['accesskey'] != null) {
+                                                $link['label'] .= " [".strtoupper($link['accesskey'])."]";
+                                                $accesskey = 'accesskey="'.$link['accesskey'].'" ';
+                                            }
+                                            tpl_link(
+                                                $link['target'],
+                                                '<img id="colormag__branding_banner_image" src="'.$bannerImage.'" '.$accesskey.'title="'.$link['label'].'" alt="*'.$title.'*" '.$colormag['images']['banner']['imageSize'][3].' />'
+                                            );
+                                        } else {
+                                            print '<img id="colormag__branding_banner_image" src="'.$bannerImage.'" title="'.$title.'" alt="*'.$title.'*" width="600" height="90" />';
+                                        }
+                                    }
+                                ?>
+                                <?php _colornews_includeFile('bannerfooter.html') ?>
+                            </div><!-- /.header-advertise -->
+                        </div><!-- /.tg-inner-wrap -->
+                    </div><!-- /.tg-container -->
+                </div><!-- /.middle-header-wrapper -->
+                <div class="bottom-header-wrapper clearfix">
+                    <div class="bottom-arrow-wrap">
+                        <div class="tg-container">
+                            <div class="tg-inner-wrap">
+                                <?php // option affichage icone home ?>
+                                    <div class="home-icon">
+                                        <a title="*title*" href="<?php wl(); ?>"><i class="fa fa-home"></i>home</a>
+                                    </div><!-- /.home-icon -->
+                                <?php // ?>
+                                <nav id="site-navigation" class="main-navigation clearfix" role="navigation">
+                                    <div class="menu-toggle hide">*menu toggle*</div>
+                                    <?php //wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'nav', 'container' => false, ) ); ?>
+                                </nav>
+                                <!-- SEARCH -->
+                                <!-- RANDOM POST -->
+                            </div><!-- /.tg-inner-wrap -->
+                        </div><!-- /.tg-container -->
+                    </div><!-- /.bottom-arrow-wrap -->
+                </div><!-- /.bottom-header-wrapper -->
+                <!-- BREAKING NEWS -->
+            </header><!-- /#masthead -->
+
+
+
+
+
+
+
+
+
+
             <header id="dokuwiki__header">
                 <div class="pad">
                     <div class="headings">
-                        <h1><?php if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "title")) and (file_exists(tpl_incdir('colornews')."debug/title.html"))) { include(tpl_incdir('colornews')."debug/title.html"); } else { tpl_link(wl(),$conf['title'],'accesskey="h" title="[H]"'); } ?></h1>
+                        <!--<h1><?php //if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "title")) and (file_exists(tpl_incdir('colornews')."debug/title.html"))) { include(tpl_incdir('colornews')."debug/title.html"); } else { tpl_link(wl(),$conf['title'],'accesskey="h" title="[H]"'); } ?></h1> -->
+                        <h1><?php if (($_GET['debug'] == "replace") and (file_exists(tpl_incdir('colornews')."debug/title.html"))) { include(tpl_incdir('colornews')."debug/title.html"); } else { tpl_link(wl(),$conf['title'],'accesskey="h" title="[H]"'); } ?></h1>
                         <?php /* how to insert logo instead (if no CSS image replacement technique is used):
                             upload your logo into the data/media folder (root of the media manager) and replace 'logo.png' accordingly:
                             tpl_link(wl(),'<img src="'.ml('logo.png').'" alt="'.$conf['title'].'" />','id="dokuwiki__top" accesskey="h" title="[H]"') */ ?>
                         <?php if ($conf['tagline']): ?>
-                            <p class="claim"><?php if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "tagline")) and (file_exists(tpl_incdir('colornews')."debug/tagline.html"))) { include(tpl_incdir('colornews')."debug/tagline.html"); } else { echo $conf['tagline']; } ?></p>
+                            <!-- <p class="claim"><?php //if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "tagline")) and (file_exists(tpl_incdir('colornews')."debug/tagline.html"))) { include(tpl_incdir('colornews')."debug/tagline.html"); } else { echo $conf['tagline']; } ?></p> -->
+                            <p class="claim"><?php if (($_GET['debug'] == "replace") and (file_exists(tpl_incdir('colornews')."debug/tagline.html"))) { include(tpl_incdir('colornews')."debug/tagline.html"); } else { echo $conf['tagline']; } ?></p>
                         <?php endif ?>
-                        <ul class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue skip">
-                            <li><a href="#dokuwiki__content"><?php echo $lang['skip_to_content'] ?></a></li>
-                        </ul>
                         <div class="clearer"></div>
                     </div><!-- /.headings -->
                     <div class="tools">

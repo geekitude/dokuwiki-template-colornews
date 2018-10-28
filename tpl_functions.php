@@ -191,3 +191,41 @@ function _colornews_includeFile($file = '') {
         }
     }
 }
+
+/**
+ * RETURN A DATE
+ * 
+ * @param string    $type "long" for long date based on 'dateString' setting, "short" for numeric
+ * @param integer   $timestamp timestamp to use (null for current server time)
+ * @param bool      $clock if true, add hour to the result
+ * @param bool      $print if true, print the result instead of returning it
+ */
+function _colornews_date($type, $timestamp = null, $clock = false, $printResult = false) {
+    global $conf;
+    $dateLocale = tpl_getConf('dateLocale');
+    if ($dateLocale != null) {
+        if (strpos($dateLocale, ',') !== false) {
+            $dateLocale = explode(",", $dateLocale)[1];
+        }
+        setlocale(LC_TIME, $dateLocale);
+    }
+    if ($type == "short") {
+        $format = tpl_getConf('shortDateString');
+    } else {
+        $format = tpl_getConf('longDateString');
+    }
+    if ($clock) {
+        $format .= ' %H:%M';
+    }
+    if ($timestamp == null) {
+        $result = utf8_encode(ucwords(strftime($format)));
+    } else {
+        $result = utf8_encode(ucwords(strftime($format, $timestamp)));
+    }
+    if ($printResult) {
+        print $result;
+        return true;
+    } else {
+        return $result;
+    }
+}

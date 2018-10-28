@@ -9,3 +9,6 @@ $conf['userPage']           = 'user:@USER@:';
 $conf['hideTools']          = 0;
 $conf['layout']             = 'boxed';
 $conf['bodyBg']             = 'pattern';
+$conf['dateLocale']         = 'fra';
+$conf['shortDateString']    = '%d/%m/%Y';
+$conf['longDateString']     = '%A %d %B %Y';
