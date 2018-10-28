@@ -44,6 +44,7 @@ if ($_GET['debug'] == "replace") {
     <?php /* tpl_classes() provides useful CSS classes; if you choose not to use it, the 'dokuwiki' class at least
              should always be in one of the surrounding elements (e.g. plugins and templates depend on it) */ ?>
     <div id="dokuwiki__site">
+    <div id="page" class="hfeed site">
         <div id="dokuwiki__top" class="site <?php echo tpl_classes(); ?> <?php echo ($showSidebar) ? 'hasSidebar' : ''; ?>">
             <ul class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue skip">
                 <li><a href="#dokuwiki__content"><?php echo $lang['skip_to_content'] ?></a></li>
@@ -305,23 +306,72 @@ if ($_GET['debug'] == "replace") {
                     </div><!-- /.tg-inner-wrap -->
                 </div><!-- /.tg-container -->
             </main>
-
-
-
-
-
-
-
-            <!-- ********** FOOTER ********** -->
-            <footer id="dokuwiki__footer">
+            <footer id="colophon">
                 <div class="pad">
                     <div class="doc"><?php tpl_pageinfo() /* 'Last modified' etc */ ?></div>
                     <?php tpl_license('button') /* content license, parameters: img=*badge|button|0, imgonly=*0|1, return=*0|1 */ ?>
                 </div><!-- /.pad -->
-            </footer><!-- /#dokuwiki__footer -->
-            <?php _colornews_includeFile('footer.html') ?>
+                <div id="top-footer">
+                    <div class="tg-container">
+                        <div class="tg-inner-wrap">
+                            <div class="top-footer-content-wrapper">
+                                <div class="tg-column-wrapper">
+                                    <div class="tg-footer-column-3">
+                                        <aside id="text-3" class="widget widget_text">
+                                            <h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span>About Us</span></span></h3>
+                                            <div class="textwidget">
+                                                <a title="COLORNEWS" href="https://demo.themegrill.com/colornews/">
+                                                    <img alt="COLORNEWS" src="https://i1.wp.com/demo.themegrill.com/colornews/wp-content/uploads/sites/37/2015/08/colornew-new-log.png?w=715" data-recalc-dims="1">
+                                                </a>
+                                                <br> <br />
+                                                We love WordPress and we are here to provide you with professional looking WordPress themes so that you can take your website one step ahead. We focus on simplicity, elegant design and clean code.
+                                            </div><!-- /.textwidget -->
+                                        </aside><!-- /#text-3 -->
+                                    </div><!-- /.tg-footer-column-3 -->
+                                    <div class="tg-footer-column-3">
+                                        <aside id="nav_menu-2" class="widget widget_nav_menu">
+                                            <h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span>Useful Links</span></span></h3>
+                                            <div class="menu-useful-links-container">
+                                                <ul id="menu-useful-links" class="menu">
+                                                    <li id="menu-item-305" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-305"><a href="http://themegrill.com/">ThemeGrill</a></li>
+                                                    <li id="menu-item-306" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-306"><a href="http://themegrill.com/support-forum/">Support</a></li>
+                                                    <li id="menu-item-307" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-307"><a href="http://themegrill.com/frequently-asked-questions/">FAQ</a></li>
+                                                </ul>
+                                            </div><!-- /.menu-useful-links-container -->
+                                        </aside><!-- /#nav_menu-2 -->
+                                    </div><!-- /.tg-footer-column-3 -->
+                                    <div class="tg-footer-column-3">
+                                        <aside id="nav_menu-3" class="widget widget_nav_menu">
+                                            <h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span>Other Themes</span></span></h3>
+                                            <div class="menu-other-themes-container">
+                                                <ul id="menu-other-themes" class="menu">
+                                                    <li id="menu-item-297" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-297"><a href="http://themegrill.com/themes/colormag">ColorMag</a></li>
+                                                    <li id="menu-item-298" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-298"><a href="http://themegrill.com/themes/accelerate/">Accelerate</a></li>
+                                                    <li id="menu-item-299" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-299"><a href="http://themegrill.com/themes/ample/">Ample</a></li>
+                                                    <li id="menu-item-300" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-300"><a href="http://themegrill.com/themes/esteem/">Esteem</a></li>
+                                                </ul>
+                                            </div><!-- /.menu-other-themes-container -->
+                                        </aside><!-- /#nav_menu-3 -->
+                                    </div><!-- /.tg-footer-column-3 -->
+                                </div><!-- /.tg-column-wrapper -->
+                            </div><!-- /.top-footer-content-wrapper -->
+                        </div><!-- /.tg-inner-wrap -->
+                    </div><!-- /.tg-container -->
+                </div><!-- /#top-footer -->
+                <div id="bottom-footer">
+                    <div class="tg-container">
+                        <div class="tg-inner-wrap">
+                            <div class="copy-right">
+                                Copyright &copy; 2018 <a href="https://demo.themegrill.com/colornews/" title="ColorNews" ><span>ColorNews</span></a>.&nbsp;Theme: ColorNews by <a href="https://themegrill.com/themes/colornews" target="_blank" title="ThemeGrill" rel="author"><span>ThemeGrill</span></a>. Powered by <a href="http://wordpress.org" target="_blank" title="WordPress"><span>WordPress</span></a>.
+                            </div><!-- /.copy-right -->
+                        </div><!-- /.tg-inner-wrap -->
+                    </div><!-- /.tg-container -->
+                </div><!-- /#bottom-footer -->
+            </footer><!-- /#colophon -->
+            <a href="#masthead" id="scroll-up"><i class="fa fa-arrow-up"></i></a>
         </div><!-- /#dokuwiki__top -->
-    </div><!-- /dokuwiki__site -->
+    </div><!-- /#page -->
+    </div><!-- /#dokuwiki__site -->
     <div class="no"><?php tpl_indexerWebBug() /* provide DokuWiki housekeeping, required in all templates */ ?></div>
     <!--[if lte IE 8 ]></div><![endif]-->
 </body>
