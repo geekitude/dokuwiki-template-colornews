@@ -161,20 +161,9 @@ if ($_GET['debug'] == "replace") {
 
 
 
-            <header id="dokuwiki__header">
+
+            <div id="dokuwiki__header" style="background-color:linen;">
                 <div class="pad">
-                    <div class="headings">
-                        <!--<h1><?php //if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "title")) and (file_exists(tpl_incdir('colornews')."debug/title.html"))) { include(tpl_incdir('colornews')."debug/title.html"); } else { tpl_link(wl(),$conf['title'],'accesskey="h" title="[H]"'); } ?></h1> -->
-                        <h1><?php if (($_GET['debug'] == "replace") and (file_exists(tpl_incdir('colornews')."debug/title.html"))) { include(tpl_incdir('colornews')."debug/title.html"); } else { tpl_link(wl(),$conf['title'],'accesskey="h" title="[H]"'); } ?></h1>
-                        <?php /* how to insert logo instead (if no CSS image replacement technique is used):
-                            upload your logo into the data/media folder (root of the media manager) and replace 'logo.png' accordingly:
-                            tpl_link(wl(),'<img src="'.ml('logo.png').'" alt="'.$conf['title'].'" />','id="dokuwiki__top" accesskey="h" title="[H]"') */ ?>
-                        <?php if ($conf['tagline']): ?>
-                            <!-- <p class="claim"><?php //if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "tagline")) and (file_exists(tpl_incdir('colornews')."debug/tagline.html"))) { include(tpl_incdir('colornews')."debug/tagline.html"); } else { echo $conf['tagline']; } ?></p> -->
-                            <p class="claim"><?php if (($_GET['debug'] == "replace") and (file_exists(tpl_incdir('colornews')."debug/tagline.html"))) { include(tpl_incdir('colornews')."debug/tagline.html"); } else { echo $conf['tagline']; } ?></p>
-                        <?php endif ?>
-                        <div class="clearer"></div>
-                    </div><!-- /.headings -->
                     <div class="tools">
                         <!-- USER TOOLS -->
                         <?php if ($conf['useacl'] && $showTools): ?>
@@ -224,54 +213,105 @@ if ($_GET['debug'] == "replace") {
                     <div class="clearer"></div>
                     <hr class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue" />
                 </div><!-- /.pad -->
-            </header><!-- /#dokuwiki__header -->
-            <main class="wrapper">
-                <!-- ********** ASIDE ********** -->
-                <?php if ($showSidebar): ?>
-                    <aside id="dokuwiki__aside">
-                        <div class="pad aside include group">
-                            <?php _colornews_includeFile('sidebarheader.html') ?>
-                            <?php if ($showSidebar === 2) { include(tpl_incdir('colornews')."debug/sidebar.html"); } else { tpl_include_page($conf['sidebar'], 1, 1); /* includes the nearest sidebar page */ } ?>
-                            <?php _colornews_includeFile('sidebarfooter.html') ?>
-                            <div class="clearer"></div>
-                        </div><!-- /.pad -->
-                    </aside><!-- /#dokuwiki__aside -->
-                <?php endif; ?>
-                <!-- ********** CONTENT ********** -->
-                <section id="dokuwiki__content">
-                    <div class="pad">
-                        <?php tpl_flush() /* flush the output buffer */ ?>
-                        <?php _colornews_includeFile('pageheader.html') ?>
-                        <article class="page">
-                            <!-- wikipage start -->
-                            <?php tpl_content() /* the main content */ ?>
-                            <!-- wikipage stop -->
-                            <div class="clearer"></div>
-                        </article><!-- /.page -->
-                        <?php tpl_flush() ?>
-                        <?php _colornews_includeFile('pagefooter.html') ?>
-                    </div><!-- /.pad -->
-                </section><!-- /#dokuwiki__content -->
-                <div class="clearer"></div>
-                <hr class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue" />
-                <!-- PAGE ACTIONS -->
-                <?php if ($showTools): ?>
-                    <aside id="dokuwiki__pagetools">
-                        <h3 class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue"><?php echo $lang['page_tools'] ?></h3>
-                        <ul>
-                            <?php tpl_toolsevent('pagetools', array(
-                                'edit'      => tpl_action('edit', 1, 'li', 1),
-                                'discussion'=> _tpl_action('discussion', 1, 'li', 1),
-                                'revisions' => tpl_action('revisions', 1, 'li', 1),
-                                'backlink'  => tpl_action('backlink', 1, 'li', 1),
-                                'subscribe' => tpl_action('subscribe', 1, 'li', 1),
-                                'revert'    => tpl_action('revert', 1, 'li', 1),
-                                'top'       => tpl_action('top', 1, 'li', 1),
-                            )); ?>
-                        </ul>
-                    </aside><!-- /#dokuwiki__pagetools -->
-                <?php endif; ?>
-            </main><!-- /.wrapper -->
+            </div><!-- /#dokuwiki__header -->
+
+
+
+
+
+
+
+
+
+            <main id="main" class="clearfix">
+                <div class="tg-container">
+                    <div class="tg-inner-wrap clearfix">
+                        <div id="main-content-section clearfix">
+                            <div id="primary">
+                                <div class="wrapper">
+                                    <!-- ********** CONTENT ********** -->
+                                    <section id="dokuwiki__content">
+                                        <div class="pad">
+                                            <?php tpl_flush() /* flush the output buffer */ ?>
+                                            <?php _colornews_includeFile('pageheader.html') ?>
+                                            <article class="page">
+                                                <!-- wikipage start -->
+                                                <?php tpl_content() /* the main content */ ?>
+                                                <!-- wikipage stop -->
+                                                <div class="clearer"></div>
+                                            </article><!-- /.page -->
+                                            <?php tpl_flush() ?>
+                                            <?php _colornews_includeFile('pagefooter.html') ?>
+                                        </div><!-- /.pad -->
+                                    </section><!-- /#dokuwiki__content -->
+                                    <div class="clearer"></div>
+                                    <hr class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue" />
+                                    <!-- PAGE ACTIONS -->
+                                    <?php if ($showTools): ?>
+                                        <aside id="dokuwiki__pagetools">
+                                            <h3 class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue"><?php echo $lang['page_tools'] ?></h3>
+                                            <ul>
+                                                <?php tpl_toolsevent('pagetools', array(
+                                                    'edit'      => tpl_action('edit', 1, 'li', 1),
+                                                    'discussion'=> _tpl_action('discussion', 1, 'li', 1),
+                                                    'revisions' => tpl_action('revisions', 1, 'li', 1),
+                                                    'backlink'  => tpl_action('backlink', 1, 'li', 1),
+                                                    'subscribe' => tpl_action('subscribe', 1, 'li', 1),
+                                                    'revert'    => tpl_action('revert', 1, 'li', 1),
+                                                    'top'       => tpl_action('top', 1, 'li', 1),
+                                                )); ?>
+                                            </ul>
+                                        </aside><!-- /#dokuwiki__pagetools -->
+                                    <?php endif; ?>
+                                </div><!-- /.wrapper -->
+                            </div><!-- /#primary -->
+                            <!-- ********** ASIDE ********** -->
+                            <?php if ($showSidebar): ?>
+                                <div id="secondary">
+                                    <div class="pad aside include group">
+                                        <aside id="dokuwiki__aside">
+                                            <?php _colornews_includeFile('sidebarheader.html') ?>
+                                            <?php if ($showSidebar === 2) { include(tpl_incdir('colornews')."debug/sidebar.html"); } else { tpl_include_page($conf['sidebar'], 1, 1); /* includes the nearest sidebar page */ } ?>
+                                            <?php _colornews_includeFile('sidebarfooter.html') ?>
+                                            <div class="clearer"></div>
+                                        </aside><!-- /#dokuwiki__aside -->
+                                        <aside id="colornews_popular_posts_widget-2" class="widget colornews_popular_post colornews_custom_widget">
+                                            <div class="magazine-block-3">
+                                                <div class="tg-block-wrapper clearfix">
+                                                    <h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span>Trending</span></span></h3>
+                                                </div>
+                                            </div>
+                                        </aside>
+                                        <aside id="colornews_300x250_advertisement_widget-3" class="widget widget_300x250_advertisement colornews_custom_widget">
+                                            <div class="magazine-block-medium-ad clearfix">
+                                                <div class="tg-block-wrapper">
+                                                    <div class="ad-image">
+                                                        <a href="http://themegrill.com" target="_blank"><img src="https://demo.themegrill.com/colornews/wp-content/uploads/sites/37/2015/07/colornews-medium-advetise.jpg" width="300" height="250" rel="nofollow"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </aside>
+                                        <aside id="colornews_popular_posts_widget-2" class="widget colornews_popular_post colornews_custom_widget">
+                                            <div class="magazine-block-3">
+                                                <div class="tg-block-wrapper clearfix">
+                                                    <h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span>Blah?</span></span></h3>
+                                                </div>
+                                            </div>
+                                        </aside>
+                                    </div><!-- /.pad -->
+                                </div><!-- /#secondary -->
+                            <?php endif; ?>
+                        </div><!-- #main-content-section end -->
+                    </div><!-- /.tg-inner-wrap -->
+                </div><!-- /.tg-container -->
+            </main>
+
+
+
+
+
+
+
             <!-- ********** FOOTER ********** -->
             <footer id="dokuwiki__footer">
                 <div class="pad">

@@ -16,7 +16,7 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
   * [x] Meta elements
   * [x] Site containers
   * [x] Header
-  * [ ] Content area
+  * [x] Content area
   * [ ] Footer
   * [ ] Sidebar
   * [ ] WP vs. DW functions
