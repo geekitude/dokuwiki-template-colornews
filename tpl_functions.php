@@ -175,8 +175,9 @@ function _colornews_init() {
 function _colornews_bodyclasses() {
     global $conf;
     $classes = array(
-        'layout_'.tpl_getConf('layout'),
-        'bg_'.tpl_getConf('bodyBg'),
+        tpl_getConf('layout').'-layout',
+        tpl_getConf('bodyBg').'-bg',
+        tpl_getConf('sidebarPos').'-sidebar',
     );
     /* TODO: better home detection than core */
     return join(' ', $classes);
