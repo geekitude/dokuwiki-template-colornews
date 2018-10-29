@@ -47,7 +47,6 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
 
 ### Third party modules
 
-* [Normalize - 8.0.0](https://necolas.github.io/normalize.css/), distributed under [MIT License](https://opensource.org/licenses/MIT)
 * [Advanced News Ticker - 1.0.11](http://risq.github.io/jquery-advanced-news-ticker/), distributed under [GNU General Public License v2.0](https://www.gnu.org/licenses/gpl-2.0.en.html)
 * [Web Font Loader - 1.6.28](https://github.com/typekit/webfontloader) to nicely load fonts from Google Web Fonts, distributed under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
 * [JDENTICON - 1.8.0](https://jdenticon.com/) to add modern and highly recognizable identicons, distributed under [zlib License](https://www.zlib.net/zlib_license.html)
