@@ -237,11 +237,19 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
                         <!-- ********** ASIDE ********** -->
                         <?php if ($showSidebar): ?>
                             <div id="secondary">
-                                <aside id="dokuwiki__aside">
-                                    <?php _colornews_includeFile('sidebarheader.html') ?>
-                                    <?php if ($showSidebar === 2) { include(tpl_incdir('colornews')."debug/sidebar.html"); } else { tpl_include_page($conf['sidebar'], 1, 1); /* includes the nearest sidebar page */ } ?>
-                                    <?php _colornews_includeFile('sidebarfooter.html') ?>
-                                </aside><!-- /#dokuwiki__aside -->
+                                <?php _colornews_includeFile('sidebarheader.html', true) ?>
+                                <?php
+                                    if ($showSidebar > 0) {
+                                        print '<aside id="dokuwiki__aside" class="widget">';
+                                        if ($showSidebar === 2) {
+                                            include(tpl_incdir('colornews')."debug/sidebar.html");
+                                        } else {
+                                            tpl_include_page($conf['sidebar'], 1, 1); /* includes the nearest sidebar page */
+                                        }
+                                        print '</aside>';
+                                    }
+                                ?>
+                                <?php _colornews_includeFile('sidebarfooter.html', true) ?>
                                 <aside id="colornews_popular_posts_widget-2" class="widget colornews_popular_post colornews_custom_widget">
                                     <div class="magazine-block-3">
                                         <div class="tg-block-wrapper clearfix">

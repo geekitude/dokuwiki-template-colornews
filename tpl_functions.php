@@ -183,12 +183,16 @@ function _colornews_bodyclasses() {
     return join(' ', $classes);
 }
 
-function _colornews_includeFile($file = '') {
+function _colornews_includeFile($file = '', $widget = false) {
     if ($file != null) {
         if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "include")) and (file_exists(tpl_incdir('colornews')."debug/".$file))) {
+            if ($widget == true) { print '<aside id="colornews_'.substr($file, 0, -5).'_widget" class="widget">'; }
             include(tpl_incdir('colornews')."debug/".$file);
-        } else {
+            if ($widget == true) { print '</aside>'; }
+        } elseif (file_exists(tpl_incdir().$file)) {
+            if ($widget == true) { print '<aside id="colornews_'.substr($file, 0, -5).'_widget" class="widget">'; }
             tpl_includeFile($file);
+            if ($widget == true) { print '</aside>'; }
         }
     }
 }
