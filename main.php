@@ -44,8 +44,7 @@ if ($_GET['debug'] == "replace") {
     <?php /* tpl_classes() provides useful CSS classes; if you choose not to use it, the 'dokuwiki' class at least
              should always be in one of the surrounding elements (e.g. plugins and templates depend on it) */ ?>
     <div id="dokuwiki__site">
-    <div id="page" class="hfeed site">
-        <div id="dokuwiki__top" class="site <?php echo tpl_classes(); ?> <?php echo ($showSidebar) ? 'hasSidebar' : ''; ?>">
+    <div id="page" class="hfeed site <?php echo tpl_classes(); ?> <?php echo ($showSidebar) ? 'hasSidebar' : ''; ?>">
             <ul class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue skip">
                 <li><a href="#dokuwiki__content"><?php echo $lang['skip_to_content'] ?></a></li>
             </ul>
@@ -164,7 +163,6 @@ if ($_GET['debug'] == "replace") {
 
 
             <div id="dokuwiki__header" style="background-color:linen;">
-                <div class="pad">
                     <div class="tools">
                         <!-- USER TOOLS -->
                         <?php if ($conf['useacl'] && $showTools): ?>
@@ -203,7 +201,6 @@ if ($_GET['debug'] == "replace") {
                             </ul>
                         </div><!-- /.#dokuwiki__sitetools -->
                     </div><!-- /.tools -->
-                    <div class="clearer"></div>
                     <!-- BREADCRUMBS -->
                     <?php if($conf['breadcrumbs']){ ?>
                         <div class="breadcrumbs"><?php tpl_breadcrumbs() ?></div>
@@ -211,9 +208,7 @@ if ($_GET['debug'] == "replace") {
                     <?php if($conf['youarehere']){ ?>
                         <div class="breadcrumbs"><?php tpl_youarehere() ?></div>
                     <?php } ?>
-                    <div class="clearer"></div>
                     <hr class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue" />
-                </div><!-- /.pad -->
             </div><!-- /#dokuwiki__header -->
 
 
@@ -229,23 +224,18 @@ if ($_GET['debug'] == "replace") {
                     <div class="tg-inner-wrap clearfix">
                         <div id="main-content-section clearfix">
                             <div id="primary">
-                                <div class="wrapper">
                                     <!-- ********** CONTENT ********** -->
                                     <section id="dokuwiki__content">
-                                        <div class="pad">
                                             <?php tpl_flush() /* flush the output buffer */ ?>
                                             <?php _colornews_includeFile('pageheader.html') ?>
                                             <article class="page">
                                                 <!-- wikipage start -->
                                                 <?php tpl_content() /* the main content */ ?>
                                                 <!-- wikipage stop -->
-                                                <div class="clearer"></div>
                                             </article><!-- /.page -->
                                             <?php tpl_flush() ?>
                                             <?php _colornews_includeFile('pagefooter.html') ?>
-                                        </div><!-- /.pad -->
                                     </section><!-- /#dokuwiki__content -->
-                                    <div class="clearer"></div>
                                     <hr class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue" />
                                     <!-- PAGE ACTIONS -->
                                     <?php if ($showTools): ?>
@@ -264,17 +254,14 @@ if ($_GET['debug'] == "replace") {
                                             </ul>
                                         </aside><!-- /#dokuwiki__pagetools -->
                                     <?php endif; ?>
-                                </div><!-- /.wrapper -->
                             </div><!-- /#primary -->
                             <!-- ********** ASIDE ********** -->
                             <?php if ($showSidebar): ?>
                                 <div id="secondary">
-                                    <div class="pad aside include group">
                                         <aside id="dokuwiki__aside">
                                             <?php _colornews_includeFile('sidebarheader.html') ?>
                                             <?php if ($showSidebar === 2) { include(tpl_incdir('colornews')."debug/sidebar.html"); } else { tpl_include_page($conf['sidebar'], 1, 1); /* includes the nearest sidebar page */ } ?>
                                             <?php _colornews_includeFile('sidebarfooter.html') ?>
-                                            <div class="clearer"></div>
                                         </aside><!-- /#dokuwiki__aside -->
                                         <aside id="colornews_popular_posts_widget-2" class="widget colornews_popular_post colornews_custom_widget">
                                             <div class="magazine-block-3">
@@ -299,7 +286,6 @@ if ($_GET['debug'] == "replace") {
                                                 </div>
                                             </div>
                                         </aside>
-                                    </div><!-- /.pad -->
                                 </div><!-- /#secondary -->
                             <?php endif; ?>
                         </div><!-- #main-content-section end -->
@@ -307,10 +293,8 @@ if ($_GET['debug'] == "replace") {
                 </div><!-- /.tg-container -->
             </main>
             <footer id="colophon">
-                <div class="pad">
                     <div class="doc"><?php tpl_pageinfo() /* 'Last modified' etc */ ?></div>
                     <?php tpl_license('button') /* content license, parameters: img=*badge|button|0, imgonly=*0|1, return=*0|1 */ ?>
-                </div><!-- /.pad -->
                 <div id="top-footer">
                     <div class="tg-container">
                         <div class="tg-inner-wrap">
@@ -369,7 +353,6 @@ if ($_GET['debug'] == "replace") {
                 </div><!-- /#bottom-footer -->
             </footer><!-- /#colophon -->
             <a href="#masthead" id="scroll-up"><i class="fa fa-arrow-up"></i></a>
-        </div><!-- /#dokuwiki__top -->
     </div><!-- /#page -->
     </div><!-- /#dokuwiki__site -->
     <div class="no"><?php tpl_indexerWebBug() /* provide DokuWiki housekeeping, required in all templates */ ?></div>
