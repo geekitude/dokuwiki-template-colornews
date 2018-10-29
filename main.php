@@ -66,11 +66,11 @@ if ($_GET['debug'] == "replace") {
                             <div class="date-in-header">
                                 <?php _colornews_date("long", null, false, true); ?>
                             </div>
-                            <div class="links-in-header">
+                        </div>
+                            <div id="dokuwiki__topbar" class="right-top-menu-wrap">
                                 <?php //if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "links")) and (file_exists(tpl_incdir('colornews')."debug/topbar.html"))) { include(tpl_incdir('colornews')."debug/topbar.html"); } else { tpl_include_page('topbar'); } ?>
                                 <?php if (($_GET['debug'] == "replace") and (file_exists(tpl_incdir('colornews')."debug/topbar.html"))) { include(tpl_incdir('colornews')."debug/topbar.html"); } else { tpl_include_page('topbar'); } ?>
                             </div>
-                        </div>
                     </div><!-- /.tg-inner-wrap -->
                 </div><!-- /.tg-container -->
             </div><!-- /.top-header-wrapper  -->
