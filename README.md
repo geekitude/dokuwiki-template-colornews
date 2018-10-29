@@ -22,7 +22,7 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
   * [x] WP vs. DW functions
   * [ ] Language strings
 * [ ] Basic CSS
-  * [ ] style.css
+  * [x] style.css
   * [ ] rtl.css
   * [ ] print.css
   * [ ] Necessary changes
