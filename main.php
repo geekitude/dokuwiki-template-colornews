@@ -142,7 +142,16 @@ if ($_GET['debug'] == "replace") {
                                 <div class="menu-toggle hide">*menu toggle*</div>
                                 <?php //wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'nav', 'container' => false, ) ); ?>
                             </nav>
-                            <!-- SEARCH -->
+                     <div class="share-search-wrap">
+                        <div class="my-search">
+                            <span class="span3" tabindex="0">Close</span>
+                            <span class="span2" tabindex="0">Search</span>
+                              <div class="alert">
+                            <?php tpl_searchform() ?>
+                              </div>
+                        </div> <!-- home-search-end -->
+
+                     </div>
                             <!-- RANDOM POST -->
                         </div><!-- /.tg-inner-wrap -->
                     </div><!-- /.tg-container -->
