@@ -144,11 +144,11 @@ if ($_GET['debug'] == "replace") {
                             </nav>
                      <div class="share-search-wrap">
                         <div class="my-search">
-                            <span class="span3" tabindex="0">Close</span>
-                            <span class="span2" tabindex="0">Search</span>
-                              <div class="alert">
-                            <?php tpl_searchform() ?>
-                              </div>
+<div class="right autocomplete-<?php print tpl_getConf("searchAutoComplete") ? 'on' : 'off'; ?>">
+  <?php _colornews_searchform(true, tpl_getConf("searchAutoComplete")); ?>
+</div>
+
+
                         </div> <!-- home-search-end -->
 
                      </div>
@@ -188,7 +188,7 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
 <!-- SITE TOOLS -->
 <div id="dokuwiki__sitetools">
 <h3 class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue"><?php echo $lang['site_tools'] ?></h3>
-<?php tpl_searchform() ?>
+<?php //tpl_searchform() ?>
 <ul>
 <?php tpl_toolsevent('sitetools', array(
 'recent'    => tpl_action('recent', 1, 'li', 1),

@@ -234,3 +234,59 @@ function _colornews_date($type, $timestamp = null, $clock = false, $printResult 
         return $result;
     }
 }
+
+/**
+  * Print the search form
+  *
+  * If the first parameter is given a div with the ID 'qsearch_out' will
+  * be added which instructs the ajax pagequicksearch to kick in and place
+  * its output into this div. The second parameter controls the propritary
+  * attribute autocomplete. If set to false this attribute will be set with an
+  * value of "off" to instruct the browser to disable it's own built in
+  * autocompletion feature (MSIE and Firefox)
+  *
+  * @author Andreas Gohr <andi@splitbrain.org>
+  *
+  * @param bool $ajax
+  * @param bool $autocomplete
+  * @return bool
+  */
+function _colornews_searchform($ajax = true, $autocomplete = true) {
+    global $lang;
+    global $ACT;
+    global $QUERY;
+    global $ID;
+
+    // don't print the search form if search action has been disabled
+    if(!actionOK('search')) return false;
+    $searchForm = new dokuwiki\Form\Form([
+        'action' => wl(),
+        'method' => 'get',
+        'role' => 'search',
+        'class' => 'search',
+        'id' => 'dw__search',
+    ], true);
+    $searchForm->addTagOpen('div')->addClass('no');
+    $searchForm->setHiddenField('do', 'search');
+    $searchForm->setHiddenField('id', $ID);
+    $searchForm->addTextInput('q')
+        ->addClass('edit')
+        ->attrs([
+            //'title' => '[F]',
+            //'accesskey' => 'f',
+            'placeholder' => $lang['btn_search'],
+            'autocomplete' => $autocomplete ? 'on' : 'off',
+        ])
+        ->id('qsearch__in')
+        ->val($ACT === 'search' ? $QUERY : '')
+        ->useInput(false)
+    ;
+    if ($ajax) {
+        $searchForm->addTagOpen('div')->id('qsearch__out')->addClass('ajax_qsearch JSpopup');
+        $searchForm->addTagClose('div');
+    }
+    $searchForm->addTagClose('div');
+    trigger_event('FORM_QUICKSEARCH_OUTPUT', $searchForm);
+    echo $searchForm->toHTML();
+    return true;
+}
