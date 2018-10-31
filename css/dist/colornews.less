@@ -2237,6 +2237,176 @@ Header CSS
 	left: 30px;
 }
 
+/*--------------------------------------------------------------
+Expandable Search
+Smart code comes from https://codepen.io/sol_b/pen/NpMGBN
+--------------------------------------------------------------*/
+
+
+[dir=ltr] .right{
+	float: right;
+}
+
+
+[dir=rtl] .right{
+	float: left;
+}
+.my-search button {
+    /*display: none;*/
+}
+
+#qsearch__in {
+  outline: none;
+  color: #4a83c0;
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  font-family: inherit;
+  font-size: 100%;
+}
+
+#qsearch__in::-webkit-search-decoration,
+#qsearch__in::-webkit-search-cancel-button {
+  display: none;
+}
+
+#qsearch__in {
+  width: 55px;
+  transition: all .5s;
+}
+
+[dir] #qsearch__in{
+  background: #ededed url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+  border: solid 1px #ccc;
+  margin-top: 5px;
+  border-radius: 10em;
+  background-color: @ini_color_primary;
+}
+
+[dir=ltr] #qsearch__in{
+	padding: 0px 10px 0px 32px;
+}
+
+[dir=rtl] #qsearch__in{
+	padding: 0px 32px 0px 10px;
+}
+
+#qsearch__in:hover {
+  width: 222px;
+}
+
+[dir] #qsearch__in:hover{
+  background-color: #fff;
+  border-color: #66CC75;
+  box-shadow: 0 0 5px rgba(109, 207, 246, .5);
+}
+
+#qsearch__in:-moz-placeholder {
+  color: #4a83c0;
+}
+
+#qsearch__in::-webkit-input-placeholder {
+  color: #4a83c0;
+}
+
+
+/* Demo 2 */
+
+.my-search #dw__search {
+  display: inline-block;
+}
+
+
+/* new css */
+
+.right {
+  position: relative;
+}
+/*
+.right img {
+  position: absolute;
+  top: 8px;
+  z-index: -1;
+}
+
+
+.right img:nth-of-type(1) {
+  right: 40px;
+}
+
+.right img:nth-of-type(2) {
+  right: 60px;
+}
+*/
+#qsearch__in {
+  width: 15px;
+  color: transparent;
+  z-index: 5;
+}
+[dir] #qsearch__in{
+  cursor: pointer;
+}
+[dir=ltr] #qsearch__in{
+	padding-left: 10px;
+}
+[dir=rtl] #qsearch__in{
+	padding-right: 10px;
+}
+
+#qsearch__in:hover {
+  /*background-color: #fff;*/
+}
+
+#qsearch__in:focus {
+  width: 200px;
+  color: #4a83c0;
+}
+
+[dir] #qsearch__in:focus{
+  background-color: #fff;
+  cursor: auto;
+}
+
+[dir=ltr] #qsearch__in:focus{
+	padding-left: 32px;
+}
+
+[dir=rtl] #qsearch__in:focus{
+	padding-right: 32px;
+}
+
+#qsearch__in:-moz-placeholder {
+  color: transparent;
+}
+
+#qsearch__in::-webkit-input-placeholder {
+  color: transparent;
+}
+
+#qsearch__out {
+    top: 32px;
+}
+
+[dir=ltr] #qsearch__out{
+	left: -155px;
+}
+
+[dir=rtl] #qsearch__out{
+	right: -155px;
+}
+
+.right.autocomplete-off #qsearch__out {
+    top: 32px;
+    width: 205px;
+}
+
+[dir=ltr] .right.autocomplete-off #qsearch__out{
+	left: 20px;
+}
+
+[dir=rtl] .right.autocomplete-off #qsearch__out{
+	right: 20px;
+}
+
 
 /*--------------------------------------------------------------
 Breaking news CSS
