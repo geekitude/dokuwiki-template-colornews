@@ -173,11 +173,16 @@ function _colornews_init() {
  * Returns body classes according to settings
  */
 function _colornews_bodyclasses() {
-    global $conf;
+    global $conf, $ACT;
+    if ($ACT=='show') {
+        $sidebar = tpl_getConf('sidebarPos').'-sidebar';
+    } else {
+        $sidebar = 'no-sidebar';
+    }
     $classes = array(
         tpl_getConf('layout').'-layout',
         tpl_getConf('bodyBg').'-bg',
-        tpl_getConf('sidebarPos').'-sidebar',
+        $sidebar,
     );
     /* TODO: better home detection than core */
     return join(' ', $classes);
