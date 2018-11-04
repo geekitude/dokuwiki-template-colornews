@@ -15,3 +15,4 @@ $conf['dateLocale']         = 'fra';
 $conf['shortDateString']    = '%d/%m/%Y';
 $conf['longDateString']     = '%A %d %B %Y';
 $conf['searchAutoComplete'] = 0;
+$conf['licenseVisual']      = 'button';
