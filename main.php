@@ -142,14 +142,8 @@ if ($_GET['debug'] == "replace") {
                                 <div class="menu-toggle hide">*menu toggle*</div>
                                 <?php //wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'nav', 'container' => false, ) ); ?>
                             </nav>
-                     <div class="share-search-wrap">
-                        <div class="my-search">
-<div class="right autocomplete-<?php print tpl_getConf("searchAutoComplete") ? 'on' : 'off'; ?>">
+                            <div class="share-search-wrap autocomplete-<?php print tpl_getConf("searchAutoComplete") ? 'on' : 'off'; ?>">
   <?php _colornews_searchform(true, tpl_getConf("searchAutoComplete")); ?>
-</div>
-
-
-                        </div> <!-- home-search-end -->
 
                      </div>
                             <!-- RANDOM POST -->
