@@ -128,22 +128,22 @@ if ($_GET['debug'] == "replace") {
                     </div><!-- /.tg-inner-wrap -->
                 </div><!-- /.tg-container -->
             </div><!-- /.middle-header-wrapper -->
-        <aside id="colornews__alerts">
-            <!-- ALERTS -->
-            <?php
-                html_msgarea();
-                // If in playground...
-                if (strpos($ID, 'playground') !== false) {
-                    // ...and admin, show a link to managing page...
-                    if ($INFO['isadmin']) {
-                        msg(tpl_getLang('playground_admin'), 2);
-                    // ...else, show a few hints on what it's for
-                    } else {
-                        msg(tpl_getLang('playground_user'), 0);
+            <aside id="colornews__alerts">
+                <!-- ALERTS -->
+                <?php
+                    html_msgarea();
+                    // If in playground...
+                    if (strpos($ID, 'playground') !== false) {
+                        // ...and admin, show a link to managing page...
+                        if ($INFO['isadmin']) {
+                            msg(tpl_getLang('playground_admin'), 2);
+                        // ...else, show a few hints on what it's for
+                        } else {
+                            msg(tpl_getLang('playground_user'), 0);
+                        }
                     }
-                }
-            ?>
-        </aside>
+                ?>
+            </aside>
             <div class="bottom-header-wrapper clearfix">
                 <div class="bottom-arrow-wrap">
                     <div class="tg-container">
@@ -298,7 +298,7 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
         </main>
         <footer id="colophon">
             <div class="doc"><?php tpl_pageinfo() /* 'Last modified' etc */ ?></div>
-            <?php tpl_license('button') /* content license, parameters: img=*badge|button|0, imgonly=*0|1, return=*0|1 */ ?>
+            <?php tpl_license('badge') /* content license, parameters: img=*badge|button|0, imgonly=*0|1, return=*0|1 */ ?>
             <div id="top-footer">
                 <div class="tg-container">
                     <div class="tg-inner-wrap">

@@ -4161,7 +4161,7 @@ DW Specific
 /* Alerts */
 
 [dir] #colornews__alerts {
-    padding: 0 0 20px 0;
+    padding: 0 0 calc(2 * @ini_spacer) 0;
 }
 
 #colornews__alerts div {
@@ -4196,6 +4196,10 @@ DW Specific
 
 [dir] #colornews__alerts div:last-child {
     margin: calc(.5 * @ini_spacer) auto 0 auto;
+}
+
+[dir] #colornews__alerts div:only-child {
+    margin: 0 auto;
 }
 
 [dir] .info {
