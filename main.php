@@ -47,7 +47,6 @@ if ($_GET['debug'] == "replace") {
         <ul class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue skip">
             <li><a href="#dokuwiki__content"><?php echo $lang['skip_to_content'] ?></a></li>
         </ul>
-        <?php html_msgarea() /* occasional error and info messages on top of the page */ ?>
         <?php _colornews_includeFile('header.html') ?>
         <!-- ********** HEADER ********** -->
         <header id="masthead" class="site-header" role="banner">
@@ -129,6 +128,22 @@ if ($_GET['debug'] == "replace") {
                     </div><!-- /.tg-inner-wrap -->
                 </div><!-- /.tg-container -->
             </div><!-- /.middle-header-wrapper -->
+        <aside id="colornews__alerts">
+            <!-- ALERTS -->
+            <?php
+                html_msgarea();
+                // If in playground...
+                if (strpos($ID, 'playground') !== false) {
+                    // ...and admin, show a link to managing page...
+                    if ($INFO['isadmin']) {
+                        msg(tpl_getLang('playground_admin'), 2);
+                    // ...else, show a few hints on what it's for
+                    } else {
+                        msg(tpl_getLang('playground_user'), 0);
+                    }
+                }
+            ?>
+        </aside>
             <div class="bottom-header-wrapper clearfix">
                 <div class="bottom-arrow-wrap">
                     <div class="tg-container">
@@ -143,9 +158,8 @@ if ($_GET['debug'] == "replace") {
                                 <?php //wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'nav', 'container' => false, ) ); ?>
                             </nav>
                             <div class="share-search-wrap autocomplete-<?php print tpl_getConf("searchAutoComplete") ? 'on' : 'off'; ?>">
-  <?php _colornews_searchform(true, tpl_getConf("searchAutoComplete")); ?>
-
-                     </div>
+                                <?php _colornews_searchform(true, tpl_getConf("searchAutoComplete")); ?>
+                            </div>
                             <!-- RANDOM POST -->
                         </div><!-- /.tg-inner-wrap -->
                     </div><!-- /.tg-container -->

@@ -2913,19 +2913,6 @@ Author box css
 	line-height: 300px;
 }
 
-.error {
-	background: #dc3522 none repeat scroll 0 0;
-	color: #ffffff;
-	font-size: 25px;
-	font-weight: 600;
-	letter-spacing: 3px;
-	line-height: 35px;
-	margin: 20px auto;
-	padding: 2px 28px;
-	text-transform: uppercase;
-	width: 100%;
-}
-
 .error-404 .page-header,
 .error-404 p {
 	text-align: center;
@@ -3108,6 +3095,61 @@ a#scroll-up:hover {
 	opacity: 1;
 	filter: alpha(opacity=100);
 	/* For IE8 and earlier */
+}
+
+
+/*--------------------------------------------------------------
+DW Specific
+----------------------------------------------- */
+
+/* Alerts */
+
+#colornews__alerts {
+    padding: 0 0 20px 0;
+}
+
+#colornews__alerts div {
+	color: #00000;
+    /*
+	font-size: 25px;
+	font-weight: 600;
+	letter-spacing: 3px;
+	line-height: 35px;
+	margin: 20px auto;
+	padding: 2px 28px;
+	text-transform: uppercase;
+    */
+    width: 80%;
+    margin: calc(.5 * @ini_spacer) auto calc(.5 * @ini_spacer) auto;
+    padding: calc(.5 * @ini_spacer) calc(.5 * @ini_spacer) calc(.5 * @ini_spacer) 2.4em;
+}
+
+#colornews__alerts div:first-child {
+    margin: 0 auto calc(.5 * @ini_spacer) auto;
+}
+
+#colornews__alerts div:last-child {
+    margin: calc(.5 * @ini_spacer) auto 0 auto;
+}
+
+.info {
+	background-color: @ini_color_blue;
+}
+
+.notify {
+	background-color: @ini_color_yellow;
+}
+
+.success {
+	background-color: @ini_color_green;
+}
+
+.error {
+	background-color: @ini_color_red;
+}
+
+#colornews__alerts a {
+    color: #fff;
 }
 
 /* Large desktop */
