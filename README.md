@@ -72,7 +72,7 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
   * [x] *bannerheader.html* : above banner
   * [x] *bannerheader.html* : above banner
   * [x] *navbarheader.html* : above main navigation area
-  * [x] *navbarfooter.html* : below main navigation area
+  * [x] *navbarfooter.html* : below main navigation area (right above breadcrumbs)
   * [x] *sidebarheader.html* : before sidebar content
   * [x] *sidebarfooter.html* : after sidebar content
   * [x] *pageheader.html* : above page

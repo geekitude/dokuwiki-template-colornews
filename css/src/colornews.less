@@ -3185,10 +3185,22 @@ div.skip a {
 
 /* Breadcrumbs */
 
-div.breadcrumbs {
-    width: 98%;
-    margin: 0 auto;
+#colornews__trace {
     font-size: .8em;
+    padding: 0 @ini_spacer;
+}
+
+#colornews__trace .youarehere,
+#colornews__trace .breadcrumbs {
+    display: inline;
+}
+
+#colornews__trace.split div.youarehere {
+    float: left;
+}
+
+#colornews__trace.split div.breadcrumbs {
+    float: right;
 }
 
 div.breadcrumbs span.bcsep:nth-child(2) {

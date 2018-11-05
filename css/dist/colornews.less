@@ -4255,13 +4255,33 @@ div.skip a {
 
 /* Breadcrumbs */
 
-div.breadcrumbs {
-    width: 98%;
+#colornews__trace {
     font-size: .8em;
 }
 
-[dir] div.breadcrumbs {
-    margin: 0 auto;
+[dir] #colornews__trace {
+    padding: 0 @ini_spacer;
+}
+
+#colornews__trace .youarehere,
+#colornews__trace .breadcrumbs {
+    display: inline;
+}
+
+[dir=ltr] #colornews__trace.split div.youarehere {
+	float: left;
+}
+
+[dir=rtl] #colornews__trace.split div.youarehere {
+    float: right;
+}
+
+[dir=ltr] #colornews__trace.split div.breadcrumbs {
+	float: right;
+}
+
+[dir=rtl] #colornews__trace.split div.breadcrumbs {
+    float: left;
 }
 
 div.breadcrumbs span.bcsep:nth-child(2) {

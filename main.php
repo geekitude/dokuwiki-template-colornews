@@ -167,15 +167,17 @@ if ($_GET['debug'] == "replace") {
                     </div><!-- /.tg-container -->
                 </div><!-- /.bottom-arrow-wrap -->
             </div><!-- /.bottom-header-wrapper -->
-            <!-- BREADCRUMBS -->
-            <?php if($conf['breadcrumbs']){ ?>
-                <div class="breadcrumbs"><?php tpl_breadcrumbs() ?></div>
-            <?php } ?>
-            <?php if($conf['youarehere']){ ?>
-                <div class="breadcrumbs"><?php tpl_youarehere() ?></div>
-            <?php } ?>
-            <hr class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue" />
             <?php _colornews_includeFile('navbarfooter.html') ?>
+            <!-- BREADCRUMBS -->
+            <div id="colornews__trace" class="<?php print (($conf['youarehere']) and ($conf['breadcrumbs'])) ? "split" : "" ?>">
+                <?php if($conf['youarehere']){ ?>
+                    <div class="youarehere"><?php tpl_youarehere() ?></div>
+                <?php } ?>
+                <?php if($conf['breadcrumbs']){ ?>
+                    <div class="breadcrumbs"><?php tpl_breadcrumbs() ?></div>
+                <?php } ?>
+                <hr class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue" />
+            </div>
             <!-- BREAKING NEWS -->
         </header><!-- /#masthead -->
 <div id="dokuwiki__header" style="background-color:linen;">
