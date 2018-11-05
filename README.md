@@ -68,15 +68,14 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
 * [ ] Include hooks(*), based on [this document](https://www.dokuwiki.org/include_hooks), starter template and also quite a few specific additions
   * [x] *meta.html* : just before `</head>` tag (use this to add additional styles or metaheaders)
   * [x] *header.html* : right above everything (except [Skip to Content])
-  * [ ] *brandingfooter.html* : just below site logo and title section
-  * [ ] *bannerheader.html* : above banner
-  * [ ] *navheader.html* : above main navigation area
-  * [ ] *navfooter.html* : below main navigation area
+  * [x] *brandingfooter.html* : just below site-logo/title/banner section
+  * [x] *bannerheader.html* : above banner
+  * [x] *bannerheader.html* : above banner
+  * [x] *navbarheader.html* : above main navigation area
+  * [x] *navbarfooter.html* : below main navigation area
   * [x] *sidebarheader.html* : before sidebar content
   * [x] *sidebarfooter.html* : after sidebar content
   * [x] *pageheader.html* : above page
-  * [ ] *articleheader.html* : above actual page content
-  * [ ] *articlefooter.html* : just under actual page content
   * [x] *pagefooter.html* : right before site footer, below  page content
   * [ ] *footerwidget.html* : included in footer widgets area (after other widgets)
   * [x] *footer.html* : at the very end of the page just before the `</body>` tag

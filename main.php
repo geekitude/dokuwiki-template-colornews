@@ -36,6 +36,10 @@ if ($_GET['debug'] == "replace") {
     <?php _colornews_includeFile('meta.html') ?>
 </head>
 <body class="<?php echo _colornews_bodyclasses(); ?>">
+    <ul class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y ")) ? "a11y " : "" ?>blue skip">
+        <li><a href="#dokuwiki__content"><?php echo $lang['skip_to_content'] ?></a></li>
+    </ul>
+    <?php _colornews_includeFile('header.html') ?>
     <?php /* with these Conditional Comments you can better address IE issues in CSS files,
              precede CSS rules by #IE8 for IE8 (div closes at the bottom) */ ?>
     <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
@@ -44,10 +48,6 @@ if ($_GET['debug'] == "replace") {
              should always be in one of the surrounding elements (e.g. plugins and templates depend on it) */ ?>
     <div id="dokuwiki__site">
     <div id="page" class="hfeed site <?php echo tpl_classes(); ?> <?php echo ($showSidebar) ? 'hasSidebar' : ''; ?>">
-        <ul class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue skip">
-            <li><a href="#dokuwiki__content"><?php echo $lang['skip_to_content'] ?></a></li>
-        </ul>
-        <?php _colornews_includeFile('header.html') ?>
         <!-- ********** HEADER ********** -->
         <header id="masthead" class="site-header" role="banner">
             <div class="top-header-wrapper clearfix">
@@ -128,6 +128,7 @@ if ($_GET['debug'] == "replace") {
                     </div><!-- /.tg-inner-wrap -->
                 </div><!-- /.tg-container -->
             </div><!-- /.middle-header-wrapper -->
+            <?php _colornews_includeFile('brandingfooter.html') ?>
             <aside id="colornews__alerts">
                 <!-- ALERTS -->
                 <?php
@@ -144,6 +145,7 @@ if ($_GET['debug'] == "replace") {
                     }
                 ?>
             </aside>
+            <?php _colornews_includeFile('navbarheader.html') ?>
             <div class="bottom-header-wrapper clearfix">
                 <div class="bottom-arrow-wrap">
                     <div class="tg-container">
@@ -165,6 +167,7 @@ if ($_GET['debug'] == "replace") {
                     </div><!-- /.tg-container -->
                 </div><!-- /.bottom-arrow-wrap -->
             </div><!-- /.bottom-header-wrapper -->
+            <?php _colornews_includeFile('navbarheader.html') ?>
             <!-- BREAKING NEWS -->
         </header><!-- /#masthead -->
 <div id="dokuwiki__header" style="background-color:linen;">
@@ -266,7 +269,6 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
                                         print '</aside>';
                                     }
                                 ?>
-                                <?php _colornews_includeFile('sidebarfooter.html', true) ?>
                                 <aside id="colornews_popular_posts_widget-2" class="widget colornews_popular_post colornews_custom_widget">
                                     <div class="magazine-block-3">
                                         <div class="tg-block-wrapper clearfix">
@@ -290,6 +292,7 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
                                         </div>
                                     </div>
                                 </aside>
+                                <?php _colornews_includeFile('sidebarfooter.html', true) ?>
                             </div><!-- /#secondary -->
                         <?php endif; ?>
                     </div><!-- /#main-content-section -->
@@ -359,6 +362,7 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
         <a href="#masthead" id="scroll-up"><i class="fa fa-arrow-up"></i></a>
     </div><!-- /#page -->
     </div><!-- /#dokuwiki__site -->
+    <?php _colornews_includeFile('footer.html') ?>
     <div class="no"><?php tpl_indexerWebBug() /* provide DokuWiki housekeeping, required in all templates */ ?></div>
     <!--[if lte IE 8 ]></div><![endif]-->
 </body>
