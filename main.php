@@ -167,7 +167,15 @@ if ($_GET['debug'] == "replace") {
                     </div><!-- /.tg-container -->
                 </div><!-- /.bottom-arrow-wrap -->
             </div><!-- /.bottom-header-wrapper -->
-            <?php _colornews_includeFile('navbarheader.html') ?>
+            <!-- BREADCRUMBS -->
+            <?php if($conf['breadcrumbs']){ ?>
+                <div class="breadcrumbs"><?php tpl_breadcrumbs() ?></div>
+            <?php } ?>
+            <?php if($conf['youarehere']){ ?>
+                <div class="breadcrumbs"><?php tpl_youarehere() ?></div>
+            <?php } ?>
+            <hr class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue" />
+            <?php _colornews_includeFile('navbarfooter.html') ?>
             <!-- BREAKING NEWS -->
         </header><!-- /#masthead -->
 <div id="dokuwiki__header" style="background-color:linen;">
@@ -209,15 +217,6 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
 </ul>
 </div><!-- /.#dokuwiki__sitetools -->
 </div><!-- /.tools -->
-<!-- BREADCRUMBS -->
-<hr class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue" />
-<?php if($conf['breadcrumbs']){ ?>
-<div class="breadcrumbs"><?php tpl_breadcrumbs() ?></div>
-<?php } ?>
-<?php if($conf['youarehere']){ ?>
-<div class="breadcrumbs"><?php tpl_youarehere() ?></div>
-<?php } ?>
-<!-- /BREADCRUMBS -->
 <hr class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue" />
 </div><!-- /#dokuwiki__header -->
         <main id="main" class="clearfix">
