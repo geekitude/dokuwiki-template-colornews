@@ -366,7 +366,7 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
     </div><!-- /#page -->
     </div><!-- /#dokuwiki__site -->
     <?php _colornews_includeFile('footer.html') ?>
-    <div class="no"><?php tpl_indexerWebBug() /* provide DokuWiki housekeeping, required in all templates */ ?></div>
+    <div id="housekeeper" class="no"><?php tpl_indexerWebBug() /* provide DokuWiki housekeeping, required in all templates */ ?></div>
     <!--[if lte IE 8 ]></div><![endif]-->
 </body>
 </html>
