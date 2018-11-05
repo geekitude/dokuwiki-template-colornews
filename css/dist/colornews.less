@@ -283,14 +283,22 @@ h6 {
 Elements
 --------------------------------------------------------------*/
 
+/*
 hr {
-	height: 1px;
-}
-
-[dir] hr {
 	background-color: #ccc;
 	border: 0;
+	height: 1px;
 	margin-bottom: 15px;
+}
+*/
+hr {
+	height: 0;
+}
+[dir] hr {
+	border-style: solid none none;
+	border-width: 1px 0 0;
+	margin: calc(2 * @ini_spacer) 0;
+	border-color: #EAEAEA;
 }
 
 [dir=ltr] ul, [dir=ltr] ol {
@@ -4158,6 +4166,25 @@ a#scroll-up:hover {
 DW Specific
 ----------------------------------------------- */
 
+/* Skip to content */
+div.skip {
+	font-size: 25px;
+	font-weight: 600;
+	letter-spacing: 3px;
+	line-height: 35px;
+	text-transform: uppercase;
+}
+[dir] div.skip {
+    background-color: @ini_color_blue;
+	margin: 0 auto;
+	padding: 2px 0;
+    text-align: center;
+}
+
+div.skip a {
+    color: #fff;
+}
+
 /* Alerts */
 
 #colornews__alerts {
@@ -4238,6 +4265,82 @@ div.license img {
 
 [dir] div.license img {
     margin: calc(.5 * @ini_spacer) 0;
+}
+
+/* Helper classes */
+
+.red {
+    fill: @ini_color_red;
+    color: @ini_color_red;
+}
+
+[dir] .red {
+    border-color: @ini_color_red;
+}
+.blue {
+    fill: @ini_color_blue;
+    color: @ini_color_blue;
+}
+[dir] .blue {
+    border-color: @ini_color_blue;
+}
+.green {
+    fill: @ini_color_green;
+    color: @ini_color_green;
+}
+[dir] .green {
+    border-color: @ini_color_green;
+}
+.yellow {
+    fill: @ini_color_yellow;
+    color: @ini_color_yellow;
+}
+[dir] .yellow {
+    border-color: @ini_color_yellow;
+}
+.white {
+    fill: #fff;
+    color: #fff;
+}
+[dir] .white {
+    border-color: #fff;
+}
+.primary {
+    fill: @ini_color_primary;
+    color: @ini_color_primary;
+}
+[dir] .primary {
+    border-color: @ini_color_primary;
+}
+
+.text {
+    fill: @ini_text;
+    color: @ini_text;
+}
+
+[dir] .text {
+    border-color: @ini_text;
+}
+.alternate {
+    fill: @ini_text_alt;
+    color: @ini_text_alt;
+}
+[dir] .alternate {
+    border-color: @ini_text_alt;
+}
+.neutral {
+    fill: @ini_text_neu;
+    color: @ini_text_neu;
+}
+[dir] .neutral {
+    border-color: @ini_text_neu;
+}
+.neutral_bg {
+    fill: @ini_background_neu;
+    color: @ini_background_neu;
+}
+[dir] .neutral_bg {
+    border-color: @ini_background_neu;
 }
 
 /* Large desktop */

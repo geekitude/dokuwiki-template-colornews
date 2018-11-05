@@ -36,9 +36,9 @@ if ($_GET['debug'] == "replace") {
     <?php _colornews_includeFile('meta.html') ?>
 </head>
 <body class="<?php echo _colornews_bodyclasses(); ?>">
-    <ul class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y ")) ? "a11y " : "" ?>blue skip">
-        <li><a href="#dokuwiki__content"><?php echo $lang['skip_to_content'] ?></a></li>
-    </ul>
+    <div class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>skip">
+        <a href="#dokuwiki__content"><?php echo $lang['skip_to_content'] ?></a>
+    </div>
     <?php _colornews_includeFile('header.html') ?>
     <?php /* with these Conditional Comments you can better address IE issues in CSS files,
              precede CSS rules by #IE8 for IE8 (div closes at the bottom) */ ?>
@@ -175,7 +175,7 @@ if ($_GET['debug'] == "replace") {
 <!-- USER TOOLS -->
 <?php if ($conf['useacl'] && $showTools): ?>
 <div id="dokuwiki__usertools">
-<h3 class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue"><?php echo $lang['user_tools'] ?></h3>
+<h3 class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue"><?php echo $lang['user_tools'] ?></h3>
 <ul>
 <?php
 if (!empty($_SERVER['REMOTE_USER'])) {
@@ -198,7 +198,7 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
 <?php endif ?>
 <!-- SITE TOOLS -->
 <div id="dokuwiki__sitetools">
-<h3 class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue"><?php echo $lang['site_tools'] ?></h3>
+<h3 class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue"><?php echo $lang['site_tools'] ?></h3>
 <?php //tpl_searchform() ?>
 <ul>
 <?php tpl_toolsevent('sitetools', array(
@@ -210,13 +210,15 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
 </div><!-- /.#dokuwiki__sitetools -->
 </div><!-- /.tools -->
 <!-- BREADCRUMBS -->
+<hr class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue" />
 <?php if($conf['breadcrumbs']){ ?>
 <div class="breadcrumbs"><?php tpl_breadcrumbs() ?></div>
 <?php } ?>
 <?php if($conf['youarehere']){ ?>
 <div class="breadcrumbs"><?php tpl_youarehere() ?></div>
 <?php } ?>
-<hr class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue" />
+<!-- /BREADCRUMBS -->
+<hr class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue" />
 </div><!-- /#dokuwiki__header -->
         <main id="main" class="clearfix">
             <div class="tg-container">
@@ -235,11 +237,11 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
                                 <?php tpl_flush() ?>
                                 <?php _colornews_includeFile('pagefooter.html') ?>
                             </section><!-- /#dokuwiki__content -->
-                            <hr class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue" />
+                            <hr class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue" />
                             <!-- PAGE ACTIONS -->
                             <?php if ($showTools): ?>
                                 <aside id="dokuwiki__pagetools">
-                                    <h3 class="<?php print (($_GET['debug'] != 1) and ($_GET['debug'] != "a11y")) ? "a11y " : "" ?>blue"><?php echo $lang['page_tools'] ?></h3>
+                                    <h3 class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue"><?php echo $lang['page_tools'] ?></h3>
                                     <ul>
                                         <?php tpl_toolsevent('pagetools', array(
                                             'edit'      => tpl_action('edit', 1, 'li', 1),

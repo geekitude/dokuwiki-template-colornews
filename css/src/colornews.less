@@ -264,11 +264,20 @@ h6 {
 Elements
 --------------------------------------------------------------*/
 
+/*
 hr {
 	background-color: #ccc;
 	border: 0;
 	height: 1px;
 	margin-bottom: 15px;
+}
+*/
+hr {
+	border-style: solid none none;
+	border-width: 1px 0 0;
+	height: 0;
+	margin: calc(2 * @ini_spacer) 0;
+	border-color: #EAEAEA;
 }
 
 ul,
@@ -3102,6 +3111,23 @@ a#scroll-up:hover {
 DW Specific
 ----------------------------------------------- */
 
+/* Skip to content */
+div.skip {
+    background-color: @ini_color_blue;
+	font-size: 25px;
+	font-weight: 600;
+	letter-spacing: 3px;
+	line-height: 35px;
+	margin: 0 auto;
+	padding: 2px 0;
+	text-transform: uppercase;
+    text-align: center;
+}
+
+div.skip a {
+    color: #fff;
+}
+
 /* Alerts */
 
 #colornews__alerts {
@@ -3166,6 +3192,60 @@ div.license {
 div.license img {
     margin: calc(.5 * @ini_spacer) 0;
     vertical-align: middle;
+}
+
+/* Helper classes */
+
+.red {
+    fill: @ini_color_red;
+    color: @ini_color_red;
+    border-color: @ini_color_red;
+}
+.blue {
+    fill: @ini_color_blue;
+    color: @ini_color_blue;
+    border-color: @ini_color_blue;
+}
+.green {
+    fill: @ini_color_green;
+    color: @ini_color_green;
+    border-color: @ini_color_green;
+}
+.yellow {
+    fill: @ini_color_yellow;
+    color: @ini_color_yellow;
+    border-color: @ini_color_yellow;
+}
+.white {
+    fill: #fff;
+    color: #fff;
+    border-color: #fff;
+}
+.primary {
+    fill: @ini_color_primary;
+    color: @ini_color_primary;
+    border-color: @ini_color_primary;
+}
+
+.text {
+    fill: @ini_text;
+    color: @ini_text;
+    border-color: @ini_text;
+}
+.alternate {
+    fill: @ini_text_alt;
+    color: @ini_text_alt;
+    border-color: @ini_text_alt;
+}
+.neutral {
+    fill: @ini_text_neu;
+    color: @ini_text_neu;
+    border-color: @ini_text_neu;
+}
+.neutral_bg {
+    fill: @ini_background_neu;
+    color: @ini_background_neu;
+    border-color: @ini_background_neu;
 }
 
 /* Large desktop */
