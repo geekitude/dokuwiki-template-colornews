@@ -31,7 +31,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    './css/colornews.less': './css/dist/colornews.less',
+                    './css/colornews.min.less': './css/dist/colornews.less',
                     './css/colornews.print.min.css': './css/dist/colornews.print.css',
                 }
             }
