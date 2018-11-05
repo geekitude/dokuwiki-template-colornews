@@ -296,7 +296,7 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
                                         print "<div class='magazine-block-3'>";
                                             print "<div class='tg-block-wrapper clearfix'>";
                                                 print "<h3 class='widget-title title-block-wrap clearfix'><span class='block-title'><span>".ucwords($key)."</span></span></h3>";
-                                                    print $value;
+                                                print p_render('xhtml',p_get_instructions($value), $info);
                                             print "</div>";
                                         print "</div>";
                                         print "</aside>";
