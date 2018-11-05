@@ -11,8 +11,9 @@ if (!defined('DOKU_INC')) die(); /* must be run from within DokuWiki */
 @require_once(dirname(__FILE__).'/tpl_functions.php'); /* include hook for template functions */
 header('X-UA-Compatible: IE=edge,chrome=1');
 
+global $colornews;
+$colornews = array();
 _colornews_init();
-
 $showTools = !tpl_getConf('hideTools') || ( tpl_getConf('hideTools') && !empty($_SERVER['REMOTE_USER']) );
 
 //if (($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "sidebar")) {
@@ -289,20 +290,18 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
                                         print '</aside>';
                                     }
                                 ?>
-                                <aside id="colornews_popular_posts_widget-2" class="widget colornews_popular_post colornews_custom_widget">
-                                    <div class="magazine-block-3">
-                                        <div class="tg-block-wrapper clearfix">
-                                            <h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span>Trending</span></span></h3>
-                                        </div>
-                                    </div>
-                                </aside>
-                                <aside id="colornews_popular_posts_widget-2" class="widget colornews_popular_post colornews_custom_widget">
-                                    <div class="magazine-block-3">
-                                        <div class="tg-block-wrapper clearfix">
-                                            <h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span>Blah?</span></span></h3>
-                                        </div>
-                                    </div>
-                                </aside>
+                                <?php 
+                                    foreach ($colornews['sidebarwidgets'] as $key => $value) {
+                                        print "<aside id='colornews_sidebar_widget_".$key."' class='widget colornews_popular_post colornews_custom_widget'>";
+                                        print "<div class='magazine-block-3'>";
+                                            print "<div class='tg-block-wrapper clearfix'>";
+                                                print "<h3 class='widget-title title-block-wrap clearfix'><span class='block-title'><span>".ucwords($key)."</span></span></h3>";
+                                                    print $value;
+                                            print "</div>";
+                                        print "</div>";
+                                        print "</aside>";
+                                    }
+                                ?>
                                 <?php _colornews_includeFile('sidebarfooter.html', true) ?>
                             </div><!-- /#secondary -->
                         <?php endif; ?>

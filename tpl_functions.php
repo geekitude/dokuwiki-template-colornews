@@ -157,8 +157,35 @@ function _colornews_init() {
 //dbg($INFO);
     // New global variables initialized in Spacious' `main.php`
 //    global $spacious, $editorAvatar, $userAvatar, $browserlang, $trs, $uhp;
+    global $colornews;
     // More new global variables
 //    global $translationHelper, $tags;
+
+
+
+
+
+    // SIDEBAR WIDGETS
+    $colornews['sidebarwidgets'] = array();
+    // Load widgets from DOKU_CONF/sidebar-widgets.local.conf
+    $widgetsFile = DOKU_CONF.'sidebar-widgets.local.conf';
+    // If file exists...
+    if (@file_exists($widgetsFile)) {
+//dbg($socialFile);
+        // ... read it's content
+        $widgetsFile = confToHash($widgetsFile);
+        // Sorting array in alphabetical order on keys
+        ksort($widgetsFile);
+        // Get actual wiki syntax from file content
+//dbg($socialFile);
+        foreach ($widgetsFile as $key => $value) {
+            $colornews['sidebarwidgets'][$key] = $value;
+//dbg($key." => ".$value);
+        }
+//dbg($colornews['sidebarwidgets']);
+    }
+
+    
     // DEBUG
     // Adding test alerts if debug is enabled
     if (($_GET['debug'] == 1) or ($_GET['debug'] == "alerts")) {
