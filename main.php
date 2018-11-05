@@ -261,6 +261,23 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
                         <?php if ($showSidebar): ?>
                             <div id="secondary">
                                 <?php _colornews_includeFile('sidebarheader.html', true) ?>
+                                <?php if (tpl_getConf('sidebarCover') != '') : ?>
+                                    <!-- <aside id="colornews_300x250_advertisement_widget-3" class="widget widget_300x250_advertisement colornews_custom_widget"> -->
+                                    <aside id="colornews__sidebar_cover" class="widget colornews_custom_widget">
+                                        <!-- <div class="magazine-block-medium-ad clearfix"> -->
+                                            <div class="tg-block-wrapper">
+                                                <div class="ad-image">
+                                                    <!-- <a href="http://themegrill.com" target="_blank"><img src="https://demo.themegrill.com/colornews/wp-content/uploads/sites/37/2015/07/colornews-medium-advetise.jpg" width="300" height="250" rel="nofollow"></a> -->
+                                                    <?php
+                                                        $coverSize = array();
+                                                        $cover = tpl_getMediaFile(array(':wiki:sidebar.png', ':sidebar.png', 'images/sidebar.png', 'debug/sidebar.png'), false, $coverSize);
+                                                        echo '<img src="'.$cover.'" '.$coverSize[3].' alt="" />';
+                                                    ?>
+                                                </div>
+                                            </div>
+                                        <!-- </div> -->
+                                    </aside>
+                                <?php endif; ?>
                                 <?php
                                     if ($showSidebar > 0) {
                                         print '<aside id="dokuwiki__aside" class="widget">';
@@ -276,15 +293,6 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
                                     <div class="magazine-block-3">
                                         <div class="tg-block-wrapper clearfix">
                                             <h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span>Trending</span></span></h3>
-                                        </div>
-                                    </div>
-                                </aside>
-                                <aside id="colornews_300x250_advertisement_widget-3" class="widget widget_300x250_advertisement colornews_custom_widget">
-                                    <div class="magazine-block-medium-ad clearfix">
-                                        <div class="tg-block-wrapper">
-                                            <div class="ad-image">
-                                                <a href="http://themegrill.com" target="_blank"><img src="https://demo.themegrill.com/colornews/wp-content/uploads/sites/37/2015/07/colornews-medium-advetise.jpg" width="300" height="250" rel="nofollow"></a>
-                                            </div>
                                         </div>
                                     </div>
                                 </aside>
