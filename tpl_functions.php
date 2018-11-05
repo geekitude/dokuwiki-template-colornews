@@ -174,6 +174,17 @@ function _colornews_init() {
  */
 function _colornews_bodyclasses() {
     global $conf, $ACT;
+    //$pattern = tpl_getMediaFile(array(':wiki:logo.png', ':logo.png', 'images/logo.png'), false, $logoSize);
+    if (tpl_getConf('bodyBg') == "pattern") {
+        $pattern = tpl_getMediaFile(array(':wiki:pattern.png', 'images/pattern.png'), false, $patternSize);
+        if ($pattern == "/lib/tpl/colornews/images/pattern.png") {
+            $bgClass = "tpl-pattern-bg";
+        } else {
+            $bgClass = "wiki-pattern-bg";
+        }
+    } else {
+        $bgClass = "color-bg";
+    }
     if ($ACT=='show') {
         $sidebar = tpl_getConf('sidebarPos').'-sidebar';
     } else {
@@ -181,7 +192,7 @@ function _colornews_bodyclasses() {
     }
     $classes = array(
         tpl_getConf('layout').'-layout',
-        tpl_getConf('bodyBg').'-bg',
+        $bgClass,
         $sidebar,
     );
     /* TODO: better home detection than core */

@@ -103,3 +103,10 @@ Debug mode is meant to show usually hidden elements to test some of template's s
 To enable "full" debug mode, simply add `&debug=1` or `?debug=1` at the end of URL, depending of current wiki mode (ie use "&" if there's already a "?" in URL, else use "?").
 
 You can also use some specific keyword values instead of boolean to show only a given element category (e.g. `&debug=include`). Here's a complete list of possible keywords : 'a11y' (visual accessibility helpers), 'alerts', 'banner', 'card' (sidebar namespace card image), 'hooks' (both include or replace HTML hooks), 'images' (all UI images), 'include' (HTML include hooks), 'logo' (namespace logo within page header), 'replace' (HTML replace hooks), 'sitelogo'
+
+## About UI Images
+
+### Background pattern
+
+By default, the template uses `clornews/images/pattern.png` image as background pattern.
+To use another one, simply upload a `pattern.png` image inside `wiki` namespace.

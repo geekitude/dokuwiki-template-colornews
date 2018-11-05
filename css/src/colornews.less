@@ -1100,6 +1100,26 @@ body {
 	line-height: 1.5;
 }
 
+body.color-bg {
+    background-color: @ini_background;
+}
+
+body.tpl-pattern-bg,
+body.wiki-pattern-bg {
+    background-position: left top;
+    background-size: auto;
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
+
+body.tpl-pattern-bg {
+    background-image: url(/lib/tpl/colornews/images/pattern.png);
+}
+
+body.wiki-pattern-bg {
+    background-image: url(/lib/exe/fetch.php?media=wiki:pattern.png);
+}
+
 .tg-container {
 	width: 1160px;
 	margin: 0 auto;
