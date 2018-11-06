@@ -15,14 +15,6 @@ global $colornews;
 $colornews = array();
 _colornews_init();
 //dbg($colornews);
-$showTools = !tpl_getConf('hideTools') || ( tpl_getConf('hideTools') && !empty($_SERVER['REMOTE_USER']) );
-
-//if (($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "sidebar")) {
-if ($_GET['debug'] == "replace") {
-    $showSidebar = 2;
-} else {
-    $showSidebar = page_findnearest($conf['sidebar']) && ($ACT=='show');
-}
 
 ?><!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $conf['lang'] ?>"
@@ -49,7 +41,7 @@ if ($_GET['debug'] == "replace") {
     <?php /* tpl_classes() provides useful CSS classes; if you choose not to use it, the 'dokuwiki' class at least
              should always be in one of the surrounding elements (e.g. plugins and templates depend on it) */ ?>
     <div id="dokuwiki__site">
-    <div id="page" class="hfeed site <?php echo tpl_classes(); ?> <?php echo (($showSidebar) or ($colornews['show']['sidebarWidgets'])) ? 'hasSidebar' : ''; ?>">
+    <div id="page" class="hfeed site <?php echo tpl_classes(); ?> <?php echo (($colornews['show']['sidebar']) or ($colornews['show']['sidebarWidgets'])) ? 'hasSidebar' : ''; ?>">
         <!-- ********** HEADER ********** -->
         <header id="masthead" class="site-header" role="banner">
             <div class="top-header-wrapper clearfix">
@@ -185,7 +177,7 @@ if ($_GET['debug'] == "replace") {
 <div id="dokuwiki__header" style="background-color:linen;">
 <div class="tools">
 <!-- USER TOOLS -->
-<?php if ($conf['useacl'] && $showTools): ?>
+<?php if ($conf['useacl'] && $colornews['show']['tools']): ?>
 <div id="dokuwiki__usertools">
 <h3 class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue"><?php echo $lang['user_tools'] ?></h3>
 <ul>
@@ -242,7 +234,7 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
                             </section><!-- /#dokuwiki__content -->
                             <hr class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue" />
                             <!-- PAGE ACTIONS -->
-                            <?php if ($showTools): ?>
+                            <?php if ($colornews['show']['tools']): ?>
                                 <aside id="dokuwiki__pagetools">
                                     <h3 class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue"><?php echo $lang['page_tools'] ?></h3>
                                     <ul>
@@ -260,7 +252,7 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
                             <?php endif; ?>
                         </div><!-- /#primary -->
                         <!-- ********** ASIDE ********** -->
-                        <?php if ($showSidebar): ?>
+                        <?php if ($colornews['show']['sidebar']): ?>
                             <div id="secondary">
                                 <?php _colornews_includeFile('sidebarheader.html', true) ?>
                                 <?php if (tpl_getConf('sidebarCover') != '') : ?>
@@ -281,9 +273,9 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
                                     </aside>
                                 <?php endif; ?>
                                 <?php
-                                    if ($showSidebar > 0) {
+                                    if ($colornews['show']['sidebar'] > 0) {
                                         print '<aside id="dokuwiki__aside" class="widget">';
-                                        if ($showSidebar === 2) {
+                                        if ($colornews['show']['sidebar'] === 2) {
                                             include(tpl_incdir('colornews')."debug/sidebar.html");
                                         } else {
                                             tpl_include_page($conf['sidebar'], 1, 1); /* includes the nearest sidebar page */

@@ -154,7 +154,7 @@ if (!function_exists('tpl_classes')) {
  */
 function _colornews_init() {
 //    global $conf, $ID, $INFO, $JSINFO, $lang;
-    global $ACT;
+    global $conf, $ACT;
 //dbg($INFO);
     // New global variables initialized in Spacious' `main.php`
 //    global $spacious, $editorAvatar, $userAvatar, $browserlang, $trs, $uhp;
@@ -163,18 +163,21 @@ function _colornews_init() {
 //    global $translationHelper, $tags;
 
     $colornews['show'] = array();
+    $colornews['show']['tools'] = !tpl_getConf('hideTools') || ( tpl_getConf('hideTools') && !empty($_SERVER['REMOTE_USER']) );
     $colornews['widgets'] = array();
     if ($_GET['debug'] == "replace") {
+        $colornews['show']['sidebar'] = 2;
         $colornews['show']['sidebarWidgets'] = 2;
         $colornews['widgets']['sidebar'] = array();
         $colornews['widgets']['sidebar'] = @file(tpl_incdir('colornews')."debug/sidebarwidgets.txt");
     } else {
+        $colornews['show']['sidebar'] = page_findnearest($conf['sidebar']) && ($ACT=='show');
         $colornews['show']['sidebarWidgets'] = page_findnearest(tpl_getConf('sidebarWidgets')) && ($ACT=='show');
         $colornews['widgets']['sidebar'] = array();
         $colornews['widgets']['sidebar'] = @file(wikiFN(page_findnearest(tpl_getConf('sidebarWidgets')),''));
     }
 //dbg($colornews['widgets']['sidebar']);
-
+//dbg($colornews['show']['sidebar']);
 
 
 
