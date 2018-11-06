@@ -22,6 +22,11 @@ if ($_GET['debug'] == "replace") {
 } else {
     $showSidebar = page_findnearest($conf['sidebar']) && ($ACT=='show');
 }
+if ($_GET['debug'] == "replace") {
+    $showWidgets = 2;
+} else {
+    $showWidgets = page_findnearest(tpl_getConf('sidebarWidgets')) && ($ACT=='show');
+}
 
 ?><!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $conf['lang'] ?>"
@@ -48,7 +53,7 @@ if ($_GET['debug'] == "replace") {
     <?php /* tpl_classes() provides useful CSS classes; if you choose not to use it, the 'dokuwiki' class at least
              should always be in one of the surrounding elements (e.g. plugins and templates depend on it) */ ?>
     <div id="dokuwiki__site">
-    <div id="page" class="hfeed site <?php echo tpl_classes(); ?> <?php echo ($showSidebar) ? 'hasSidebar' : ''; ?>">
+    <div id="page" class="hfeed site <?php echo tpl_classes(); ?> <?php echo (($showSidebar) or ($showWidgets)) ? 'hasSidebar' : ''; ?>">
         <!-- ********** HEADER ********** -->
         <header id="masthead" class="site-header" role="banner">
             <div class="top-header-wrapper clearfix">
@@ -290,7 +295,35 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
                                         print '</aside>';
                                     }
                                 ?>
-                                <?php 
+                                <?php
+//dbg($showWidgets);            
+//dbg(wikiFN(page_findnearest(tpl_getConf('sidebarWidgets')),''));                    
+                                    if ($showWidgets > 0) {
+                                        $sidebarwidgets = array();
+                                        if ($showWidgets === 2) {
+                                            $sidebarwidgets = @file(tpl_incdir('colornews')."debug/sidebarwidgets.txt");
+                                        } else {
+                                            $sidebarwidgets = @file(wikiFN(page_findnearest(tpl_getConf('sidebarWidgets')),''));
+                                            //$sidebarwidgets = @file(tpl_incdir('colornews')."debug/sidebarwidgets.txt");
+                                        }
+//dbg($sidebarwidgets);
+                                        if (count($sidebarwidgets) > 0) {
+                                            foreach ($sidebarwidgets as $key => $line) {
+                                                $widget = explode('&&', $line);
+//dbg($widget);
+                                                print "<aside id='colornews_sidebar_widget_".$key."' class='widget colornews_popular_post colornews_custom_widget'>";
+                                                print "<div class='magazine-block-3'>";
+                                                    print "<div class='tg-block-wrapper clearfix'>";
+                                                        print "<h3 class='widget-title title-block-wrap clearfix'><span class='block-title'><span>".$widget[0]."</span></span></h3>";
+                                                        print p_render('xhtml',p_get_instructions($widget[1]), $info);
+                                                    print "</div>";
+                                                print "</div>";
+                                                print "</aside>";
+                                            }
+                                        }
+                                    }
+                                ?>
+                                <?php
                                     foreach ($colornews['sidebarwidgets'] as $key => $value) {
                                         print "<aside id='colornews_sidebar_widget_".$key."' class='widget colornews_popular_post colornews_custom_widget'>";
                                         print "<div class='magazine-block-3'>";

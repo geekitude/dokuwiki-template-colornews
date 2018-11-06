@@ -15,4 +15,5 @@ $conf['shortDateString']    = '%d/%m/%Y';
 $conf['longDateString']     = '%A %d %B %Y';
 $conf['searchAutoComplete'] = 0;
 $meta['sidebarCover']       = '';
+$conf['sidebarWidgets']     = 'sidebarwidgets';
 $conf['licenseVisual']      = 'button';

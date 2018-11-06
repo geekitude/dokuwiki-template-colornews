@@ -15,4 +15,5 @@ $meta['shortDateString']    = array('string');
 $meta['longDateString']     = array('string');
 $meta['searchAutoComplete'] = array('onoff');
 $meta['sidebarCover']       = array('string');
+$meta['sidebarWidgets']     = array('string');
 $meta['licenseVisual']      = array('multichoice','_choices' => array('button','badge','0')); /* visual representation of wiki license */
