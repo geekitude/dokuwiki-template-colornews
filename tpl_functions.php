@@ -154,6 +154,7 @@ if (!function_exists('tpl_classes')) {
  */
 function _colornews_init() {
 //    global $conf, $ID, $INFO, $JSINFO, $lang;
+    global $ACT;
 //dbg($INFO);
     // New global variables initialized in Spacious' `main.php`
 //    global $spacious, $editorAvatar, $userAvatar, $browserlang, $trs, $uhp;
@@ -161,29 +162,21 @@ function _colornews_init() {
     // More new global variables
 //    global $translationHelper, $tags;
 
-
-
-
-
-    // SIDEBAR WIDGETS
-    $colornews['sidebarwidgets'] = array();
-    // Load widgets from DOKU_CONF/sidebar-widgets.local.conf
-    $widgetsFile = DOKU_CONF.'sidebar-widgets.local.conf';
-    // If file exists...
-    if (@file_exists($widgetsFile)) {
-//dbg($socialFile);
-        // ... read it's content
-        $widgetsFile = confToHash($widgetsFile);
-        // Sorting array in alphabetical order on keys
-        ksort($widgetsFile);
-        // Get actual wiki syntax from file content
-//dbg($socialFile);
-        foreach ($widgetsFile as $key => $value) {
-            $colornews['sidebarwidgets'][$key] = $value;
-//dbg($key." => ".$value);
-        }
-//dbg($colornews['sidebarwidgets']);
+    $colornews['show'] = array();
+    $colornews['widgets'] = array();
+    if ($_GET['debug'] == "replace") {
+        $colornews['show']['sidebarWidgets'] = 2;
+        $colornews['widgets']['sidebar'] = array();
+        $colornews['widgets']['sidebar'] = @file(tpl_incdir('colornews')."debug/sidebarwidgets.txt");
+    } else {
+        $colornews['show']['sidebarWidgets'] = page_findnearest(tpl_getConf('sidebarWidgets')) && ($ACT=='show');
+        $colornews['widgets']['sidebar'] = array();
+        $colornews['widgets']['sidebar'] = @file(wikiFN(page_findnearest(tpl_getConf('sidebarWidgets')),''));
     }
+//dbg($colornews['widgets']['sidebar']);
+
+
+
 
     
     // DEBUG
@@ -332,4 +325,26 @@ function _colornews_searchform($ajax = true, $autocomplete = true) {
     trigger_event('FORM_QUICKSEARCH_OUTPUT', $searchForm);
     echo $searchForm->toHTML();
     return true;
+}
+
+function _colornews_widgets($context) {
+    global $colornews;
+    //if ($colornews['show']['sidebarWidgets'] > 0) {
+        //if (count($colornews['widgets']['sidebar']) > 0) {
+        //if ($colornews['widgets'][$context]) {
+        if (count($colornews['widgets'][$context]) > 0) {
+            foreach ($colornews['widgets'][$context] as $key => $line) {
+                $widget = explode('&&', $line);
+//dbg($widget);
+                print "<aside id='colornews_".$context."_widget_".$key."' class='widget colornews_popular_post colornews_custom_widget'>";
+                    print "<div class='magazine-block-3'>";
+                        print "<div class='tg-block-wrapper clearfix'>";
+                            print "<h3 class='widget-title title-block-wrap clearfix'><span class='block-title'><span>".$widget[0]."</span></span></h3>";
+                            print p_render('xhtml',p_get_instructions($widget[1]), $info);
+                        print "</div>";
+                    print "</div>";
+                print "</aside>";
+            }
+        }
+    //}
 }
