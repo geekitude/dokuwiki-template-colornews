@@ -186,15 +186,15 @@ function _colornews_init() {
     if ((tpl_getConf('banner') != null) or ($_GET['debug'] == 1) or ($_GET['debug'] == "images") or ($_GET['debug'] == "banner")) {
         $colornews['images']['bannersize'] = array();
         $colornews['images']['banner'] = tpl_getMediaFile(array(':wiki:'.tpl_getConf('banner').'.png', ':'.tpl_getConf('banner').'.png', 'debug/banner.png'), false, $colornews['images']['bannersize']);
-        if ((strpos($colornews['images']['banner'], "debug") !== false) and (($_GET['debug'] != 1) and ($_GET['debug'] != "images") and ($_GET['debug'] != "cover"))) {
+        if ((strpos($colornews['images']['banner'], "debug") !== false) and (($_GET['debug'] != 1) and ($_GET['debug'] != "images") and ($_GET['debug'] != "banner"))) {
             $colornews['images']['banner'] = null;
         }
     }
-    if ((tpl_getConf('sidebarCover') != null) or ($_GET['debug'] == 1) or ($_GET['debug'] == "images") or ($_GET['debug'] == "banner")) {
-        $colornews['images']['coversize'] = array();
-        $colornews['images']['cover'] = tpl_getMediaFile(array(':wiki:'.tpl_getConf('sidebarCover').'.png', ':'.tpl_getConf('sidebarCover').'.png', 'debug/sidebar.png'), false, $colornews['images']['coversize']);
-        if ((strpos($colornews['images']['cover'], "debug") !== false) and (($_GET['debug'] != 1) and ($_GET['debug'] != "images") and ($_GET['debug'] != "cover"))) {
-            $colornews['images']['cover'] = null;
+    if ((tpl_getConf('sidebarCard') != null) or ($_GET['debug'] == 1) or ($_GET['debug'] == "images") or ($_GET['debug'] == "banner")) {
+        $colornews['images']['cardsize'] = array();
+        $colornews['images']['card'] = tpl_getMediaFile(array(':wiki:'.tpl_getConf('sidebarCard').'.png', ':'.tpl_getConf('sidebarCard').'.png', 'debug/sidebar.png'), false, $colornews['images']['cardsize']);
+        if ((strpos($colornews['images']['card'], "debug") !== false) and (($_GET['debug'] != 1) and ($_GET['debug'] != "images") and ($_GET['debug'] != "card"))) {
+            $colornews['images']['card'] = null;
         }
     }
 //dbg($colornews['images']);
@@ -240,7 +240,7 @@ function _colornews_bodyclasses() {
 
 function _colornews_includeFile($file = '', $widget = false) {
     if ($file != null) {
-        if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "include")) and (file_exists(tpl_incdir('colornews')."debug/".$file))) {
+        if ((($_GET['debug'] == 1) or ($_GET['debug'] == "include")) and (file_exists(tpl_incdir('colornews')."debug/".$file))) {
             if ($widget == true) { print '<aside id="colornews_'.substr($file, 0, -5).'_widget" class="widget">'; }
             include(tpl_incdir('colornews')."debug/".$file);
             if ($widget == true) { print '</aside>'; }

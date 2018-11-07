@@ -62,9 +62,12 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
 * [ ] Namespace dependent CSS placeholders (for colors and fonts)
 * [ ] Namespace dependent UI images (background pattern, banner, logo, widebanner and a potential sidebar header)
 * [ ] Google Fonts : each of main text, headings, condensed text (mostly nav bar) and monospaced text (```code``` syntax) can use a different Google font (be warned that main text font should be kept very readable)
-* [ ] Easy to customize addittional glyphs (from [Material Design Icons](https://materialdesignicons.com/) like other DW's SVG glyphs or [IcoMoon](https://icomoon.io/) for social links)
+* [ ] Easy to customize glyphs (from [Material Design Icons](https://materialdesignicons.com/) like other DW's SVG glyphs or [IcoMoon](https://icomoon.io/) for social links)
 * [ ] Can have a "scrollspy" ToC on wide screen
 * [ ] Sidebar moved out of page content on wide screen
+* [ ] Dynamic navigation button (current NS home, parent NS start, home)
+* [x] Dynamic sidebar widgets
+* [ ] Paralax wide banner?
 * [ ] Include hooks(*), based on [this document](https://www.dokuwiki.org/include_hooks), starter template and also quite a few specific additions
   * [x] *meta.html* : just before `</head>` tag (use this to add additional styles or metaheaders)
   * [x] *header.html* : right above everything (except [Skip to Content])
@@ -81,19 +84,18 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
   * [x] *footer.html* : at the very end of the page just before the `</body>` tag
 * [x] Replace hooks(**) to change some simple template elements into fancier HTML code of your own
   * [x] *topbar page* : debug dummy topbar links "page" [see here](https://www.dokuwiki.org/tips:topbar)
-  * [x] *title.html* : replace wiki title string
-  * [x] *tagline.html* : replace wiki description string
+  * [x] *title.html* : replace wiki title string with HTML element
+  * [x] *tagline.html* : replace wiki description string with HTML element
   * [x] 'sidebar page' : debug dummy sidebar page
 * [ ] Expanded debug mode to show or hide some specific elements
   * [x] 'a11y' (visual accessibility helpers)
   * [x] 'alerts'
-  * [x] 'hooks' (both include or replace HTML hooks)
-  * [x] 'include' (HTML include hooks)
-  * [x] 'replace' (HTML replace hooks)
-  * [ ] 'images' (all UI images)
   * [x] 'banner'
-  * [ ] 'card' (sidebar namespace card image)
+  * [x] 'card' (sidebar namespace card image)
+  * [x] 'images' (all UI images)
+  * [x] 'include' (HTML include hooks)
   * [ ] 'logo' (namespace logo within page header)
+  * [x] 'replace' (HTML replace hooks)
   * [ ] 'sitelogo'
 
 ## Expanded debug mode
@@ -102,11 +104,11 @@ Debug mode is meant to show usually hidden elements to test some of template's s
 
 To enable "full" debug mode, simply add `&debug=1` or `?debug=1` at the end of URL, depending of current wiki mode (ie use "&" if there's already a "?" in URL, else use "?").
 
-You can also use some specific keyword values instead of boolean to show only a given element category (e.g. `&debug=include`). Here's a complete list of possible keywords : 'a11y' (visual accessibility helpers), 'alerts', 'banner', 'card' (sidebar namespace card image), 'hooks' (both include or replace HTML hooks), 'images' (all UI images), 'include' (HTML include hooks), 'logo' (namespace logo within page header), 'replace' (HTML replace hooks), 'sitelogo'
+You can also use some specific keyword values instead of boolean to show only a given element category (e.g. `&debug=include`). Here's a complete list of possible keywords : 'a11y' (visual accessibility helpers), 'alerts', 'banner', 'card' (sidebar namespace card image), 'images' (all UI images), 'include' (HTML include hooks), 'logo' (namespace logo within page header), 'replace' (HTML replace hooks), 'sitelogo'
 
 ## About UI Images
 
 ### Background pattern
 
-By default, the template uses `clornews/images/pattern.png` image as background pattern.
+By default, the template uses `colornews/images/pattern.png` image as background pattern.
 To use another one, simply upload a `pattern.png` image inside `wiki` namespace.

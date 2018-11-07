@@ -249,15 +249,15 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
                         <?php if ($colornews['show']['sidebar']): ?>
                             <div id="secondary">
                                 <?php _colornews_includeFile('sidebarheader.html', true) ?>
-                                <?php if (isset($colornews['images']['cover'])) : ?>
+                                <?php if (isset($colornews['images']['card'])) : ?>
                                     <!-- <aside id="colornews_300x250_advertisement_widget-3" class="widget widget_300x250_advertisement colornews_custom_widget"> -->
-                                    <aside id="colornews__sidebar_cover" class="widget colornews_custom_widget">
+                                    <aside id="colornews__sidebar_card" class="widget colornews_custom_widget">
                                         <!-- <div class="magazine-block-medium-ad clearfix"> -->
                                             <div class="tg-block-wrapper">
                                                 <div class="ad-image">
                                                     <!-- <a href="http://themegrill.com" target="_blank"><img src="https://demo.themegrill.com/colornews/wp-content/uploads/sites/37/2015/07/colornews-medium-advetise.jpg" width="300" height="250" rel="nofollow"></a> -->
                                                     <?php
-                                                        echo '<img src="'.$colornews['images']['cover'].'" '.$colornews['images']['coversize'][3].' alt="" />';
+                                                        echo '<img src="'.$colornews['images']['card'].'" '.$colornews['images']['cardsize'][3].' alt="" />';
                                                     ?>
                                                 </div>
                                             </div>
