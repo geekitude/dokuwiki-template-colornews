@@ -4314,6 +4314,17 @@ div.breadcrumbs span.bcsep:nth-child(2) {
     display: none;
 }
 
+/* Doc info */
+[dir] footer div.doc {
+    margin: 0 calc(3 * @ini_spacer);
+}
+[dir=ltr] footer div.doc {
+	text-align: right;
+}
+[dir=rtl] footer div.doc { 
+    text-align: left;
+}
+
 /* License */
 
 [dir] div.license {
