@@ -74,18 +74,40 @@ _colornews_init();
                             <?php
                                 $logoSize = array();
                                 $logo = tpl_getMediaFile(array(':wiki:logo.png', ':logo.png', 'images/logo.png'), false, $logoSize);
-                                echo '<img src="'.$logo.'" '.$logoSize[3].' alt="" />';
+                                //echo '<img src="'.$logo.'" '.$logoSize[3].' alt="" />';
+                                // display logo as a link to the home page
+                                tpl_link(
+                                    wl(),
+                                    '<img src="'.$logo.'" '.$logoSize[3].' alt="" />',
+                                    'accesskey="h" title="'.tpl_getLang('wikihome').' [H]"'
+                                );
                             ?>
                         </div><!-- #logo -->
                         <div id="header-text" class="">
                             <!-- <h1><?php //if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "title")) and (file_exists(tpl_incdir('colornews')."debug/title.html"))) { include(tpl_incdir('colornews')."debug/title.html"); } else { tpl_link(wl(),$conf['title'],'accesskey="h" title="[H]"'); } ?></h1> -->
-                            <h1><?php if (($_GET['debug'] == "replace") and (file_exists(tpl_incdir('colornews')."debug/title.html"))) { include(tpl_incdir('colornews')."debug/title.html"); } else { tpl_link(wl(),$conf['title'],'accesskey="h" title="[H]"'); } ?></h1>
+                            <h1>
+                                <?php
+                                    if (($_GET['debug'] == "replace") and (file_exists(tpl_incdir('colornews')."debug/title.html"))) {
+                                        include(tpl_incdir('colornews')."debug/title.html");
+                                    } else {
+                                        tpl_link(wl(),$conf['title'],'accesskey="h" title="'.tpl_getLang('wikihome').' [H]"');
+                                    }
+                                ?>
+                            </h1>
                             <?php /* how to insert logo instead (if no CSS image replacement technique is used):
                                 upload your logo into the data/media folder (root of the media manager) and replace 'logo.png' accordingly:
                                 tpl_link(wl(),'<img src="'.ml('logo.png').'" alt="'.$conf['title'].'" />','id="dokuwiki__top" accesskey="h" title="[H]"') */ ?>
                             <?php if ($conf['tagline']): ?>
                                 <!-- <p class="claim"><?php //if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "tagline")) and (file_exists(tpl_incdir('colornews')."debug/tagline.html"))) { include(tpl_incdir('colornews')."debug/tagline.html"); } else { echo $conf['tagline']; } ?></p> -->
-                                <p class="claim"><?php if (($_GET['debug'] == "replace") and (file_exists(tpl_incdir('colornews')."debug/tagline.html"))) { include(tpl_incdir('colornews')."debug/tagline.html"); } else { echo $conf['tagline']; } ?></p>
+                                <p class="claim">
+                                    <?php
+                                        if (($_GET['debug'] == "replace") and (file_exists(tpl_incdir('colornews')."debug/tagline.html"))) {
+                                            include(tpl_incdir('colornews')."debug/tagline.html");
+                                        } else {
+                                            tpl_link(wl(),$conf['tagline'],'accesskey="h" title="'.tpl_getLang('wikihome').' [H]"');
+                                        }
+                                    ?>
+                                </p>
                             <?php endif ?>
                         </div><!-- #header-text -->
                         <div class="header-advertise">
