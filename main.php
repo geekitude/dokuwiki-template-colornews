@@ -94,13 +94,7 @@ _colornews_init();
                                 //if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "banner")) and (file_exists(tpl_incdir('colornews')."debug/banner.html"))) {
                                 if (($_GET['debug'] == "replace") and (file_exists(tpl_incdir('colornews')."debug/banner.html"))) {
                                     include(tpl_incdir('colornews')."debug/banner.html");
-                                } elseif (($colornews['images']['banner'] != null) or ($_GET['debug'] == 1) or ($_GET['debug'] == "banner")) {
-                                    if ($colormag['images']['banner']['mediaId'] != null) {
-                                        $bannerImage = ml($colornews['images']['banner']['mediaId'],'',true);
-                                    } else {
-                                        $bannerImage = "/lib/tpl/colornews/debug/banner.png";
-                                    }
-                                    //$link = colormag_ui_link("bannerLink", substr($colormag['images']['banner']['mediaId'], 0, strrpos($colormag['images']['banner']['mediaId'], ':') + 1));
+                                } elseif ($colornews['images']['banner'] != null) {
                                     $link = null;
                                     $title = "Banner";
                                     if ($link != null) {
@@ -110,10 +104,10 @@ _colornews_init();
                                         }
                                         tpl_link(
                                             $link['target'],
-                                            '<img id="colormag__branding_banner_image" src="'.$bannerImage.'" '.$accesskey.'title="'.$link['label'].'" alt="*'.$title.'*" '.$colormag['images']['banner']['imageSize'][3].' />'
+                                            '<img id="colormag__branding_banner_image" src="'.$colornews['images']['banner'].'" '.$accesskey.'title="'.$link['label'].'" alt="*'.$title.'*" '.$colornews['images']['bannersize'][3].' />'
                                         );
                                     } else {
-                                        print '<img id="colormag__branding_banner_image" src="'.$bannerImage.'" title="'.$title.'" alt="*'.$title.'*" width="600" height="90" />';
+                                        print '<img id="colormag__branding_banner_image" src="'.$colornews['images']['banner'].'" title="'.$title.'" alt="*'.$title.'*" '.$colornews['images']['bannersize'][3].' />';
                                     }
                                 }
                             ?>
@@ -255,7 +249,7 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
                         <?php if ($colornews['show']['sidebar']): ?>
                             <div id="secondary">
                                 <?php _colornews_includeFile('sidebarheader.html', true) ?>
-                                <?php if (tpl_getConf('sidebarCover') != '') : ?>
+                                <?php if (isset($colornews['images']['cover'])) : ?>
                                     <!-- <aside id="colornews_300x250_advertisement_widget-3" class="widget widget_300x250_advertisement colornews_custom_widget"> -->
                                     <aside id="colornews__sidebar_cover" class="widget colornews_custom_widget">
                                         <!-- <div class="magazine-block-medium-ad clearfix"> -->
@@ -263,9 +257,7 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
                                                 <div class="ad-image">
                                                     <!-- <a href="http://themegrill.com" target="_blank"><img src="https://demo.themegrill.com/colornews/wp-content/uploads/sites/37/2015/07/colornews-medium-advetise.jpg" width="300" height="250" rel="nofollow"></a> -->
                                                     <?php
-                                                        $coverSize = array();
-                                                        $cover = tpl_getMediaFile(array(':wiki:sidebar.png', ':sidebar.png', 'images/sidebar.png', 'debug/sidebar.png'), false, $coverSize);
-                                                        echo '<img src="'.$cover.'" '.$coverSize[3].' alt="" />';
+                                                        echo '<img src="'.$colornews['images']['cover'].'" '.$colornews['images']['coversize'][3].' alt="" />';
                                                     ?>
                                                 </div>
                                             </div>

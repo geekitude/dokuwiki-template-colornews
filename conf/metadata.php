@@ -13,6 +13,7 @@ $meta['sidebarPos']         = array('multichoice','_choices' => array('left','ri
 $meta['dateLocale']         = array('string');
 $meta['shortDateString']    = array('string');
 $meta['longDateString']     = array('string');
+$meta['banner']             = array('string');
 $meta['searchAutoComplete'] = array('onoff');
 $meta['sidebarCover']       = array('string');
 $meta['sidebarWidgets']     = array('string');

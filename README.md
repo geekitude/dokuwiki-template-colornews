@@ -80,10 +80,10 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
   * [ ] *footerwidget.html* : included in footer widgets area (after other widgets)
   * [x] *footer.html* : at the very end of the page just before the `</body>` tag
 * [x] Replace hooks(**) to change some simple template elements into fancier HTML code of your own
-  * [x] *topbar page* : debug dummy topbar "page" [see here](https://www.dokuwiki.org/tips:topbar)
+  * [x] *topbar page* : debug dummy topbar links "page" [see here](https://www.dokuwiki.org/tips:topbar)
   * [x] *title.html* : replace wiki title string
   * [x] *tagline.html* : replace wiki description string
-  * [x] 'sidebar page' : debug dummy sidebar "page"
+  * [x] 'sidebar page' : debug dummy sidebar page
 * [ ] Expanded debug mode to show or hide some specific elements
   * [x] 'a11y' (visual accessibility helpers)
   * [x] 'alerts'
