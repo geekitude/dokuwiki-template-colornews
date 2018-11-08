@@ -326,13 +326,13 @@ _colornews_init();
                                     <aside id="colornews__about" class="widget widget_nav_menu">
                                         <h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span>About</span></span></h3>
                             <div class="buttons">
-                                <a href="http://dokuwiki.org/" title="Driven by DokuWiki"<?php _colornews_external_target(); ?>><img src="<?php print tpl_basedir(); ?>images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
-                                <a href="http://www.dokuwiki.org/donate" title="Donate to DokuWiki"<?php _colornews_external_target(); ?>><img src="<?php print tpl_basedir(); ?>images/button-donate.png" width="80" height="15" alt="Donate to DokuWiki" /></a>
-                                <a href="https://translate.dokuwiki.org/" title="Localized (you can help)"<?php _colornews_external_target(); ?>><img src="<?php print tpl_basedir(); ?>images/button-localized.png" width="80" height="15" alt="Localized" /></a>
-                                <a href="http://php.net" title="Powered by PHP"<?php _colornews_external_target(); ?>><img src="<?php print tpl_basedir(); ?>images/button-php.png" width="80" height="15" alt="Powered by PHP" /></a>
-                                <a href="http://validator.w3.org/check/referer" title="Check HTML5"<?php _colornews_external_target(); ?>><img src="<?php print tpl_basedir(); ?>images/button-html5.png" width="80" height="15" alt="Check HTML5" /></a>
-                                <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Check CSS"<?php _colornews_external_target(); ?>><img src="<?php print tpl_basedir(); ?>images/button-css.png" width="80" height="15" alt="Check CSS" /></a>
-                                <a href="https://github.com/geekitude/dokuwiki-template-spacious" title="Spacious template"<?php _colornews_external_target(); ?>><img src="<?php print tpl_basedir(); ?>images/button-spacious.png" width="80" height="15" alt="Spacious tmplate" /></a>
+                                <a href="http://dokuwiki.org/" title="Driven by DokuWiki"<?php _colornews_external_target(); ?>><img src="<?php print tpl_basedir(); ?>images/button-dw.png" width="86" height="15" alt="Driven by DokuWiki" /></a>
+                                <a href="http://www.dokuwiki.org/donate" title="Donate to DokuWiki"<?php _colornews_external_target(); ?>><img src="<?php print tpl_basedir(); ?>images/button-donate.png" width="86" height="15" alt="Donate to DokuWiki" /></a>
+                                <a href="https://translate.dokuwiki.org/" title="Localized (you can help)"<?php _colornews_external_target(); ?>><img src="<?php print tpl_basedir(); ?>images/button-localized.png" width="86" height="15" alt="Localized" /></a>
+                                <a href="http://php.net" title="Powered by PHP"<?php _colornews_external_target(); ?>><img src="<?php print tpl_basedir(); ?>images/button-php.png" width="86" height="15" alt="Powered by PHP" /></a>
+                                <a href="http://validator.w3.org/check/referer" title="Check HTML5"<?php _colornews_external_target(); ?>><img src="<?php print tpl_basedir(); ?>images/button-html5.png" width="86" height="15" alt="Check HTML5" /></a>
+                                <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Check CSS"<?php _colornews_external_target(); ?>><img src="<?php print tpl_basedir(); ?>images/button-css.png" width="86" height="15" alt="Check CSS" /></a>
+                                <a href="https://github.com/geekitude/dokuwiki-template-colornews" title="ColorNews template"<?php _colornews_external_target(); ?>><img src="<?php print tpl_basedir(); ?>images/button-colornews.png" width="86" height="15" alt="Spacious tmplate" /></a>
                             </div><!-- .buttons -->
                                     </aside><!-- /#nav_menu-2 -->
                                 </div><!-- /.tg-footer-column-3 -->
