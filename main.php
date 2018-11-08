@@ -292,6 +292,7 @@ _colornews_init();
                     <div class="tg-inner-wrap">
                         <div class="top-footer-content-wrapper">
                             <div class="tg-column-wrapper">
+                                <!-- USER TOOLS -->
                                 <?php if ($ACT != "login") : ?>
                                     <div class="tg-footer-column-3 xl">
                                         <aside id="dokuwiki__usertools" class="widget">
@@ -301,6 +302,7 @@ _colornews_init();
                                                     //<!-- LOGIN FORM -->
                                                     _colornews_loginform('widget');
                                                 } else {
+                                                    print '<h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span>'.$lang['user_tools'].'</span></span></h3>';
                                                     print '<p class="user">';
                                                         tpl_userinfo(); /* 'Logged in as ...' */
                                                     print '</p>';
