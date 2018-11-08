@@ -421,3 +421,19 @@ function _colornews_loginform($context = "null") {
     html_form('login', $form);
     print '</div>'.NL;
 }
+
+function _colornews_external_target($ret = false) {
+    global $conf;
+    $output = null;
+
+    if ($conf['target']['extern'] != null) {
+        $output = " target='".$conf['target']['extern']."'";
+    }
+
+    if ($ret) {
+        return $output;
+    } else {
+        print $output;
+        return true;
+    }
+}
