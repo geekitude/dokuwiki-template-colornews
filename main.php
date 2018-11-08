@@ -365,7 +365,7 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
                 </div><!-- /.tg-container -->
             </div><!-- /#bottom-footer -->
         </footer><!-- /#colophon -->
-        <a href="#masthead" id="scroll-up"><i class="fa fa-arrow-up"></i></a>
+        <a href="#masthead" id="scroll-up"><span>TOP</span></a>
     </div><!-- /#page -->
     </div><!-- /#dokuwiki__site -->
     <?php _colornews_includeFile('footer.html') ?>
