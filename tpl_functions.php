@@ -367,3 +367,57 @@ function _colornews_widgets($context) {
         }
     //}
 }
+
+
+/**
+ * The loginform
+ * adapted from html_login() because Spacious doesn't need autofocus on username input
+ *
+ * See original function in inc/html.php for details
+ */
+function _colornews_loginform($context = "null") {
+    global $lang;
+    global $conf;
+    global $ID;
+    global $INPUT;
+
+    if ($context == "widget") {
+        $tmp = explode("</h1>", p_locale_xhtml('login'));
+        $title = explode(">", $tmp[0])[1];
+        $tmp = str_replace("! ", "!<br />", $tmp[1]);
+        $tmp = str_replace(". ", ".<br />", $tmp);
+        print '<h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span>';
+            print $title;
+        print '</span></span></h3>';
+        print $tmp;
+    } else {
+        print p_locale_xhtml('login');
+    }
+    print '<div>'.NL;
+    if ($context == "widget") {
+        $form = new Doku_Form(array('id' => 'colornews__login'));
+    } else {
+        $form = new Doku_Form(array('id' => 'dw__login'));
+    }
+    $form->startFieldset($lang['btn_login']);
+    $form->addHidden('id', $ID);
+    $form->addHidden('do', 'login');
+    $form->addElement(form_makeTextField('u', ((!$INPUT->bool('http_credentials')) ? $INPUT->str('u') : ''), $lang['user'], 'username', 'block'));
+    $form->addElement(form_makePasswordField('p', $lang['pass'], '', 'block'));
+    if($conf['rememberme']) {
+        $form->addElement(form_makeCheckboxField('r', '1', $lang['remember'], 'remember__me', 'simple'));
+    }
+    $form->addElement(form_makeButton('submit', '', $lang['btn_login']));
+    $form->endFieldset();
+
+    if(actionOK('register')){
+        $form->addElement('<p>'.$lang['reghere'].': '.tpl_actionlink('register','','','',true).'</p>');
+    }
+
+    if (actionOK('resendpwd')) {
+        $form->addElement('<p>'.$lang['pwdforget'].': '.tpl_actionlink('resendpwd','','','',true).'</p>');
+    }
+
+    html_form('login', $form);
+    print '</div>'.NL;
+}

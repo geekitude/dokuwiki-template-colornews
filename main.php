@@ -194,27 +194,6 @@ _colornews_init();
 <div class="tools">
 <!-- USER TOOLS -->
 <?php if ($conf['useacl'] && $colornews['show']['tools']): ?>
-<div id="dokuwiki__usertools">
-<h3 class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue"><?php echo $lang['user_tools'] ?></h3>
-<ul>
-<?php
-if (!empty($_SERVER['REMOTE_USER'])) {
-echo '<li class="user">';
-tpl_userinfo(); /* 'Logged in as ...' */
-echo '</li>';
-}
-?>
-<?php /* the optional second parameter of tpl_action() switches between a link and a button,
-e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
-<?php tpl_toolsevent('usertools', array(
-'admin'     => tpl_action('admin', 1, 'li', 1),
-'userpage'  => _tpl_action('userpage', 1, 'li', 1),
-'profile'   => tpl_action('profile', 1, 'li', 1),
-'register'  => tpl_action('register', 1, 'li', 1),
-'login'     => tpl_action('login', 1, 'li', 1),
-)); ?>
-</ul>
-</div><!-- /#dokuwiki__usertools -->
 <?php endif ?>
 <!-- SITE TOOLS -->
 <div id="dokuwiki__sitetools">
@@ -313,18 +292,34 @@ e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */ ?>
                     <div class="tg-inner-wrap">
                         <div class="top-footer-content-wrapper">
                             <div class="tg-column-wrapper">
-                                <div class="tg-footer-column-3">
-                                    <aside id="text-3" class="widget widget_text">
-                                        <h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span>About Us</span></span></h3>
-                                        <div class="textwidget">
-                                            <a title="COLORNEWS" href="https://demo.themegrill.com/colornews/">
-                                                <img alt="COLORNEWS" src="https://i1.wp.com/demo.themegrill.com/colornews/wp-content/uploads/sites/37/2015/08/colornew-new-log.png?w=715" data-recalc-dims="1">
-                                            </a>
-                                            <br> <br />
-                                            We love WordPress and we are here to provide you with professional looking WordPress themes so that you can take your website one step ahead. We focus on simplicity, elegant design and clean code.
-                                        </div><!-- /.textwidget -->
-                                    </aside><!-- /#text-3 -->
-                                </div><!-- /.tg-footer-column-3 -->
+                                <?php if ($ACT != "login") : ?>
+                                    <div class="tg-footer-column-3 xl">
+                                        <aside id="dokuwiki__usertools" class="widget">
+                                            <?php
+                                                //if (($conf['useacl']) and (empty($_SERVER['REMOTE_USER'])) and (strpos(tpl_getConf('widgets'), 'footer_login') !== false))
+                                                if (($conf['useacl']) and (empty($_SERVER['REMOTE_USER']))) {
+                                                    //<!-- LOGIN FORM -->
+                                                    _colornews_loginform('widget');
+                                                } else {
+                                                    print '<p class="user">';
+                                                        tpl_userinfo(); /* 'Logged in as ...' */
+                                                    print '</p>';
+                                                    print '<ul>';
+                                                        /* the optional second parameter of tpl_action() switches between a link and a button,
+                                                        e.g. a button inside a <li> would be: tpl_action('edit', 0, 'li') */
+                                                        tpl_toolsevent('usertools', array(
+                                                            'admin'     => tpl_action('admin', 1, 'li', 1),
+                                                            'userpage'  => _tpl_action('userpage', 1, 'li', 1),
+                                                            'profile'   => tpl_action('profile', 1, 'li', 1),
+                                                            'register'  => tpl_action('register', 1, 'li', 1),
+                                                            'login'     => tpl_action('login', 1, 'li', 1),
+                                                        ));
+                                                    print '</ul>';
+                                                }
+                                            ?>
+                                        </aside><!-- /#dokuwiki__usertools -->
+                                    </div><!-- /.tg-footer-column-3 -->
+                                <?php endif; ?>
                                 <div class="tg-footer-column-3">
                                     <aside id="nav_menu-2" class="widget widget_nav_menu">
                                         <h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span>Useful Links</span></span></h3>
