@@ -2544,12 +2544,16 @@ Home content CSS
 .tg-block-wrapper,
 .widget {
 	/*background: #efeeee none repeat scroll 0 0;*/
+	/*
+    padding: 20px;
+	margin-bottom: 20px;
+    */
 }
 
 [dir] .tg-block-wrapper, [dir] .widget {
 	border: 1px solid rgba(0, 0, 0, 0.1);
-	padding: 20px;
-	margin-bottom: 20px;
+	padding: 0 calc(2 * @ini_spacer);
+	margin: 0;
 }
 
 [dir] .widget.colornews_custom_widget {
@@ -4377,6 +4381,9 @@ div.license img {
 #dw__login fieldset label.simple input,
 #colornews__login fieldset label.simple input {
     vertical-align: -.3rem;
+}
+[dir] #colornews__login p {
+    margin: 0;
 }
 
 /*
