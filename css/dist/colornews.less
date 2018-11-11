@@ -2541,7 +2541,6 @@ Home content CSS
 	padding: 20px 0 0;
 }
 
-.tg-block-wrapper,
 .widget {
 	/*background: #efeeee none repeat scroll 0 0;*/
 	/*
@@ -2550,10 +2549,13 @@ Home content CSS
     */
 }
 
-[dir] .tg-block-wrapper, [dir] .widget {
+[dir] .widget {
 	border: 1px solid rgba(0, 0, 0, 0.1);
-	padding: 0 calc(2 * @ini_spacer);
-	margin: 0;
+	margin: 0 0 @ini_spacer 0;
+}
+
+[dir] .tg-block-wrapper {
+	padding: calc(1.5 * @ini_spacer);
 }
 
 [dir] .widget.colornews_custom_widget {
@@ -2562,6 +2564,9 @@ Home content CSS
 	margin-bottom: 0;
 }
 
+[dir] #colophon .widget {
+    margin: 0;
+}
 
 /*--------------------------------------------------------------
 Slider CSS
@@ -4802,8 +4807,10 @@ div.license img {
 	.home-slider .bx-pager a {
 		width: 17%;
 	}
-	[dir] .tg-block-wrapper, [dir] .widget {
+	[dir] .widget {
 		margin-bottom: 10px;
+	}
+	[dir] .tg-block-wrapper {
 		padding: 10px;
 	}
 	#primary {

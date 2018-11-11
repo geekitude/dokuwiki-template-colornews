@@ -1912,7 +1912,6 @@ Home content CSS
 	padding: 20px 0 0;
 }
 
-.tg-block-wrapper,
 .widget {
 	/*background: #efeeee none repeat scroll 0 0;*/
 	border: 1px solid rgba(0, 0, 0, 0.1);
@@ -1920,8 +1919,11 @@ Home content CSS
     padding: 20px;
 	margin-bottom: 20px;
     */
-	padding: 0 calc(2 * @ini_spacer);
-	margin: 0;
+	margin: 0 0 @ini_spacer 0;
+}
+
+.tg-block-wrapper {
+	padding: calc(1.5 * @ini_spacer);
 }
 
 .widget.colornews_custom_widget {
@@ -1930,6 +1932,9 @@ Home content CSS
 	margin-bottom: 0;
 }
 
+#colophon .widget {
+    margin: 0;
+}
 
 /*--------------------------------------------------------------
 Slider CSS
@@ -3630,9 +3635,10 @@ div.buttons {
 	.home-slider .bx-pager a {
 		width: 17%;
 	}
-	.tg-block-wrapper,
 	.widget {
 		margin-bottom: 10px;
+	}
+	.tg-block-wrapper {
 		padding: 10px;
 	}
 	#primary {

@@ -252,9 +252,9 @@ _colornews_init();
                                 <?php _colornews_includeFile('sidebarheader.html', true) ?>
                                 <?php if (isset($colornews['images']['card'])) : ?>
                                     <!-- <aside id="colornews_300x250_advertisement_widget-3" class="widget widget_300x250_advertisement colornews_custom_widget"> -->
-                                    <aside id="colornews__sidebar_card" class="widget colornews_custom_widget">
+                                    <aside id="colornews__sidebar_card" class="widget">
                                         <!-- <div class="magazine-block-medium-ad clearfix"> -->
-                                            <div class="tg-block-wrapper">
+                                            <div class="tg-block-wrapper clearfix">
                                                 <div class="ad-image">
                                                     <!-- <a href="http://themegrill.com" target="_blank"><img src="https://demo.themegrill.com/colornews/wp-content/uploads/sites/37/2015/07/colornews-medium-advetise.jpg" width="300" height="250" rel="nofollow"></a> -->
                                                     <?php
@@ -268,11 +268,13 @@ _colornews_init();
                                 <?php
                                     if ($colornews['show']['sidebar'] > 0) {
                                         print '<aside id="dokuwiki__aside" class="widget">';
-                                        if ($colornews['show']['sidebar'] === 2) {
-                                            include(tpl_incdir('colornews')."debug/sidebar.html");
-                                        } else {
-                                            tpl_include_page($conf['sidebar'], 1, 1); /* includes the nearest sidebar page */
-                                        }
+                                            print '<div class="tg-block-wrapper clearfix">';
+                                                if ($colornews['show']['sidebar'] === 2) {
+                                                    include(tpl_incdir('colornews')."debug/sidebar.html");
+                                                } else {
+                                                    tpl_include_page($conf['sidebar'], 1, 1); /* includes the nearest sidebar page */
+                                                }
+                                            print '</div>';
                                         print '</aside>';
                                     }
                                 ?>

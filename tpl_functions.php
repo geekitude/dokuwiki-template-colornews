@@ -241,13 +241,13 @@ function _colornews_bodyclasses() {
 function _colornews_includeFile($file = '', $widget = false) {
     if ($file != null) {
         if ((($_GET['debug'] == 1) or ($_GET['debug'] == "include")) and (file_exists(tpl_incdir('colornews')."debug/".$file))) {
-            if ($widget == true) { print '<aside id="colornews_'.substr($file, 0, -5).'_widget" class="widget">'; }
+            if ($widget == true) { print '<aside id="colornews_'.explode(".", $file)[0].'_widget" class="widget"><div class="tg-block-wrapper clearfix">'; }
             include(tpl_incdir('colornews')."debug/".$file);
-            if ($widget == true) { print '</aside>'; }
+            if ($widget == true) { print '</div></aside>'; }
         } elseif (file_exists(tpl_incdir().$file)) {
-            if ($widget == true) { print '<aside id="colornews_'.substr($file, 0, -5).'_widget" class="widget">'; }
+            if ($widget == true) { print '<aside id="colornews_'.explode(".", $file)[0].'_widget" class="widget"><div class="tg-block-wrapper clearfix">'; }
             tpl_includeFile($file);
-            if ($widget == true) { print '</aside>'; }
+            if ($widget == true) { print '</div></aside>'; }
         }
     }
 }
@@ -355,13 +355,11 @@ function _colornews_widgets($context) {
             foreach ($colornews['widgets'][$context] as $key => $line) {
                 $widget = explode('&&', $line);
 //dbg($widget);
-                print "<aside id='colornews_".$context."_widget_".$key."' class='widget colornews_popular_post colornews_custom_widget'>";
-                    print "<div class='magazine-block-3'>";
+                print "<aside id='colornews_".$context."_widget_".$key."' class='widget'>";
                         print "<div class='tg-block-wrapper clearfix'>";
                             print "<h3 class='widget-title title-block-wrap clearfix'><span class='block-title'><span>".$widget[0]."</span></span></h3>";
                             print p_render('xhtml',p_get_instructions($widget[1]), $info);
                         print "</div>";
-                    print "</div>";
                 print "</aside>";
             }
         }
