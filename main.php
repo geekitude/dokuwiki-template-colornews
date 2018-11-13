@@ -307,9 +307,9 @@ _colornews_init();
                                                     print '<h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span>'.$lang['user_tools'].'</span></span></h3>';
                                                     if ($colornews['images']['avatar'] != null) {
                                                         if (strpos($colornews['images']['avatar'], "svg") !== false) {
-                                                            print '<img id="colornews__user_avatar" src="/lib/tpl/colornews/debug/avatar.png" alt="*your avatar*" srcset="/lib/tpl/colornews/debug/avatar.svg" height="64px" width="64px" style="float: right;"/>';
+                                                            print '<img id="colornews__user_avatar" src="/lib/tpl/colornews/debug/avatar.png" alt="'.tpl_getLang('your_avatar').'" srcset="/lib/tpl/colornews/debug/avatar.svg" height="64px" width="64px" style="float: right;"/>';
                                                         } else {
-                                                            print '<img id="colornews__user_avatar" src="'.$colornews['images']['avatar'].'" alt="*your avatar*" width="64px" height="100%" style="float: right;"/>';
+                                                            print '<img id="colornews__user_avatar" src="'.$colornews['images']['avatar'].'" alt="'.tpl_getLang('your_avatar').'" width="64px" height="100%" style="float: right;"/>';
                                                         }
                                                     }
                                                     print '<p class="user">';
