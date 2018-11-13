@@ -186,30 +186,10 @@ _colornews_init();
                 <?php if($conf['breadcrumbs']){ ?>
                     <div class="breadcrumbs"><?php tpl_breadcrumbs() ?></div>
                 <?php } ?>
-                <hr class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue" />
             </div>
             <!-- BREAKING NEWS -->
+            <hr class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue" />
         </header><!-- /#masthead -->
-<div id="dokuwiki__header" style="background-color:linen;">
-<div class="tools">
-<!-- USER TOOLS -->
-<?php if ($conf['useacl'] && $colornews['show']['tools']): ?>
-<?php endif ?>
-<!-- SITE TOOLS -->
-<div id="dokuwiki__sitetools">
-<h3 class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue"><?php echo $lang['site_tools'] ?></h3>
-<?php //tpl_searchform() ?>
-<ul>
-<?php tpl_toolsevent('sitetools', array(
-'recent'    => tpl_action('recent', 1, 'li', 1),
-'media'     => tpl_action('media', 1, 'li', 1),
-'index'     => tpl_action('index', 1, 'li', 1),
-)); ?>
-</ul>
-</div><!-- /.#dokuwiki__sitetools -->
-</div><!-- /.tools -->
-<hr class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue" />
-</div><!-- /#dokuwiki__header -->
         <main id="main" class="clearfix">
             <div class="tg-container">
                 <div class="tg-inner-wrap clearfix">
@@ -280,6 +260,7 @@ _colornews_init();
                                 ?>
                                 <?php _colornews_widgets('sidebar'); ?>
                                 <?php _colornews_includeFile('sidebarfooter.html', true) ?>
+                                <hr class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue" />
                             </div><!-- /#secondary -->
                         <?php endif; ?>
                     </div><!-- /#main-content-section -->
@@ -295,7 +276,8 @@ _colornews_init();
                         <div class="top-footer-content-wrapper">
                             <div class="tg-column-wrapper">
                                 <!-- USER TOOLS -->
-                                <?php if ($ACT != "login") : ?>
+                                <?php //if ($ACT != "login") : ?>
+                                <?php if ($conf['useacl'] && $colornews['show']['tools'] && $ACT != "login"): ?>
                                     <div class="tg-footer-column-3 xl">
                                         <aside id="dokuwiki__usertools" class="widget">
                                             <?php
@@ -331,6 +313,22 @@ _colornews_init();
                                         </aside><!-- /#dokuwiki__usertools -->
                                     </div><!-- /.tg-footer-column-3 -->
                                 <?php endif; ?>
+                                <!-- SITE TOOLS -->
+                                <?php if ($colornews['show']['tools']): ?>
+                                    <div class="tg-footer-column-3">
+                                        <aside id="dokuwiki__sitetools" class="widget">
+                                            <h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span><?php print $lang['site_tools']; ?></span></span></h3>
+                                            <?php //tpl_searchform() ?>
+                                            <ul>
+                                                <?php tpl_toolsevent('sitetools', array(
+                                                    'recent'    => tpl_action('recent', 1, 'li', 1),
+                                                    'media'     => tpl_action('media', 1, 'li', 1),
+                                                    'index'     => tpl_action('index', 1, 'li', 1),
+                                                )); ?>
+                                            </ul>
+                                        </aside><!-- /.#dokuwiki__sitetools -->
+                                    </div><!-- /.tg-footer-column-3 -->
+                                <?php endif; ?>
                                 <div class="tg-footer-column-3">
                                     <aside id="colornews__about" class="widget widget_nav_menu">
                                         <h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span><?php print tpl_getLang('about'); ?></span></span></h3>
@@ -344,19 +342,6 @@ _colornews_init();
                                             <a href="https://github.com/geekitude/dokuwiki-template-colornews" title="ColorNews template"<?php _colornews_external_target(); ?>><img src="<?php print tpl_basedir(); ?>images/button-colornews.png" width="86" height="15" alt="Spacious tmplate" /></a>
                                         </div><!-- .buttons -->
                                     </aside><!-- /#nav_menu-2 -->
-                                </div><!-- /.tg-footer-column-3 -->
-                                <div class="tg-footer-column-3">
-                                    <aside id="nav_menu-3" class="widget widget_nav_menu">
-                                        <h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span>Other Themes</span></span></h3>
-                                        <div class="menu-other-themes-container">
-                                            <ul id="menu-other-themes" class="menu">
-                                                <li id="menu-item-297" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-297"><a href="http://themegrill.com/themes/colormag">ColorMag</a></li>
-                                                <li id="menu-item-298" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-298"><a href="http://themegrill.com/themes/accelerate/">Accelerate</a></li>
-                                                <li id="menu-item-299" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-299"><a href="http://themegrill.com/themes/ample/">Ample</a></li>
-                                                <li id="menu-item-300" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-300"><a href="http://themegrill.com/themes/esteem/">Esteem</a></li>
-                                            </ul>
-                                        </div><!-- /.menu-other-themes-container -->
-                                    </aside><!-- /#nav_menu-3 -->
                                 </div><!-- /.tg-footer-column-3 -->
                             </div><!-- /.tg-column-wrapper -->
                         </div><!-- /.top-footer-content-wrapper -->
