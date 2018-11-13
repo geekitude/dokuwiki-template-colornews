@@ -54,6 +54,7 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
 ### Extra
 
 * Replaced orginal 770Kb background pattern with a 48Kb one from [Subtle Patterns](https://www.toptal.com/designers/subtlepatterns/)
+* Dummy blank avatar is under CC Attribution 3.0 Unported license and comes from [ICON-ICONS](https://icon-icons.com/)
 * Font used for sample UI images (banner, widebanner and sidebar.png) is: [Rollandin by Emilie Rollandin](http://www.archistico.com/portfolio/nuovo-font-rollandin/).
 * Special thanks to Giuseppe Di Terlizzi, author of [Bootstrap3](https://www.dokuwiki.org/template:bootstrap3) DokuWiki template who nicely acepted that I copy some of his code to build admin dropdown menu.
 
@@ -90,6 +91,7 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
 * [ ] Expanded debug mode to show or hide some specific elements
   * [x] 'a11y' (visual accessibility helpers)
   * [x] 'alerts'
+  * [x] 'avatar'
   * [x] 'banner'
   * [x] 'card' (sidebar namespace card image)
   * [x] 'images' (all UI images)
@@ -104,7 +106,7 @@ Debug mode is meant to show usually hidden elements to test some of template's s
 
 To enable "full" debug mode, simply add `&debug=1` or `?debug=1` at the end of URL, depending of current wiki mode (ie use "&" if there's already a "?" in URL, else use "?").
 
-You can also use some specific keyword values instead of boolean to show only a given element category (e.g. `&debug=include`). Here's a complete list of possible keywords : 'a11y' (visual accessibility helpers), 'alerts', 'banner', 'card' (sidebar namespace card image), 'images' (all UI images), 'include' (HTML include hooks), 'logo' (namespace logo within page header), 'replace' (HTML replace hooks), 'sitelogo'
+You can also use some specific keyword values instead of boolean to show only a given element category (e.g. `&debug=include`). Here's a complete list of possible keywords : 'a11y' (visual accessibility helpers), 'alerts', 'avatar', 'banner', 'card' (sidebar namespace card image), 'images' (all UI images), 'include' (HTML include hooks), 'logo' (namespace logo within page header), 'replace' (HTML replace hooks), 'sitelogo'
 
 ## About UI Images
 

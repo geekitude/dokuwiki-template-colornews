@@ -165,15 +165,14 @@ function _colornews_init() {
     $colornews['show'] = array();
     $colornews['show']['tools'] = !tpl_getConf('hideTools') || ( tpl_getConf('hideTools') && !empty($_SERVER['REMOTE_USER']) );
     $colornews['widgets'] = array();
+    $colornews['widgets']['sidebar'] = array();
     if ($_GET['debug'] == "replace") {
         $colornews['show']['sidebar'] = 2;
         $colornews['show']['sidebarWidgets'] = 2;
-        $colornews['widgets']['sidebar'] = array();
         $colornews['widgets']['sidebar'] = @file(tpl_incdir('colornews')."debug/sidebarwidgets.txt");
     } else {
         $colornews['show']['sidebar'] = page_findnearest($conf['sidebar']) && ($ACT=='show');
         $colornews['show']['sidebarWidgets'] = page_findnearest(tpl_getConf('sidebarWidgets')) && ($ACT=='show');
-        $colornews['widgets']['sidebar'] = array();
         $colornews['widgets']['sidebar'] = @file(wikiFN(page_findnearest(tpl_getConf('sidebarWidgets')),''));
     }
 //dbg($colornews['widgets']['sidebar']);
@@ -197,6 +196,20 @@ function _colornews_init() {
             $colornews['images']['card'] = null;
         }
     }
+//dbg($_SERVER['REMOTE_USER']);
+//dbg(':user:'.$_SERVER['REMOTE_USER'].':'.tpl_getConf('avatar').'.png');
+//dbg(':wiki:'.$_SERVER['REMOTE_USER'].'.png');
+    if ((isset($_SERVER['REMOTE_USER'])) and (tpl_getConf('avatar') != null)) {
+        $colornews['images']['avatarsize'] = array();
+        //$colornews['images']['avatar'] = tpl_getMediaFile(array(':wiki:'.tpl_getConf('avatar').'.png', ':'.tpl_getConf('avatar').'.png', 'debug/sidebar.png'), false, $colornews['images']['avatarsize']);
+        $colornews['images']['avatar'] = tpl_getMediaFile(array(':user:'.$_SERVER['REMOTE_USER'].':'.tpl_getConf('avatar').'.png', ':wiki:'.$_SERVER['REMOTE_USER'].'.png', 'debug/avatar.svg'), false, $colornews['images']['avatarsize']);
+    //} elseif (((isset($_SERVER['REMOTE_USER'])) and (tpl_getConf('avatar') != null)) or ($_GET['debug'] == 1) or ($_GET['debug'] == "images") or ($_GET['debug'] == "avatar")) {
+        if ((strpos($colornews['images']['avatar'], "debug") !== false) and (($_GET['debug'] != 1) and ($_GET['debug'] != "images") and ($_GET['debug'] != "avatar"))) {
+            $colornews['images']['avatar'] = null;
+        }
+    }
+//dbg($colornews['images']['avatar']);
+//dbg($colornews['images']['avatarsize']);
 //dbg($colornews['images']);
     // DEBUG
     // Adding test alerts if debug is enabled
