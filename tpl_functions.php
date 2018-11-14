@@ -237,6 +237,11 @@ function _colornews_bodyclasses() {
     } else {
         $bgClass = "color-bg";
     }
+    if (tpl_getConf('textWrap')) {
+        $textWrap = "wrap";
+    } else {
+        $textWrap = "";
+    }
     if ($ACT=='show') {
         $sidebar = tpl_getConf('sidebarPos').'-sidebar';
     } else {
@@ -245,6 +250,7 @@ function _colornews_bodyclasses() {
     $classes = array(
         tpl_getConf('layout').'-layout',
         $bgClass,
+        $textWrap,
         $sidebar,
     );
     /* TODO: better home detection than core */

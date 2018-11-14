@@ -10,6 +10,7 @@ $conf['hideTools']          = 0;
 $conf['layout']             = 'boxed';
 $conf['bodyBg']             = 'pattern';
 $conf['sidebarPos']         = 'left';
+$conf['textWrap']           = 0;
 $conf['dateLocale']         = 'fra';
 $conf['shortDateString']    = '%d/%m/%Y';
 $conf['longDateString']     = '%A %d %B %Y';
