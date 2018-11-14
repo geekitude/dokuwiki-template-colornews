@@ -3171,9 +3171,7 @@ div.skip a {
     padding: 0;
 }
 
-#colornews__alerts div {
-	color: #00000;
-    /*
+   /*
 	font-size: 25px;
 	font-weight: 600;
 	letter-spacing: 3px;
@@ -3181,11 +3179,13 @@ div.skip a {
 	margin: 20px auto;
 	padding: 2px 28px;
 	text-transform: uppercase;
-    */
+#colornews__alerts div {
+	color: #00000;
     width: 80%;
     margin: calc(.5 * @ini_spacer) auto calc(.5 * @ini_spacer) auto;
     padding: calc(.5 * @ini_spacer) calc(.5 * @ini_spacer) calc(.5 * @ini_spacer) 2.4em;
 }
+    */
 
 #colornews__alerts div:first-child {
     margin: 0 auto calc(.5 * @ini_spacer) auto;
@@ -3197,6 +3197,16 @@ div.skip a {
 
 #colornews__alerts div:only-child {
     margin: 0 auto 20px auto;
+}
+
+div.info,
+div.notify,
+div.success,
+div.error {
+	color: #00000;
+    width: 80%;
+    margin: calc(.5 * @ini_spacer) auto calc(.5 * @ini_spacer) auto;
+    padding: calc(.5 * @ini_spacer) calc(.5 * @ini_spacer) calc(.5 * @ini_spacer) 2.4em;
 }
 
 .info {
@@ -3215,7 +3225,14 @@ div.skip a {
 	background-color: @ini_color_red;
 }
 
-#colornews__alerts a {
+/*#colornews__alerts a {
+    color: #fff;
+}*/
+
+div.info a,
+div.notify a,
+div.success a,
+div.error a {
     color: #fff;
 }
 
