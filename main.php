@@ -244,19 +244,19 @@ _colornews_init();
                                     <!-- </div> -->
                                 </aside>
                             <?php endif; ?>
-                            <?php
-                                if ($colornews['show']['sidebar'] > 0) {
-                                    print '<aside id="dokuwiki__aside" class="widget">';
-                                        print '<div class="tg-block-wrapper clearfix">';
+                            <?php if ($colornews['show']['sidebar']): ?>
+                                <aside id="dokuwiki__aside" class="widget">
+                                    <div class="tg-block-wrapper clearfix">
+                                        <?php
                                             if ($colornews['show']['sidebar'] === 2) {
                                                 include(tpl_incdir('colornews')."debug/sidebar.html");
                                             } else {
                                                 tpl_include_page($conf['sidebar'], 1, 1); /* includes the nearest sidebar page */
                                             }
-                                        print '</div>';
-                                    print '</aside>';
-                                }
-                            ?>
+                                        ?>
+                                    </div>
+                                </aside>
+                            <?php endif; ?>
                             <?php _colornews_widgets('sidebar'); ?>
                             <?php _colornews_includeFile('sidebarfooter.html', true) ?>
                             <hr class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue" />
