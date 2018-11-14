@@ -182,7 +182,9 @@ _colornews_init();
             <!-- BREADCRUMBS -->
             <div id="colornews__trace" class="<?php print (($conf['youarehere']) and ($conf['breadcrumbs'])) ? "split" : "" ?>">
                 <?php if($conf['youarehere']){ ?>
-                    <div class="youarehere"><?php tpl_youarehere() ?></div><div class="pageId">(<span><?php echo hsc($ID) ?></span>)</div>
+                    <div class="youarehere"><?php tpl_youarehere() ?><div class="pageId">(<span><?php echo hsc($ID) ?></span>)</div></div>
+                <?php } else { ?>
+                    <div class="pageId"><span><?php echo hsc($ID) ?></span></div>
                 <?php } ?>
                 <?php if($conf['breadcrumbs']){ ?>
                     <div class="breadcrumbs"><?php tpl_breadcrumbs() ?></div>
@@ -258,7 +260,7 @@ _colornews_init();
                                     </div>
                                 </aside>
                             <?php endif; ?>
-                            <?php _colornews_widgets('sidebar'); ?>
+                            <?php if ($colornews['show']['sidebarWidgets']) { _colornews_widgets('sidebar'); } ?>
                             <?php _colornews_includeFile('sidebarfooter.html', true) ?>
                             <hr class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue" />
                         </div><!-- /#secondary -->
