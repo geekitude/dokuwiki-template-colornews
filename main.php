@@ -160,14 +160,15 @@ _colornews_init();
                 <div class="bottom-arrow-wrap">
                     <div class="tg-container">
                         <div class="tg-inner-wrap">
-                            <?php // option affichage icone home ?>
-                                <div class="home-icon">
-                                    <a title="*title*" href="<?php wl(); ?>"><i class="fa fa-home"></i>home</a>
-                                </div><!-- /.home-icon -->
-                            <?php // ?>
                             <nav id="site-navigation" class="main-navigation clearfix" role="navigation">
                                 <div class="menu-toggle hide">*menu toggle*</div>
-                                <?php //wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'nav', 'container' => false, ) ); ?>
+                                <ul>
+                                    <?php // option affichage icone home ?>
+                                        <li class="home-icon">
+                                            <a title="*title*" href="<?php wl(); ?>"><i class="fa fa-home"></i>home</a>
+                                        </li><!-- /.home-icon -->
+                                    <?php // ?>
+                                </ul>
                             </nav>
                             <div class="share-search-wrap autocomplete-<?php print tpl_getConf("searchAutoComplete") ? 'on' : 'off'; ?>">
                                 <?php _colornews_searchform(true, tpl_getConf("searchAutoComplete")); ?>
@@ -181,7 +182,7 @@ _colornews_init();
             <!-- BREADCRUMBS -->
             <div id="colornews__trace" class="<?php print (($conf['youarehere']) and ($conf['breadcrumbs'])) ? "split" : "" ?>">
                 <?php if($conf['youarehere']){ ?>
-                    <div class="youarehere"><?php tpl_youarehere() ?></div>
+                    <div class="youarehere"><?php tpl_youarehere() ?></div><div class="pageId">(<span><?php echo hsc($ID) ?></span>)</div>
                 <?php } ?>
                 <?php if($conf['breadcrumbs']){ ?>
                     <div class="breadcrumbs"><?php tpl_breadcrumbs() ?></div>

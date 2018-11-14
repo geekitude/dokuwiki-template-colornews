@@ -1501,6 +1501,7 @@ Header CSS
 	transform: rotate(180deg);
 }
 
+/*
 .bottom-header-wrapper .home-icon {
 	float: left;
 }
@@ -1517,6 +1518,7 @@ Header CSS
 	-o-transition: background 0.5s ease;
 	transition: background 0.5s ease;
 }
+*/
 
 .wide .bottom-header-wrapper > .bottom-arrow-wrap::before,
 .wide .bottom-header-wrapper > .bottom-arrow-wrap::after,
@@ -1525,7 +1527,12 @@ Header CSS
 	display: none;
 }
 
+/*
 .bottom-header-wrapper .home-icon a:hover,
+.home .bottom-header-wrapper .home-icon a {
+	background: #dc3522;
+}
+*/
 .home .bottom-header-wrapper .home-icon a {
 	background: #dc3522;
 }
@@ -3145,6 +3152,12 @@ a#scroll-up:hover {
 /*--------------------------------------------------------------
 DW Specific
 ----------------------------------------------- */
+
+/* PageID */
+div.pageId {
+    display: inline;
+    margin: 0 0 0 calc(.5 * @ini_spacer);
+}
 
 /* Skip to content */
 div.skip {
