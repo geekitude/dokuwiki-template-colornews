@@ -251,6 +251,7 @@ _colornews_init();
                                 <?php if ($colornews['show']['sidebar']): ?>
                                     <aside id="dokuwiki__aside" class="widget">
                                         <div class="tg-block-wrapper clearfix">
+                                            <h3 class='widget-title title-block-wrap clearfix'><span class='block-title'><span><?php print $lang['sidebar']; ?></span></span></h3>
                                             <?php
                                                 if ($colornews['show']['sidebar'] === 2) {
                                                     include(tpl_incdir('colornews')."debug/sidebar.html");
