@@ -12,7 +12,7 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
 ## Conversion progression todo list
 
 * [x] Start with Starter template
-* [ ] Basic HTML/PHP
+* [x] Basic HTML/PHP
   * [x] Meta elements
   * [x] Site containers
   * [x] Header
@@ -21,11 +21,11 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
   * [x] Sidebar
   * [x] WP vs. DW functions
   * [x] Language strings
-* [ ] Basic CSS
+* [x] Basic CSS
   * [x] style.css
-  * [ ] rtl.css
-  * [ ] print.css
-  * [ ] Necessary changes
+  * [x] rtl.css
+  * [x] print.css
+  * [x] Necessary changes
 * [ ] JS
 * [ ] Further HTML/PHP
   * [ ] Other layouts
