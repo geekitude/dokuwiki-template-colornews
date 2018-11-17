@@ -156,8 +156,8 @@ function _colornews_init() {
 //    global $conf, $ID, $INFO, $JSINFO, $lang;
     global $conf, $ACT;
 //dbg($INFO);
-    // New global variables initialized in Spacious' `main.php`
-//    global $spacious, $editorAvatar, $userAvatar, $browserlang, $trs, $uhp;
+    // New global variables initialized in colornews' `main.php`
+//    global $colornews, $editorAvatar, $userAvatar, $browserlang, $trs, $uhp;
     global $colornews;
     // More new global variables
 //    global $translationHelper, $tags;
@@ -177,8 +177,6 @@ function _colornews_init() {
     }
 //dbg($colornews['widgets']['sidebar']);
 //dbg($colornews['show']['sidebar']);
-
-
 
     // IMAGES
     $colornews['images'] = array();
@@ -211,6 +209,46 @@ function _colornews_init() {
 //dbg($colornews['images']['avatar']);
 //dbg($colornews['images']['avatarsize']);
 //dbg($colornews['images']);
+
+    // GLYPHS
+    // Search for default or custum default SVG glyphs
+    $colornews['glyphs']['about'] = 'help';
+    $colornews['glyphs']['acl'] = 'key-variant';
+    $colornews['glyphs']['admin'] = 'settings';
+    $colornews['glyphs']['config'] = 'tune';
+    $colornews['glyphs']['discussion'] = 'comment-text-multiple';
+    $colornews['glyphs']['extensions'] = 'puzzle';
+    $colornews['glyphs']['from-playground'] = 'shovel-off';
+    $colornews['glyphs']['help'] = 'lifebuoy';
+    $colornews['glyphs']['home'] = 'home';
+    $colornews['glyphs']['menu'] = 'menu';
+    $colornews['glyphs']['namespace-start'] = 'reply';
+    $colornews['glyphs']['parent-namespace'] = 'reply-all';
+    $colornews['glyphs']['playground'] = 'shovel';
+    $colornews['glyphs']['popularity'] = 'star-half';
+    $colornews['glyphs']['private-page'] = 'incognito';
+    $colornews['glyphs']['public-page'] = 'comment-account';
+    $colornews['glyphs']['recycle'] = 'recycle';
+    $colornews['glyphs']['refresh'] = 'autorenew';
+    $colornews['glyphs']['revert'] = 'step-backward';
+    $colornews['glyphs']['search'] = 'magnify';
+    $colornews['glyphs']['styling'] = 'palette';
+    $colornews['glyphs']['translation'] = 'translate';
+    $colornews['glyphs']['upgrade'] = 'cloud-download';
+    $colornews['glyphs']['user'] = 'account';
+    $colornews['glyphs']['unknown-user'] = 'account-alert';
+    $colornews['glyphs']['usermanager'] = 'account-group';
+    foreach ($colornews['glyphs'] as $key => $value) {
+        /*if (is_file(DOKU_CONF."svg/".$key.".svg")) {*/
+        if (is_file(tpl_incdir().'images/svg/custom/'.$key.'.svg')) {
+            $colornews['glyphs'][$key] = inlineSVG(tpl_incdir().'images/svg/custom/'.$key.'.svg', 2048);
+        } elseif (is_file('.'.tpl_basedir().'images/svg/'.$value.'.svg')) {
+            $colornews['glyphs'][$key] = inlineSVG('.'.tpl_basedir().'images/svg/'.$value.'.svg', 2048);
+        } else {
+            $colornews['glyphs'][$key] = inlineSVG(DOKU_INC.'lib/images/menu/00-default_checkbox-blank-circle-outline.svg', 2048);
+        }
+    }
+
     // DEBUG
     // Adding test alerts if debug is enabled
     if (($_GET['debug'] == 1) or ($_GET['debug'] == "alerts")) {
@@ -331,6 +369,10 @@ function _colornews_searchform($ajax = true, $autocomplete = true) {
     global $QUERY;
     global $ID;
 
+    $qsearchinClasses = 'edit';
+    if (is_file(tpl_incdir().'images/svg/custom/search.svg')) {
+        $qsearchinClasses .= ' custom';
+    }
     // don't print the search form if search action has been disabled
     if(!actionOK('search')) return false;
     $searchForm = new dokuwiki\Form\Form([
@@ -344,7 +386,7 @@ function _colornews_searchform($ajax = true, $autocomplete = true) {
     $searchForm->setHiddenField('do', 'search');
     $searchForm->setHiddenField('id', $ID);
     $searchForm->addTextInput('q')
-        ->addClass('edit')
+        ->addClass($qsearchinClasses)
         ->attrs([
             //'title' => '[F]',
             //'accesskey' => 'f',
@@ -388,7 +430,7 @@ function _colornews_widgets($context) {
 
 /**
  * The loginform
- * adapted from html_login() because Spacious doesn't need autofocus on username input
+ * adapted from html_login() because colornews doesn't need autofocus on username input
  *
  * See original function in inc/html.php for details
  */

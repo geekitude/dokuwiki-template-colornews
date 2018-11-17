@@ -63,7 +63,7 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
 * [ ] Namespace dependent CSS placeholders (for colors and fonts)
 * [ ] Namespace dependent UI images (background pattern, banner, logo, widebanner and a potential sidebar header)
 * [ ] Google Fonts : each of main text, headings, condensed text (mostly nav bar) and monospaced text (```code``` syntax) can use a different Google font (be warned that main text font should be kept very readable)
-* [ ] Easy to customize glyphs (from [Material Design Icons](https://materialdesignicons.com/) like other DW's SVG glyphs or [IcoMoon](https://icomoon.io/) for social links)
+* [ ] Easy to customize glyphs(*) (from [Material Design Icons](https://materialdesignicons.com/) like other DW's SVG glyphs or [IcoMoon](https://icomoon.io/) for social links)
 * [ ] Can have a "scrollspy" ToC on wide screen
 * [ ] Sidebar moved out of page content on wide screen
 * [ ] Dynamic navigation button (current NS home, parent NS start, home)
@@ -99,6 +99,8 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
   * [ ] 'logo' (namespace logo within page header)
   * [x] 'replace' (HTML replace hooks)
   * [ ] 'sitelogo'
+
+(*) to replace a glyph by another, simply put desired SVG file (2kb max) in `colornews/svg/custom` folder and name it after the following list of elements : about.svg, acl.svg, admin.svg, config.svg, discussion.svg, extensions.svg, from-playground.svg, help.svg, home.svg, menu.svg, namespace-start.svg, parent-namespace.svg, playground.svg, popularity.svg, private-page.svg, public-page.svg, recycle.svg, refresh.svg, revert.svg, search.svg, styling.svg, translation.svg, upgrade.svg, user.svg, usermanager.svg or unknown-user.svg
 
 ## Expanded debug mode
 
