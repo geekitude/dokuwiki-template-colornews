@@ -267,7 +267,7 @@ function _colornews_init() {
 //dbg(time() - $_SESSION['colornews']['timestamp']);
     if ((tpl_getConf('githubIssues') == 1) and (($_SESSION['colornews']['timestamp'] == null) or (time() - $_SESSION['colornews']['timestamp'] > 3600))) {
         $_SESSION['colornews']['timestamp'] = time();
-//dbg("Colornews timestamp: ".$_SESSION['colornews']['timestamp']);
+//dbg("pendant: ".$_SESSION['colornews']['timestamp']);
         $url = "http://api.github.com/users/geekitude/repos";//github.com/geekitude/dokuwiki-template-colornews
         $headers = @get_headers($url);
         $opts = [
@@ -288,7 +288,7 @@ function _colornews_init() {
                     if ($obj[$key]->name == "dokuwiki-template-colornews") {
                         if ((isset($obj[$key]->open_issues_count)) and ($obj[$key]->open_issues_count > 0)) {
                             $_SESSION['colornews']['issues'] = $obj[$key]->open_issues_count;
-//dbg($obj[$key]->open_issues_count);
+//dbg($obj[$key]->open_issues_count." Github issues");
                         } else {
                             $_SESSION['colornews']['issues'] = 0;
                         }
