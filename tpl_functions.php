@@ -162,6 +162,7 @@ function _colornews_init() {
     // More new global variables
 //    global $translationHelper, $tags;
 
+    session_start();
     $colornews['show'] = array();
     $colornews['show']['tools'] = !tpl_getConf('hideTools') || ( tpl_getConf('hideTools') && !empty($_SERVER['REMOTE_USER']) );
     $colornews['widgets'] = array();
@@ -259,8 +260,14 @@ function _colornews_init() {
     }
 
     // Github issues
-    // Check and store template's current Github issues number
-    if (tpl_getConf('githubIssues') == 1) {
+    // Check and store template's current Github issues number (only if setting is enabled and no value is stored in PHP session yet)
+//dbg("avant: ".$_SESSION['colornews']['timestamp']);
+//dbg($_SESSION);
+//dbg(time());
+//dbg(time() - $_SESSION['colornews']['timestamp']);
+    if ((tpl_getConf('githubIssues') == 1) and (($_SESSION['colornews']['timestamp'] == null) or (time() - $_SESSION['colornews']['timestamp'] > 3600))) {
+        $_SESSION['colornews']['timestamp'] = time();
+//dbg("Colornews timestamp: ".$_SESSION['colornews']['timestamp']);
         $url = "http://api.github.com/users/geekitude/repos";//github.com/geekitude/dokuwiki-template-colornews
         $headers = @get_headers($url);
         $opts = [
@@ -280,18 +287,33 @@ function _colornews_init() {
 //dbg($obj[$key]->name);
                     if ($obj[$key]->name == "dokuwiki-template-colornews") {
                         if ((isset($obj[$key]->open_issues_count)) and ($obj[$key]->open_issues_count > 0)) {
-                            $colornews['issues'] = $obj[$key]->open_issues_count;
+                            $_SESSION['colornews']['issues'] = $obj[$key]->open_issues_count;
 //dbg($obj[$key]->open_issues_count);
                         } else {
-                            $colornews['issues'] = 0;
+                            $_SESSION['colornews']['issues'] = 0;
                         }
                     }
                 }
             }
         }
-    } else {
-        $colornews['issues'] = null;
+//    } else {
+//        $_SESSION['colornews']['issues'] = null;
+//        $_SESSION['colornews']['timestamp'] = time();
     }
+//dbg("après: ".$_SESSION['colornews']['timestamp']);
+    
+
+                // If a user is logged in, store timestamp (if it wasn't stored yet)
+ //           if (($_SERVER['REMOTE_USER'] != null) && (!isset($_SESSION['uhptimestamp']))) {
+   //             $_SESSION['uhptimestamp'] = time();
+            // If no user is logged in and a timestamp exists, set timestamp to null (ensures that redirection will work if user just logged out and comes back before closing browser)
+     //       } elseif (($_SERVER['REMOTE_USER'] == null) && (isset($_SESSION['uhptimestamp']))) {
+       //         $_SESSION['uhptimestamp'] = null;
+         //   }
+//dbg($_SESSION);
+
+    
+    
 }
 
 /**
