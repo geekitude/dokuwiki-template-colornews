@@ -3437,14 +3437,28 @@ Category title css
 Footer css
 --------------------------------------------------------------*/
 
+[dir] #colophon {
+	margin-top: 50px;
+}
+
+#colophon a,
+#colophon li,
+#colophon a:before,
+#colophon li:before {
+	color: #ffffff;
+	top: 0;
+}
+
+#colophon a:hover,
+#colophon a:hover:before,
+#colophon li:hover:before {
+	color: #dc3522;
+}
+
 
 /*--------------------------------------------------------------
 Top-footer css
 --------------------------------------------------------------*/
-
-[dir] #colophon {
-	margin-top: 50px;
-}
 
 #top-footer {
 	color: #d9d4d4;
@@ -3565,6 +3579,7 @@ Bottom-footer css
 	text-align: center;
 }
 
+/*
 #bottom-footer .copy-right a {
   color: #ffffff;
 }
@@ -3572,7 +3587,7 @@ Bottom-footer css
 #bottom-footer .copy-right a:hover {
 	color: #dc3522;
 }
-
+*/
 
 /* Social Links in Menu */
 /*
@@ -3852,20 +3867,6 @@ Default widget css
 .widget_search .searchsubmit {
 	height: 36px;
 	width: 15%;
-}
-
-#top-footer .widget a,
-#top-footer .widget li,
-#top-footer .widget a:before,
-#top-footer .widget li:before {
-	color: #ffffff;
-	top: 0;
-}
-
-#top-footer .widget a:hover,
-#top-footer .widget a:hover:before,
-#top-footer .widget li:hover:before {
-	color: #dc3522;
 }
 
 [dir] #top-footer .tg-block-wrapper, [dir] #top-footer .widget {
