@@ -4468,18 +4468,26 @@ sup.issues {
     top: 0.7rem;
 }
 
-[dir] sup.issues {
-    background-color: @ini_color_red;
-    padding: 0 4px;
-    border-radius: 30%;
-}
-
 [dir=ltr] sup.issues {
 	left: -0.3rem;
 }
 
 [dir=rtl] sup.issues {
     right: -0.3rem;
+}
+
+[dir] sup.issues a {
+    background-color: @ini_color_red;
+    padding: 0 4px;
+    border-radius: 30%;
+}
+
+sup.issues a:hover {
+    color: @ini_color_red;
+}
+
+[dir] sup.issues a:hover {
+    background-color: #fff;
 }
 
 /* Helper classes */
