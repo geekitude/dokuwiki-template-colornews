@@ -4462,6 +4462,26 @@ div.license img {
     text-align: center;
 }
 
+sup.issues {
+    vertical-align: top;
+    position: relative;
+    top: 0.7rem;
+}
+
+[dir] sup.issues {
+    background-color: @ini_color_red;
+    padding: 0 4px;
+    border-radius: 30%;
+}
+
+[dir=ltr] sup.issues {
+	left: -0.3rem;
+}
+
+[dir=rtl] sup.issues {
+    right: -0.3rem;
+}
+
 /* Helper classes */
 
 .red {

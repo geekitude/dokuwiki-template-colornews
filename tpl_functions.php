@@ -257,6 +257,41 @@ function _colornews_init() {
         msg("This is a success [1] message with a <a href='#'>dummy link</a>", 1);
         msg("This is a notification [2] with a <a href='#'>dummy link</a>", 2);
     }
+
+    // Github issues
+    // Check and store template's current Github issues number
+    if (tpl_getConf('githubIssues') == 1) {
+        $url = "http://api.github.com/users/geekitude/repos";//github.com/geekitude/dokuwiki-template-colornews
+        $headers = @get_headers($url);
+        $opts = [
+            'http' => [
+                'method' => 'GET',
+                'header' => [
+                    'User-Agent: PHP'
+                ]
+            ]
+        ];
+        if ($headers and $headers[0] != 'HTTP/1.1 404 Not Found') {
+            $json = file_get_contents($url, false, stream_context_create($opts));
+//dbg($json);
+            $obj = json_decode($json);
+            if (is_array($obj)) {
+                foreach ($obj as $key => $repo) {
+//dbg($obj[$key]->name);
+                    if ($obj[$key]->name == "dokuwiki-template-colornews") {
+                        if ((isset($obj[$key]->open_issues_count)) and ($obj[$key]->open_issues_count > 0)) {
+                            $colornews['issues'] = $obj[$key]->open_issues_count;
+//dbg($obj[$key]->open_issues_count);
+                        } else {
+                            $colornews['issues'] = 0;
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        $colornews['issues'] = null;
+    }
 }
 
 /**

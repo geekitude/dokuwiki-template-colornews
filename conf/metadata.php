@@ -20,3 +20,5 @@ $meta['sidebarCard']        = array('string');
 $meta['sidebarWidgets']     = array('string');
 $meta['licenseVisual']      = array('multichoice','_choices' => array('button','badge','0')); /* visual representation of wiki license */
 $meta['avatar']             = array('string');
+$meta['githubIssues']       = array('onoff'); /* collect Github issues number or not */
+

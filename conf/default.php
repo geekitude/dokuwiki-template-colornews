@@ -20,3 +20,4 @@ $conf['sidebarCard']        = '';
 $conf['sidebarWidgets']     = 'sidebarwidgets';
 $conf['licenseVisual']      = 'button';
 $conf['avatar']             = '';
+$conf['githubIssues']       = 0;
