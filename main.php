@@ -273,7 +273,6 @@ _colornews_init();
         </main>
         <footer id="colophon">
             <div class="doc"><?php tpl_pageinfo() /* 'Last modified' etc */ ?></div>
-            <?php tpl_license(tpl_getConf('licenseVisual')) /* content license, parameters: img=*badge|button|0, imgonly=*0|1, return=*0|1 */ ?>
             <div id="top-footer">
                 <div class="tg-container">
                     <div class="tg-inner-wrap">
@@ -351,6 +350,7 @@ _colornews_init();
                         </div><!-- /.top-footer-content-wrapper -->
                     </div><!-- /.tg-inner-wrap -->
                 </div><!-- /.tg-container -->
+                <?php tpl_license(tpl_getConf('licenseVisual')) /* content license, parameters: img=*badge|button|0, imgonly=*0|1, return=*0|1 */ ?>
             </div><!-- /#top-footer -->
             <div id="bottom-footer">
                 <div class="tg-container">
