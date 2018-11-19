@@ -259,7 +259,7 @@ function _colornews_init() {
         msg("This is a notification [2] with a <a href='#'>dummy link</a>", 2);
     }
 
-    // Github issues
+    // GITHUB ISSUES
     // Check and store template's current Github issues number (only if setting is enabled and no value is stored in PHP session yet)
 //dbg("avant: ".$_SESSION['colornews']['timestamp']);
 //dbg($_SESSION);
@@ -288,17 +288,19 @@ function _colornews_init() {
                     if ($obj[$key]->name == "dokuwiki-template-colornews") {
                         if ((isset($obj[$key]->open_issues_count)) and ($obj[$key]->open_issues_count > 0)) {
                             $_SESSION['colornews']['issues'] = $obj[$key]->open_issues_count;
-//dbg($obj[$key]->open_issues_count." Github issues");
+                            $_SESSION['colornews']['issuesCSS'] = 'badge red';
+dbg($obj[$key]->open_issues_count." Github issues");
                         } else {
+dbg($obj[$key]->open_issues_count." Github issues");
                             $_SESSION['colornews']['issues'] = 0;
+                            $_SESSION['colornews']['issuesCSS'] = 'badge green';
                         }
                     }
                 }
             }
+        } else {
+            $_SESSION['colornews']['issues'] = null;
         }
-//    } else {
-//        $_SESSION['colornews']['issues'] = null;
-//        $_SESSION['colornews']['timestamp'] = time();
     }
 //dbg("après: ".$_SESSION['colornews']['timestamp']);
     

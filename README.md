@@ -68,6 +68,7 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
 * [ ] Sidebar moved out of page content on wide screen
 * [ ] Dynamic navigation button (current NS home, parent NS start, home)
 * [x] Dynamic sidebar widgets
+* [x] Github issues badge in footer
 * [ ] Paralax wide banner?
 * [ ] Include hooks(*), based on [this document](https://www.dokuwiki.org/include_hooks), starter template and also quite a few specific additions
   * [x] *meta.html* : just before `</head>` tag (use this to add additional styles or metaheaders)

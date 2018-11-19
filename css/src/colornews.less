@@ -3359,22 +3359,35 @@ div.buttons {
     text-align: center;
 }
 
-sup.issues {
-    vertical-align: top;
+sup.badge {
     position: relative;
-    top: 0.7rem;
+    top: -0.4rem;
     left: -0.3rem;
 }
 
-sup.issues a {
-    background-color: @ini_color_red;
+sup.badge a {
     padding: 0 4px;
     border-radius: 30%;
 }
 
-sup.issues a:hover {
+sup.badge.red a {
+    background-color: @ini_color_red;
+}
+
+sup.badge.green a {
+    background-color: @ini_color_green;
+}
+
+sup.badge a:hover {
     background-color: #fff;
+}
+
+sup.badge.red a:hover {
     color: @ini_color_red;
+}
+
+sup.badge.green a:hover {
+    color: @ini_color_green !important;
 }
 
 /* Helper classes */
