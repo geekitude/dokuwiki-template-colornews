@@ -175,7 +175,7 @@ _colornews_init();
             </div><!-- /.bottom-header-wrapper -->
             <?php _colornews_includeFile('navbarfooter.html') ?>
             <!-- BREADCRUMBS -->
-            <div id="colornews__trace" class="<?php print (($conf['youarehere']) and ($conf['breadcrumbs'])) ? "split" : "" ?>">
+            <div id="colornews__trace"">
                 <?php if($conf['youarehere']){ ?>
                     <div class="youarehere"><?php tpl_youarehere() ?><div class="pageId">(<span><?php echo hsc($ID) ?></span>)</div></div>
                 <?php } else { ?>
