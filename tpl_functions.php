@@ -289,12 +289,11 @@ function _colornews_init() {
                         if ((isset($obj[$key]->open_issues_count)) and ($obj[$key]->open_issues_count > 0)) {
                             $_SESSION['colornews']['issues'] = $obj[$key]->open_issues_count;
                             $_SESSION['colornews']['issuesCSS'] = 'badge red';
-dbg($obj[$key]->open_issues_count." Github issues");
                         } else {
-dbg($obj[$key]->open_issues_count." Github issues");
                             $_SESSION['colornews']['issues'] = 0;
                             $_SESSION['colornews']['issuesCSS'] = 'badge green';
                         }
+//dbg($_SESSION['colornews']['issues']." Github issues");
                     }
                 }
             }
