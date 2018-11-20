@@ -38,7 +38,7 @@ Version of ColorNews Wordpress theme used as base for this project : 1.1.4 (2018
   * [ ] WP vs. DW classes
     * [ ] The lazy way
     * [ ] The clean way
-* [ ] Rename IDs
+* [x] Rename IDs
 * [ ] Support specific custom WP theme functionality
   * [ ] Custom colours
   * [ ] Custom background

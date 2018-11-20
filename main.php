@@ -31,19 +31,17 @@ _colornews_init();
 </head>
 <body class="<?php echo _colornews_bodyclasses(); ?>">
     <div class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>skip">
-        <a href="#dokuwiki__content"><?php echo $lang['skip_to_content'] ?></a>
+        <a href="#colornews__content"><?php echo $lang['skip_to_content'] ?></a>
     </div>
     <?php _colornews_includeFile('header.html') ?>
     <?php /* with these Conditional Comments you can better address IE issues in CSS files,
              precede CSS rules by #IE8 for IE8 (div closes at the bottom) */ ?>
     <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
-    <?php /* the "dokuwiki__top" id is needed somewhere at the top, because that's where the "back to top" button/link links to */ ?>
     <?php /* tpl_classes() provides useful CSS classes; if you choose not to use it, the 'dokuwiki' class at least
              should always be in one of the surrounding elements (e.g. plugins and templates depend on it) */ ?>
-    <div id="dokuwiki__site">
-    <div id="page" class="hfeed site <?php echo tpl_classes(); ?> <?php echo (($colornews['show']['sidebar']) or ($colornews['show']['sidebarWidgets'])) ? 'hasSidebar' : ''; ?>">
+    <div id="colornews__page" class="hfeed site <?php echo tpl_classes(); ?> <?php echo (($colornews['show']['sidebar']) or ($colornews['show']['sidebarWidgets'])) ? 'hasSidebar' : ''; ?>">
         <!-- ********** HEADER ********** -->
-        <header id="masthead" class="site-header" role="banner">
+        <header id="colornews__masthead" class="site-header" role="banner">
             <div class="top-header-wrapper clearfix">
                 <div class="tg-container">
                     <div class="tg-inner-wrap">
@@ -60,10 +58,10 @@ _colornews_init();
                                 <?php _colornews_date("long", null, false, true); ?>
                             </div>
                         </div>
-                            <div id="dokuwiki__topbar" class="right-top-menu-wrap">
+                            <div id="colornews__topbar" class="right-top-menu-wrap">
                                 <?php //if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "links")) and (file_exists(tpl_incdir('colornews')."debug/topbar.html"))) { include(tpl_incdir('colornews')."debug/topbar.html"); } else { tpl_include_page('topbar'); } ?>
                                 <?php if (($_GET['debug'] == "replace") and (file_exists(tpl_incdir('colornews')."debug/topbar.html"))) { include(tpl_incdir('colornews')."debug/topbar.html"); } else { tpl_include_page('topbar'); } ?>
-                            </div>
+                            </div><!-- /#colornews__topbar -->
                     </div><!-- /.tg-inner-wrap -->
                 </div><!-- /.tg-container -->
             </div><!-- /.top-header-wrapper  -->
@@ -83,7 +81,7 @@ _colornews_init();
                                 );
                             ?>
                         </div><!-- #logo -->
-                        <div id="header-text" class="">
+                        <div id="colornews__header-text" class="">
                             <!-- <h1><?php //if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "title")) and (file_exists(tpl_incdir('colornews')."debug/title.html"))) { include(tpl_incdir('colornews')."debug/title.html"); } else { tpl_link(wl(),$conf['title'],'accesskey="h" title="[H]"'); } ?></h1> -->
                             <h1>
                                 <?php
@@ -94,9 +92,6 @@ _colornews_init();
                                     }
                                 ?>
                             </h1>
-                            <?php /* how to insert logo instead (if no CSS image replacement technique is used):
-                                upload your logo into the data/media folder (root of the media manager) and replace 'logo.png' accordingly:
-                                tpl_link(wl(),'<img src="'.ml('logo.png').'" alt="'.$conf['title'].'" />','id="dokuwiki__top" accesskey="h" title="[H]"') */ ?>
                             <?php if ($conf['tagline']): ?>
                                 <!-- <p class="claim"><?php //if ((($_GET['debug'] == 1) or ($_GET['debug'] == "hooks") or ($_GET['debug'] == "replace") or ($_GET['debug'] == "tagline")) and (file_exists(tpl_incdir('colornews')."debug/tagline.html"))) { include(tpl_incdir('colornews')."debug/tagline.html"); } else { echo $conf['tagline']; } ?></p> -->
                                 <p class="claim">
@@ -109,7 +104,7 @@ _colornews_init();
                                     ?>
                                 </p>
                             <?php endif ?>
-                        </div><!-- #header-text -->
+                        </div><!-- #colornews__header-text -->
                         <div class="header-advertise">
                             <?php _colornews_includeFile('bannerheader.html') ?>
                             <?php
@@ -126,10 +121,10 @@ _colornews_init();
                                         }
                                         tpl_link(
                                             $link['target'],
-                                            '<img id="colormag__branding_banner_image" src="'.$colornews['images']['banner'].'" '.$accesskey.'title="'.$link['label'].'" alt="*'.$title.'*" '.$colornews['images']['bannersize'][3].' />'
+                                            '<img id="colornews__branding-banner-image" src="'.$colornews['images']['banner'].'" '.$accesskey.'title="'.$link['label'].'" alt="*'.$title.'*" '.$colornews['images']['bannersize'][3].' />'
                                         );
                                     } else {
-                                        print '<img id="colormag__branding_banner_image" src="'.$colornews['images']['banner'].'" title="'.$title.'" alt="*'.$title.'*" '.$colornews['images']['bannersize'][3].' />';
+                                        print '<img id="colornews__branding-banner-image" src="'.$colornews['images']['banner'].'" title="'.$title.'" alt="*'.$title.'*" '.$colornews['images']['bannersize'][3].' />';
                                     }
                                 }
                             ?>
@@ -154,13 +149,13 @@ _colornews_init();
                         }
                     }
                 ?>
-            </aside>
+            </aside><!-- /#colornews__alerts -->
             <?php _colornews_includeFile('navbarheader.html') ?>
             <div class="bottom-header-wrapper clearfix">
                 <div class="bottom-arrow-wrap">
                     <div class="tg-container">
                         <div class="tg-inner-wrap">
-                            <nav id="site-navigation" class="main-navigation clearfix" role="navigation">
+                            <nav id="colornews__navigation" class="main-navigation clearfix" role="navigation">
                                 <div class="menu-toggle hide">*menu toggle*</div>
                                 <ul>
                                     <?php // option affichage icone home ?>
@@ -169,7 +164,7 @@ _colornews_init();
                                         </li><!-- /.home-icon -->
                                     <?php // ?>
                                 </ul>
-                            </nav>
+                            </nav><!-- /#colornews__navigation -->
                             <div class="share-search-wrap autocomplete-<?php print tpl_getConf("searchAutoComplete") ? 'on' : 'off'; ?>">
                                 <?php _colornews_searchform(true, tpl_getConf("searchAutoComplete")); ?>
                             </div>
@@ -189,17 +184,16 @@ _colornews_init();
                 <?php if($conf['breadcrumbs']){ ?>
                     <div class="breadcrumbs"><?php tpl_breadcrumbs() ?></div>
                 <?php } ?>
-            </div>
+            </div><!-- /#colornews__trace -->
             <!-- BREAKING NEWS -->
             <hr class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue" />
-        </header><!-- /#masthead -->
-        <main id="main" class="clearfix">
+        </header><!-- /#colornews__masthead -->
+        <main id="colornews__main" class="clearfix">
             <div class="tg-container">
                 <div class="tg-inner-wrap clearfix">
-                    <div id="main-content-section clearfix">
-                        <div id="primary">
+                        <div id="colornews__primary">
                             <!-- ********** CONTENT ********** -->
-                            <section id="dokuwiki__content">
+                            <section id="colornews__content">
                                 <?php tpl_flush() /* flush the output buffer */ ?>
                                 <?php _colornews_includeFile('pageheader.html') ?>
                                 <article class="page">
@@ -209,11 +203,11 @@ _colornews_init();
                                 </article><!-- /.page -->
                                 <?php tpl_flush() ?>
                                 <?php _colornews_includeFile('pagefooter.html') ?>
-                            </section><!-- /#dokuwiki__content -->
+                            </section><!-- /#colornews__content -->
                             <hr class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue" />
                             <!-- PAGE ACTIONS -->
                             <?php if ($colornews['show']['tools']): ?>
-                                <aside id="dokuwiki__pagetools">
+                                <aside id="colornews__pagetools">
                                     <h3 class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue"><?php echo $lang['page_tools'] ?></h3>
                                     <ul>
                                         <?php tpl_toolsevent('pagetools', array(
@@ -226,16 +220,16 @@ _colornews_init();
                                             'top'       => tpl_action('top', 1, 'li', 1),
                                         )); ?>
                                     </ul>
-                                </aside><!-- /#dokuwiki__pagetools -->
+                                </aside><!-- /#colornews__pagetools -->
                             <?php endif; ?>
-                        </div><!-- /#primary -->
+                        </div><!-- /#colornews__primary -->
                         <!-- ********** ASIDE ********** -->
                         <?php if ($ACT == "show"): ?>
-                            <div id="secondary">
+                            <div id="colornews__secondary">
                                 <?php _colornews_includeFile('sidebarheader.html', true) ?>
                                 <?php if (isset($colornews['images']['card'])) : ?>
                                     <!-- <aside id="colornews_300x250_advertisement_widget-3" class="widget widget_300x250_advertisement colornews_custom_widget"> -->
-                                    <aside id="colornews__sidebar_card" class="widget">
+                                    <aside id="colornews__sidebar-card" class="widget">
                                         <!-- <div class="magazine-block-medium-ad clearfix"> -->
                                             <div class="tg-block-wrapper clearfix">
                                                 <div class="ad-image">
@@ -246,10 +240,10 @@ _colornews_init();
                                                 </div>
                                             </div>
                                         <!-- </div> -->
-                                    </aside>
+                                    </aside><!-- /#colornews__sidebar-card -->
                                 <?php endif; ?>
                                 <?php if ($colornews['show']['sidebar']): ?>
-                                    <aside id="dokuwiki__aside" class="widget">
+                                    <aside id="colornews__aside" class="widget">
                                         <div class="tg-block-wrapper clearfix">
                                             <h3 class='widget-title title-block-wrap clearfix'><span class='block-title'><span><?php print $lang['sidebar']; ?></span></span></h3>
                                             <?php
@@ -259,21 +253,20 @@ _colornews_init();
                                                     tpl_include_page($conf['sidebar'], 1, 1); /* includes the nearest sidebar page */
                                                 }
                                             ?>
-                                        </div>
-                                    </aside>
+                                        </div><!-- /.tg-block-wrapper clearfix -->
+                                    </aside><!-- /#colornews__aside -->
                                 <?php endif; ?>
                                 <?php if ($colornews['show']['sidebarWidgets']) { _colornews_widgets('sidebar'); } ?>
                                 <?php _colornews_includeFile('sidebarfooter.html', true) ?>
                                 <hr class="<?php print (($_GET['debug'] == 1) or ($_GET['debug'] == "a11y")) ? "" : "a11y " ?>blue" />
-                            </div><!-- /#secondary -->
+                            </div><!-- /#colornews__secondary -->
                         <?php endif; ?>
-                    </div><!-- /#main-content-section -->
                 </div><!-- /.tg-inner-wrap -->
             </div><!-- /.tg-container -->
-        </main>
-        <footer id="colophon">
+        </main><!-- /#colornews__main -->
+        <footer id="colornews__colophon">
             <div class="doc"><?php tpl_pageinfo() /* 'Last modified' etc */ ?></div>
-            <div id="top-footer">
+            <div id="colornews__top-footer">
                 <div class="tg-container">
                     <div class="tg-inner-wrap">
                         <div class="top-footer-content-wrapper">
@@ -282,7 +275,7 @@ _colornews_init();
                                 <?php //if ($ACT != "login") : ?>
                                 <?php if ($conf['useacl'] && $colornews['show']['tools'] && $ACT != "login"): ?>
                                     <div class="tg-footer-column-3 xl">
-                                        <aside id="dokuwiki__usertools" class="widget">
+                                        <aside id="colornews__usertools" class="widget">
                                             <?php
                                                 //if (($conf['useacl']) and (empty($_SERVER['REMOTE_USER'])) and (strpos(tpl_getConf('widgets'), 'footer_login') !== false))
                                                 if (($conf['useacl']) and (empty($_SERVER['REMOTE_USER']))) {
@@ -292,9 +285,9 @@ _colornews_init();
                                                     print '<h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span>'.$lang['user_tools'].'</span></span></h3>';
                                                     if ($colornews['images']['avatar'] != null) {
                                                         if (strpos($colornews['images']['avatar'], "svg") !== false) {
-                                                            print '<img id="colornews__user_avatar" src="/lib/tpl/colornews/debug/avatar.png" alt="'.tpl_getLang('your_avatar').'" srcset="/lib/tpl/colornews/debug/avatar.svg" height="64px" width="64px" style="float: right;"/>';
+                                                            print '<img id="colornews__user-avatar" src="/lib/tpl/colornews/debug/avatar.png" alt="'.tpl_getLang('your_avatar').'" srcset="/lib/tpl/colornews/debug/avatar.svg" height="64px" width="64px" style="float: right;"/>';
                                                         } else {
-                                                            print '<img id="colornews__user_avatar" src="'.$colornews['images']['avatar'].'" alt="'.tpl_getLang('your_avatar').'" width="64px" height="100%" style="float: right;"/>';
+                                                            print '<img id="colornews__user-avatar" src="'.$colornews['images']['avatar'].'" alt="'.tpl_getLang('your_avatar').'" width="64px" height="100%" style="float: right;"/>';
                                                         }
                                                     }
                                                     print '<p class="user">';
@@ -313,13 +306,13 @@ _colornews_init();
                                                     print '</ul>';
                                                 }
                                             ?>
-                                        </aside><!-- /#dokuwiki__usertools -->
+                                        </aside><!-- /#colornews__usertools -->
                                     </div><!-- /.tg-footer-column-3 -->
                                 <?php endif; ?>
                                 <!-- SITE TOOLS -->
                                 <?php if ($colornews['show']['tools']): ?>
                                     <div class="tg-footer-column-3">
-                                        <aside id="dokuwiki__sitetools" class="widget">
+                                        <aside id="colornews__sitetools" class="widget">
                                             <h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span><?php print $lang['site_tools']; ?></span></span></h3>
                                             <?php //tpl_searchform() ?>
                                             <ul>
@@ -329,7 +322,7 @@ _colornews_init();
                                                     'index'     => tpl_action('index', 1, 'li', 1),
                                                 )); ?>
                                             </ul>
-                                        </aside><!-- /.#dokuwiki__sitetools -->
+                                        </aside><!-- /.#colornews__sitetools -->
                                     </div><!-- /.tg-footer-column-3 -->
                                 <?php endif; ?>
                                 <div class="tg-footer-column-3">
@@ -351,8 +344,8 @@ _colornews_init();
                     </div><!-- /.tg-inner-wrap -->
                 </div><!-- /.tg-container -->
                 <?php tpl_license(tpl_getConf('licenseVisual')) /* content license, parameters: img=*badge|button|0, imgonly=*0|1, return=*0|1 */ ?>
-            </div><!-- /#top-footer -->
-            <div id="bottom-footer">
+            </div><!-- /#colornews__top-footer -->
+            <div id="colornews__bottom-footer">
                 <div class="tg-container">
                     <div class="tg-inner-wrap">
                         <div class="copy-right">
@@ -360,11 +353,10 @@ _colornews_init();
                         </div><!-- /.copy-right -->
                     </div><!-- /.tg-inner-wrap -->
                 </div><!-- /.tg-container -->
-            </div><!-- /#bottom-footer -->
-        </footer><!-- /#colophon -->
-        <a href="#masthead" id="scroll-up"><span>TOP</span></a>
-    </div><!-- /#page -->
-    </div><!-- /#dokuwiki__site -->
+            </div><!-- /#colornews__bottom-footer -->
+        </footer><!-- /#colornews__colophon -->
+        <a href="#colornews__masthead" id="colornews__scroll-up"><span>TOP</span></a>
+    </div><!-- /#colornews__page -->
     <?php _colornews_includeFile('footer.html') ?>
     <div id="housekeeper" class="no"><?php tpl_indexerWebBug() /* provide DokuWiki housekeeping, required in all templates */ ?></div>
     <!--[if lte IE 8 ]></div><![endif]-->
