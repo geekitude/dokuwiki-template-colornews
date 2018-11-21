@@ -15,6 +15,7 @@ global $colornews;
 $colornews = array();
 _colornews_init();
 //dbg($colornews);
+//dbg($colornews['show']['tools']);
 
 ?><!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $conf['lang'] ?>"
