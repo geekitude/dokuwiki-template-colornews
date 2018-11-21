@@ -274,7 +274,7 @@ _colornews_init();
                             <div class="tg-column-wrapper">
                                 <!-- USER TOOLS -->
                                 <?php //if ($ACT != "login") : ?>
-                                <?php if ($conf['useacl'] && $colornews['show']['tools'] && $ACT != "login"): ?>
+                                <?php if ($conf['useacl'] && $ACT != "login"): ?>
                                     <div class="tg-footer-column-3 xl">
                                         <aside id="colornews__usertools" class="widget">
                                             <?php
@@ -282,7 +282,7 @@ _colornews_init();
                                                 if (($conf['useacl']) and (empty($_SERVER['REMOTE_USER']))) {
                                                     //<!-- LOGIN FORM -->
                                                     _colornews_loginform('widget');
-                                                } else {
+                                                } elseif ($colornews['show']['tools']) {
                                                     print '<h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span>'.$lang['user_tools'].'</span></span></h3>';
                                                     if ($colornews['images']['avatar'] != null) {
                                                         if (strpos($colornews['images']['avatar'], "svg") !== false) {
