@@ -359,7 +359,7 @@ _colornews_init();
         <a href="#colornews__masthead" id="colornews__scroll-up"><span>TOP</span></a>
     </div><!-- /#colornews__page -->
     <?php _colornews_includeFile('footer.html') ?>
-    <div id="housekeeper" class="no"><?php tpl_indexerWebBug() /* provide DokuWiki housekeeping, required in all templates */ ?></div>
+    <div id="colornews__housekeeper" class="no"><?php tpl_indexerWebBug() /* provide DokuWiki housekeeping, required in all templates */ ?></div>
     <!--[if lte IE 8 ]></div><![endif]-->
 </body>
 </html>
