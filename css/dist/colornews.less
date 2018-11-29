@@ -4402,11 +4402,20 @@ div.breadcrumbs span.bcsep:nth-child(2) {
 }
 
 div.license img {
-    vertical-align: -7px;
+    display: block;
+    /*vertical-align: -7px;*/
 }
 
 [dir] div.license img {
-    margin: calc(.5 * @ini_spacer) 0;
+    margin: .45rem auto calc(.5 * @ini_spacer) auto;
+}
+
+div.license a {
+    display: table;
+}
+
+[dir] div.license a {
+    margin: 0 auto;
 }
 
 /* Log in form */

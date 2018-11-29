@@ -18,7 +18,7 @@ $meta['banner']             = array('string');
 $meta['searchAutoComplete'] = array('onoff');
 $meta['sidebarCard']        = array('string');
 $meta['sidebarWidgets']     = array('string');
-$meta['licenseVisual']      = array('multichoice','_choices' => array('button','badge','0')); /* visual representation of wiki license */
+$meta['licenseVisual']      = array('multichoice','_choices' => array('button','badge','none')); /* visual representation of wiki license */
 $meta['avatar']             = array('string');
 $meta['githubIssues']       = array('onoff'); /* collect Github issues number or not */
 

@@ -340,11 +340,16 @@ _colornews_init();
                                         </div><!-- .buttons -->
                                     </aside><!-- /#nav_menu-2 -->
                                 </div><!-- /.tg-footer-column-3 -->
+                                <div class="tg-footer-column-3">
+                                    <aside id="colornews__license" class="widget">
+                                        <h3 class="widget-title title-block-wrap clearfix"><span class="block-title"><span><?php print tpl_getLang('license'); ?></span></span></h3>
+                                            <?php tpl_license(tpl_getConf('licenseVisual')) /* content license, parameters: img=*badge|button|0, imgonly=*0|1, return=*0|1 */ ?>
+                                    </aside><!-- /#nav_menu-2 -->
+                                </div><!-- /.tg-footer-column-3 -->
                             </div><!-- /.tg-column-wrapper -->
                         </div><!-- /.top-footer-content-wrapper -->
                     </div><!-- /.tg-inner-wrap -->
                 </div><!-- /.tg-container -->
-                <?php tpl_license(tpl_getConf('licenseVisual')) /* content license, parameters: img=*badge|button|0, imgonly=*0|1, return=*0|1 */ ?>
             </div><!-- /#colornews__top-footer -->
             <div id="colornews__bottom-footer">
                 <div class="tg-container">
